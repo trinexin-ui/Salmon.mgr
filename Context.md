@@ -24,7 +24,7 @@
 - Пул банк-бонуса менеджер распределяет на командные цели (Team goal).
 - Любая денежная логика живёт в одном месте — `src/domain/money` — как чистые функции с юнит-тестами. В компонентах деньги не считаются.
 
-**Открытый вопрос:** «каждая пятая заявка» — каждая пятая *одобренная* или каждая пятая *поданная*? Уточнить у владельца продукта до реализации, до этого в коде считать «пятая одобренная» и пометить `TODO(question)`.
+**Открытый вопрос:** «каждая пятая заявка» — каждая пятая _одобренная_ или каждая пятая _поданная_? Уточнить у владельца продукта до реализации, до этого в коде считать «пятая одобренная» и пометить `TODO(question)`.
 
 ## 3. Ключевые сценарии менеджера
 
@@ -35,16 +35,16 @@
 
 ## 4. Экраны и функциональность
 
-| Раздел | Что есть | Макет (Figma) |
-|---|---|---|
-| Home | Переключатель Week / Month; сводка Pending, Approved, Earned с трендами; прогресс к плану периода и банковскому бонусу (Period plan, Bank bonus, Left N days); карточки сотрудников со статусом (агент в пути, пре-скоринг, последняя активность), полоской офферов (approved/pending) и сигналами («On fire today!», «Needs POS loan training», «New — say hello», «On leave»); нижняя навигация Home / Team / Shoutouts | `d-home` |
-| Профиль сотрудника | Сводка за период (Stats for July, график по дням), текущая локация и среднее время прибытия, список Clients и Challenges, быстрые действия **Training**, **Recognition**, **Whisper** | `d-team-employee_card` |
-| Обучение | Назначение тренинга сотруднику: тема, заметка, дата и время, кнопка Schedule; экран успеха «Sige, scheduled!» | `d-employee_card-training_1`, `d-training-success` |
-| Team goal | Экран Period plan (цель на период, split, distribution, вклад команды по сотрудникам) и мастер из 4 шагов: 1 Period plan (Easy / Ambitious / Legendary) → 2 Choose split (Employees vs Team goal, выбор командной награды) → 3 Distribution (Equal / By offers / Hybrid) → 4 Review → экран «Sent to the team» | `d-team_goal`, `d-team_goal-step1..4`, `d-team_goal-success` |
-| Shoutouts | Стена: посты, признания, голосования (Team vote), командные достижения; лайки/реакции **без комментариев**; модерация менеджером. Фильтры: All, Pinned, Recognitions, Posts. Создание поста | `d-shoutouts-wall-new_post` |
-| Moments | Фотографии команды и вехи, коллаж | `d-shoutouts-moments` |
-| Профиль менеджера | Уровень (Silver Manager → Gold Manager), прогресс «Need N offers», Stats for July (Team offers, Your reward), лига магазина (Bronze / Silver / Gold / Platinum с повышением и вылетом), меню: Possibilities, Reports, Withdraw funds, Exit | `d-profile` |
-| Possibilities | Привилегии по уровню и лиге (By level / By league), закрытые показаны с замком: Extended analytics, Salmon spotlight, Higher team fund limit, Custom challenge templates, Priority Salmon support | `d-profile-possibilities` |
+| Раздел             | Что есть                                                                                                                                                                                                                                                                                                                                                                                                                  | Макет (Figma)                                                |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
+| Home               | Переключатель Week / Month; сводка Pending, Approved, Earned с трендами; прогресс к плану периода и банковскому бонусу (Period plan, Bank bonus, Left N days); карточки сотрудников со статусом (агент в пути, пре-скоринг, последняя активность), полоской офферов (approved/pending) и сигналами («On fire today!», «Needs POS loan training», «New — say hello», «On leave»); нижняя навигация Home / Team / Shoutouts | `d-home`                                                     |
+| Профиль сотрудника | Сводка за период (Stats for July, график по дням), текущая локация и среднее время прибытия, список Clients и Challenges, быстрые действия **Training**, **Recognition**, **Whisper**                                                                                                                                                                                                                                     | `d-team-employee_card`                                       |
+| Обучение           | Назначение тренинга сотруднику: тема, заметка, дата и время, кнопка Schedule; экран успеха «Sige, scheduled!»                                                                                                                                                                                                                                                                                                             | `d-employee_card-training_1`, `d-training-success`           |
+| Team goal          | Экран Period plan (цель на период, split, distribution, вклад команды по сотрудникам) и мастер из 4 шагов: 1 Period plan (Easy / Ambitious / Legendary) → 2 Choose split (Employees vs Team goal, выбор командной награды) → 3 Distribution (Equal / By offers / Hybrid) → 4 Review → экран «Sent to the team»                                                                                                            | `d-team_goal`, `d-team_goal-step1..4`, `d-team_goal-success` |
+| Shoutouts          | Стена: посты, признания, голосования (Team vote), командные достижения; лайки/реакции **без комментариев**; модерация менеджером. Фильтры: All, Pinned, Recognitions, Posts. Создание поста                                                                                                                                                                                                                               | `d-shoutouts-wall-new_post`                                  |
+| Moments            | Фотографии команды и вехи, коллаж                                                                                                                                                                                                                                                                                                                                                                                         | `d-shoutouts-moments`                                        |
+| Профиль менеджера  | Уровень (Silver Manager → Gold Manager), прогресс «Need N offers», Stats for July (Team offers, Your reward), лига магазина (Bronze / Silver / Gold / Platinum с повышением и вылетом), меню: Possibilities, Reports, Withdraw funds, Exit                                                                                                                                                                                | `d-profile`                                                  |
+| Possibilities      | Привилегии по уровню и лиге (By level / By league), закрытые показаны с замком: Extended analytics, Salmon spotlight, Higher team fund limit, Custom challenge templates, Priority Salmon support                                                                                                                                                                                                                         | `d-profile-possibilities`                                    |
 
 **Источник дизайна:** Figma `https://www.figma.com/design/507oaaib4ZggDdzyGmjfXU/Anton-Vasilev` (секция `design-routine` — актуальные экраны). Правило: перед реализацией экрана сверяться с макетом через Figma MCP, не по памяти.
 
@@ -54,20 +54,21 @@
 
 **Формат поставки:** обычное **веб-приложение (SPA), открываемое в WebView через браузер**. Не нативное приложение, никаких мобильных фреймворков (React Native, Flutter, Capacitor, Expo и т. п.).
 
-| Область | Выбор |
-|---|---|
-| Сборка | Vite |
-| Язык | TypeScript (strict) |
-| UI | React |
-| Роутинг | React Router |
-| Стили | Tailwind CSS + CSS-переменные для дизайн-токенов |
-| Юнит и компонентные тесты | Vitest + Testing Library |
-| E2E | Playwright, мобильный viewport (эмуляция WebView) |
-| Качество | ESLint, Prettier, `tsc --noEmit` |
-| Данные на старте | Моки в `src/data` за интерфейсом репозиториев; реальный API подключается позже без переписывания UI |
-| Backend | Не в скоупе на старте. Решение принять, когда появятся требования к API |
+| Область                   | Выбор                                                                                               |
+| ------------------------- | --------------------------------------------------------------------------------------------------- |
+| Сборка                    | Vite                                                                                                |
+| Язык                      | TypeScript (strict)                                                                                 |
+| UI                        | React                                                                                               |
+| Роутинг                   | React Router                                                                                        |
+| Стили                     | Tailwind CSS + CSS-переменные для дизайн-токенов                                                    |
+| Юнит и компонентные тесты | Vitest + Testing Library                                                                            |
+| E2E                       | Playwright, мобильный viewport (эмуляция WebView)                                                   |
+| Качество                  | ESLint, Prettier, `tsc --noEmit`                                                                    |
+| Данные на старте          | Моки в `src/data` за интерфейсом репозиториев; реальный API подключается позже без переписывания UI |
+| Backend                   | Не в скоупе на старте. Решение принять, когда появятся требования к API                             |
 
 **WebView-специфика, которую учитываем с первого дня:**
+
 - viewport-meta и `env(safe-area-inset-*)` для вырезов и home-индикатора;
 - `100dvh` вместо `100vh`; блокируем резиновую прокрутку страницы там, где нужно;
 - touch-цели не меньше 44×44 px; никаких hover-only взаимодействий;
@@ -94,13 +95,13 @@ Salmon/
 
 ## 7. Инструменты оркестратора
 
-| Инструмент | Для чего | Статус |
-|---|---|---|
-| Встроенный браузер (Browser pane) | Открывать и проверять собранное приложение, смотреть страницы | доступен |
-| Figma MCP | Читать макеты, контекст дизайна, переменные, скриншоты | подключён; `get_metadata` на большом холсте падает — запрашивать конкретные фреймы по `node-id` |
-| GitHub (`gh` + git) | Репозиторий `trinexin-ui/Salmon.mgr`, коммиты, пуши, PR, issues | `gh` авторизован как `trinexin-ui`; `origin` настроен |
-| Node.js / npm | Сборка, тесты, dev-сервер | **не установлен** — нужна установка (запрос к владельцу) |
-| Агенты (Agent tool) | Implementer, Code Reviewer, QA — см. [Agents.md](Agents.md) | по необходимости |
+| Инструмент                        | Для чего                                                        | Статус                                                                                          |
+| --------------------------------- | --------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| Встроенный браузер (Browser pane) | Открывать и проверять собранное приложение, смотреть страницы   | доступен                                                                                        |
+| Figma MCP                         | Читать макеты, контекст дизайна, переменные, скриншоты          | подключён; `get_metadata` на большом холсте падает — запрашивать конкретные фреймы по `node-id` |
+| GitHub (`gh` + git)               | Репозиторий `trinexin-ui/Salmon.mgr`, коммиты, пуши, PR, issues | `gh` авторизован как `trinexin-ui`; `origin` настроен                                           |
+| Node.js / npm                     | Сборка, тесты, dev-сервер                                       | Node 24 LTS, npm 11 — установлен (winget)                                                       |
+| Агенты (Agent tool)               | Implementer, Code Reviewer, QA — см. [Agents.md](Agents.md)     | по необходимости                                                                                |
 
 Любой дополнительный инструмент или доступ запрашивается у владельца продукта и добавляется в эту таблицу после одобрения.
 
@@ -112,9 +113,9 @@ Salmon/
 
 - [x] Подключены Figma и GitHub
 - [x] Контекстные документы: Context, Rules, Agents
-- [ ] Установить Node.js LTS
-- [ ] Базовый сетап: Vite + React + TS + Tailwind + роутинг + тесты + линтеры
-- [ ] Первый коммит и пуш в репозиторий
+- [x] Установить Node.js LTS
+- [x] Базовый сетап: Vite + React + TS + Tailwind + роутинг + тесты + линтеры
+- [x] Первый коммит и пуш в репозиторий
 - [ ] Перенос дизайн-системы: токены, типографика, базовые компоненты (из Figma)
 - [ ] Сборка экранов по сценариям: Home → Employee → Team goal → Shoutouts → Profile
 - [ ] Деплой на тестовый стенд (формат уточнить)
@@ -136,6 +137,7 @@ _Пока нет._
 
 ## 11. Журнал решений и изменений
 
-| Дата | Что |
-|---|---|
-| 2026-10-02 | Созданы Context.md, Rules.md, Agents.md. Зафиксирован стек: WebView-SPA на Vite + React + TS + Tailwind. Подключены Figma и GitHub (`gh`). |
+| Дата       | Что                                                                                                                                                                                                                                                   |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2026-10-02 | Созданы Context.md, Rules.md, Agents.md. Зафиксирован стек: WebView-SPA на Vite + React + TS + Tailwind. Подключены Figma и GitHub (`gh`).                                                                                                            |
+| 2026-10-02 | Установлен Node 24 LTS. Базовый сетап готов: typecheck, lint, vitest, build и Playwright e2e (Pixel 7) проходят. Скрипты: `dev`, `build`, `typecheck`, `lint`, `test`, `e2e`. Алиас `@` → `src`. Репозиторий оставлен публичным по решению владельца. |
