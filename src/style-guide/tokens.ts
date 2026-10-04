@@ -33,6 +33,7 @@ export const typeStyles = [
   'body_1',
   'body_2',
   'button_input_1',
+  'button_input_2',
   'caption_1',
   'caption_2',
 ] as const
