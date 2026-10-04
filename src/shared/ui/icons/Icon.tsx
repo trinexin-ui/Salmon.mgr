@@ -16,6 +16,7 @@ for (const [path, raw] of Object.entries(raws)) {
 }
 
 export type IconName =
+  | 'check'
   | 'chevron-right'
   | 'chevron-left'
   | 'notification'

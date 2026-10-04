@@ -15,7 +15,7 @@
 
 ## Атомы (`d-atoms`) — `src/shared/ui/atoms`
 
-- [ ] **radiobutton** — `active` (yes/no)
+- [x] **radiobutton** — `active` (yes/no)
 - [ ] **icon_button** — `color` (black / gray), `size` (big / middle / small)
 - [ ] **card_button** — без вариантов (Default)
 - [ ] **tag** — `type` (white / black)
@@ -67,6 +67,8 @@
 - [x] home_fill · Chating · Plus · Pin · Wallet · Possibilities · File · Unlock · Lock · Exit · Setting
 
 Выгружены в `src/shared/ui/icons/*.svg` (24×24, `currentColor`), доступ через `Icon` (`name`, `size`, `className`). Имена → kebab-case (`bubble-chat-fill`, `home-fill`). Показаны на витрине в секции «Атомы».
+
+- [x] `check` — добавлен из глифа radiobutton (в `d-icon` отдельной галочки не было; решение владельца). Итого иконок: **32**.
 
 ---
 

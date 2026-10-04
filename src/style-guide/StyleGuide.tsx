@@ -1,7 +1,8 @@
-import { useEffect, useRef, type ReactNode } from 'react'
+import { useEffect, useRef, useState, type ReactNode } from 'react'
 import { colorVariables, gradients, radii, spacingScale, typeStyles } from './tokens'
 import { readVar, resolveColorHex } from './cssValue'
 import { Icon, iconNames } from '@/shared/ui/icons/Icon'
+import { Radiobutton } from '@/shared/ui/atoms/Radiobutton'
 
 function useText<T extends HTMLElement>(compute: () => string, deps: unknown[]) {
   const ref = useRef<T>(null)
@@ -170,10 +171,44 @@ function Atoms() {
           ))}
         </div>
       </Block>
+      <RadiobuttonDemo />
       <p className="type-body_2 text-text-and-icon-secondary_white">
-        Компоненты-атомы собираются по одному — скоро.
+        Остальные атомы собираются по одному — скоро.
       </p>
     </section>
+  )
+}
+
+function RadiobuttonDemo() {
+  const [active, setActive] = useState(false)
+  return (
+    <Block id="radiobutton" title="radiobutton">
+      <div className="flex flex-col gap-l">
+        <div className="flex items-end gap-2xl">
+          <div className="flex flex-col items-center gap-xs_1">
+            <Radiobutton active={false} />
+            <span className="type-caption_2 text-text-and-icon-secondary_white">active=no</span>
+          </div>
+          <div className="flex flex-col items-center gap-xs_1">
+            <Radiobutton active={true} />
+            <span className="type-caption_2 text-text-and-icon-secondary_white">active=yes</span>
+          </div>
+        </div>
+        <label className="type-body_2 text-text-and-icon-primary flex cursor-pointer items-center gap-s">
+          <input
+            type="checkbox"
+            checked={active}
+            onChange={(e) => setActive(e.target.checked)}
+            className="cursor-pointer"
+          />
+          active
+        </label>
+        <div className="flex items-center gap-l">
+          <Radiobutton active={active} />
+          <code className="type-caption_1 text-text-and-icon-secondary_white">{`<Radiobutton active={${active}} />`}</code>
+        </div>
+      </div>
+    </Block>
   )
 }
 
