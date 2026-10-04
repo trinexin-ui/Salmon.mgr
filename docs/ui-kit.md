@@ -18,7 +18,7 @@
 - [x] **radiobutton** — `active` (yes/no)
 - [x] **icon_button** — `color` (black / gray), `size` (big / middle / small); проп `icon`
 - [x] **card_button** — без вариантов (Default); пропсы `label`, `icon`, `notification`
-- [x] **tag** — без вариантов (Default); пропсы `label`, `icon`. _(в макете было type white/black — сейчас один Default)_
+- [x] **tag** — без вариантов (Default); проп `label` (иконку убрали по решению владельца). _(в макете было type white/black — сейчас один Default)_
 - [x] **step_item** — `active` (yes/no); проп `label`
 - [x] **reaction** — `type` (default / more3), `active` (yes/no); пропсы `emoji`, `avatars`, `count`
 - [x] **chips** — `state` (active / non_active / new); проп `label`

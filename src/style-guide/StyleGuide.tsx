@@ -185,7 +185,6 @@ function Atoms() {
       <Block id="tag" title="tag">
         <div className="flex items-center gap-l">
           <Tag label="Tag name" />
-          <Tag label="On fire" icon="fire" />
         </div>
       </Block>
       <Block id="card_button" title="card_button">
