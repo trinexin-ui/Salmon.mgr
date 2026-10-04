@@ -8,10 +8,13 @@ import { CardButton } from '@/shared/ui/atoms/CardButton'
 import { Chips } from '@/shared/ui/atoms/Chips'
 import { IconButton } from '@/shared/ui/atoms/IconButton'
 import { StepItem } from '@/shared/ui/atoms/StepItem'
-import { PersonTag } from '@/shared/ui/atoms/PersonTag'
-import { Reaction } from '@/shared/ui/atoms/Reaction'
 import { Button } from '@/shared/ui/atoms/Button'
 import { Input } from '@/shared/ui/atoms/Input'
+import { SmileReaction, type SmileName } from '@/shared/ui/atoms/SmileReaction'
+import { AvatarReaction } from '@/shared/ui/atoms/AvatarReaction'
+import { Reaction } from '@/shared/ui/molecules/Reaction'
+import { PersonTag } from '@/shared/ui/molecules/PersonTag'
+import { PERSON_LIST } from '@/shared/ui/avatars/people'
 
 function useText<T extends HTMLElement>(compute: () => string, deps: unknown[]) {
   const ref = useRef<T>(null)
@@ -221,40 +224,27 @@ function Atoms() {
           </div>
         </div>
       </Block>
-      <Block id="person_tag" title="person_tag">
+      <Block id="smile_reaction" title="smile_reaction">
         <div className="flex items-center gap-l">
-          <PersonTag name="Jose Reyes" />
-          <PersonTag name="Maria Santos" />
+          {(['cry', 'ok', 'cool', 'laugh', 'heart'] as SmileName[]).map((n) => (
+            <div key={n} className="flex flex-col items-center gap-xs_1">
+              <SmileReaction name={n} />
+              <span className="type-caption_2 text-text-and-icon-secondary_white">{n}</span>
+            </div>
+          ))}
         </div>
       </Block>
-      <Block id="reaction" title="reaction">
-        <div className="flex items-center gap-2xl">
-          <div className="flex flex-col items-center gap-xs_1">
-            <Reaction emoji="🔔" type="default" active avatars={['', '', '']} />
-            <span className="type-caption_2 text-text-and-icon-secondary_white">
-              default · active
-            </span>
-          </div>
-          <div className="flex flex-col items-center gap-xs_1">
-            <Reaction emoji="🔔" type="default" avatars={['', '', '']} />
-            <span className="type-caption_2 text-text-and-icon-secondary_white">default · no</span>
-          </div>
-          <div className="flex flex-col items-center gap-xs_1">
-            <Reaction emoji="🔔" type="more3" active count={4} />
-            <span className="type-caption_2 text-text-and-icon-secondary_white">
-              more3 · active
-            </span>
-          </div>
-          <div className="flex flex-col items-center gap-xs_1">
-            <Reaction emoji="🔔" type="more3" count={4} />
-            <span className="type-caption_2 text-text-and-icon-secondary_white">more3 · no</span>
-          </div>
+      <Block id="avatar_reaction" title="avatar_reaction">
+        <div className="flex items-center gap-l">
+          {PERSON_LIST.map((p) => (
+            <AvatarReaction key={p} person={p} />
+          ))}
         </div>
       </Block>
       <Block id="button" title="button">
         <div className="flex flex-col gap-l" style={{ maxWidth: 386 }}>
-          <Button label="Create new trip" state="primary" icon="plus" />
-          <Button label="Create new trip" state="secondary" icon="plus" />
+          <Button label="Create new trip" state="primary" />
+          <Button label="Create new trip" state="secondary" />
           <div className="flex items-center gap-l">
             <Button label="View All" state="tertiary" color="black" />
             <Button label="View All" state="tertiary" color="gray" />
@@ -327,6 +317,52 @@ function RadiobuttonDemo() {
   )
 }
 
+function Molecules() {
+  const people = ['jose-reyes', 'maria-santos', 'lyn-dela-cruz'] as const
+  return (
+    <section id="molecules" className="scroll-mt-l flex flex-col gap-2xl">
+      <h2 className="type-h2 text-text-and-icon-primary">Молекулы</h2>
+      <Block id="m-person_tag" title="person_tag">
+        <p className="type-caption_1 text-text-and-icon-secondary_white mb-s">
+          собран из: avatar_reaction
+        </p>
+        <div className="flex items-center gap-l">
+          <PersonTag person="jose-reyes" />
+          <PersonTag person="maria-santos" />
+          <PersonTag person="bea-ocampo" />
+        </div>
+      </Block>
+      <Block id="m-reaction" title="reaction">
+        <p className="type-caption_1 text-text-and-icon-secondary_white mb-s">
+          собран из: smile_reaction, avatar_reaction
+        </p>
+        <div className="flex items-center gap-2xl">
+          <div className="flex flex-col items-center gap-xs_1">
+            <Reaction smile="laugh" type="default" active people={[...people]} />
+            <span className="type-caption_2 text-text-and-icon-secondary_white">
+              default · active
+            </span>
+          </div>
+          <div className="flex flex-col items-center gap-xs_1">
+            <Reaction smile="laugh" type="default" people={[...people]} />
+            <span className="type-caption_2 text-text-and-icon-secondary_white">default · no</span>
+          </div>
+          <div className="flex flex-col items-center gap-xs_1">
+            <Reaction smile="heart" type="more3" active count={4} />
+            <span className="type-caption_2 text-text-and-icon-secondary_white">
+              more3 · active
+            </span>
+          </div>
+          <div className="flex flex-col items-center gap-xs_1">
+            <Reaction smile="heart" type="more3" count={4} />
+            <span className="type-caption_2 text-text-and-icon-secondary_white">more3 · no</span>
+          </div>
+        </div>
+      </Block>
+    </section>
+  )
+}
+
 function Placeholder({ id, title }: { id: string; title: string }) {
   return (
     <section id={id} className="scroll-mt-l">
@@ -374,7 +410,7 @@ export function StyleGuide() {
       <main className="flex flex-1 flex-col gap-xxxl py-xxxl pr-xxxl">
         <Foundation />
         <Atoms />
-        <Placeholder id="molecules" title="Молекулы" />
+        <Molecules />
         <Placeholder id="organisms" title="Организмы" />
       </main>
     </div>

@@ -17,34 +17,30 @@
 
 - [x] **radiobutton** — `active` (yes/no)
 - [x] **icon_button** — `color` (black / gray), `size` (big / middle / small); проп `icon`
-- [x] **card_button** — без вариантов (Default); пропсы `label`, `icon`, `notification`
-- [x] **tag** — без вариантов (Default); проп `label` (иконку убрали по решению владельца). _(в макете было type white/black — сейчас один Default)_
+- [x] **tag** — без вариантов (Default); проп `label` (иконку убрали). _(в макете было type white/black — сейчас один Default)_
 - [x] **step_item** — `active` (yes/no); проп `label`
-- [x] **reaction** — `type` (default / more3), `active` (yes/no); пропсы `emoji`, `avatars`, `count`
 - [x] **chips** — `state` (active / non_active / new); проп `label`
 - [x] **button** — `state` (primary / secondary / tertiary), `color` (black / gray); пропсы `label`, `icon` _(перенесён из молекул в атомы)_
-- [x] **input** — `state` (filled / active / default / disabled); пропсы `label`, `value`, `placeholder`, `leftIcon` _(перенесён в атомы; иконка Search отсутствует в d-icon → `leftIcon` опционален)_
-- [ ] **smile_reaction** — `name` (cry / ok / cool / laugh / heart) — нужны ассеты
-- [ ] **avatar** — `person` (7 персон, 68px) — нужны ассеты
-- [ ] **avatar_reaction** — `person` (7 персон, 24px) — нужны ассеты
-- [x] **person_tag** — без вариантов (Default); пропсы `name`, `avatar`
+- [x] **input** — `state` (filled / active / default / disabled); пропсы `label`, `value`, `placeholder`, `leftIcon` _(перенесён в атомы; иконка Search отсутствует в d-icon → `leftIcon` опционален; высота 50px фикс)_
+- [x] **smile_reaction** — `name` (cry / ok / cool / laugh / heart); PNG 48px в `src/shared/ui/smiles`
+- [x] **avatar_reaction** — `person` (7 персон); фото в `src/shared/ui/avatars`, рендер 24px
+- [ ] **avatar** — `person` (7 персон, 68px) — пока не собран
 
-Все 8 атомов собраны и показаны на витрине. Контент (иконки/аватары/эмодзи) — через пропсы.
+> `reaction`, `person_tag`, `card_button` перенесены в молекулы (состоят из атомов).
 
 ---
 
-## Молекулы (`d-molecules`) — `src/shared/ui/molecules`
+## Молекулы (`d-molecules` + перенесённые) — `src/shared/ui/molecules`
 
-> В макете `button` и `input` лежат в молекулах — оставляю уровень как в макете.
-
+- [x] **reaction** — `type` (default / more3), `active`; пропсы `smile`, `people`, `count`. Собран из: smile_reaction, avatar_reaction
+- [x] **person_tag** — проп `person`. Собран из: avatar_reaction
+- [ ] **card_button** — пропсы `label`, `icon`, `notification` _(собран как атом, нужно перенести в молекулы)_
 - [ ] **segment_button** — `size` (small)
 - [ ] **tab** — `active` (yes/no)
 - [ ] **item_menu** — `type` (up / middle / down)
 - [ ] **step_bar** — без вариантов (Default)
 - [ ] **edit_card** — без вариантов (Default)
 - [ ] **chips_group** — без вариантов (Default)
-- [ ] **button** — `state` (primary / secondary / tertiary), `color` (black / gray)
-- [ ] **input** — `state` (filled / active / default / disabled) _(в Figma опечатка «acrive» = active)_
 
 ---
 

@@ -26,6 +26,7 @@ export function Input({
   const dim = state === 'disabled' ? 'opacity-50' : ''
   return (
     <div
+      style={{ height: 50 }}
       className={[
         'flex w-full items-center gap-s rounded-m border px-m py-s',
         border,
