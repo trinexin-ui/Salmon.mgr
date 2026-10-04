@@ -10,19 +10,24 @@
 
 Два набора имён, как в макете: `spacing/none` и шкала `indent/*`. Значения в px.
 
-| Имя (Figma)  | px  |
-| ------------ | --- |
-| spacing/none | 0   |
-| indent/xxs   | 2   |
-| indent/xs_1  | 4   |
-| indent/xs_2  | 6   |
-| indent/s     | 8   |
-| indent/m     | 12  |
-| indent/l     | 16  |
-| indent/2xl   | 24  |
-| indent/xxl   | 28  |
-| indent/2xxl  | 32  |
-| indent/xxxl  | 40  |
+| Имя (Figma)    | px  |
+| -------------- | --- |
+| spacing/none   | 0   |
+| indent/xxs     | 2   |
+| indent/xs_1    | 4   |
+| indent/xs_2    | 6   |
+| indent/s       | 8   |
+| indent/m       | 12  |
+| indent/l       | 16  |
+| indent/2xl     | 24  |
+| indent/xxl     | 28  |
+| indent/2xxl    | 32  |
+| indent/xxxl    | 40  |
+| indent/outer   | 16  |
+| indent/minus_1 | -8  |
+| indent/minus_2 | -6  |
+
+`minus_1` / `minus_2` отрицательные — для нахлёстов (например, стопка аватаров в `reaction`). `outer` = 16 (как `l`, отдельное имя).
 
 > Примечание: в демо-фрейме «indents» спейсер-компонент подписан старыми метками (XXS: 3, XS: 5, S: 10…), но реальные высоты баров и переменные дают шкалу выше. Берём переменные.
 

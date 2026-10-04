@@ -46,6 +46,9 @@
   --spacing-xxl: 28px;
   --spacing-2xxl: 32px;
   --spacing-xxxl: 40px;
+  --spacing-outer: 16px;
+  --spacing-minus_1: -8px;
+  --spacing-minus_2: -6px;
 
   /* ---- Radius (round/*) ---- */
   --radius-xxs: 2px;

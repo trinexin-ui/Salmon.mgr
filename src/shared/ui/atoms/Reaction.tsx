@@ -40,7 +40,7 @@ export function Reaction({
               key={i}
               className={[
                 'inline-block h-2xl w-2xl shrink-0 overflow-hidden rounded-max border border-text-and-icon-white bg-project-on_white-gray_3',
-                i > 0 ? '-ml-l' : '',
+                i > 0 ? 'ml-minus_2' : '',
               ].join(' ')}
             >
               {a && <img src={a} alt="" className="h-full w-full object-cover" />}
