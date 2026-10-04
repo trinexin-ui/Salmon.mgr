@@ -52,4 +52,4 @@ export const spacingScale = [
   'xxxl',
 ] as const
 
-export const radii = ['m'] as const
+export const radii = ['xxs', 'xs', 's', 'm', 'l', 'xl', 'max'] as const
