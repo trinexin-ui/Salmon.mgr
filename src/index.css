@@ -1,18 +1,144 @@
 @import 'tailwindcss';
 
-/* Design tokens: values are placeholders until transferred from Figma. */
-:root {
-  --color-bg: #f6f6f7;
-  --color-surface: #ffffff;
-  --color-ink: #1c1b1d;
-  --color-accent: #00b37e;
+/*
+ * Design tokens — single source of truth, mirrors docs/DESIGN.md.
+ * Hex literals live ONLY in primitive declarations below. Roles reference
+ * primitives; components reference roles/primitives, never raw values.
+ */
+
+@theme static {
+  /* ---- Color primitives (solid) — hex only here ---- */
+  --color-black: #221f22;
+  --color-charcoal: #2a2a2a;
+  --color-slate: #4e4f5c;
+  --color-gray-mid: #969696;
+  --color-gray-light: #b1b1b1;
+  --color-gray-line: #e8e8e8;
+  --color-gray-bg: #f6f6f6;
+  --color-white: #ffffff;
+  --color-gold: #c2a377;
+  --color-green: #00b98b;
+  --color-orange: #fe8f0b;
+  --color-red: #eb6e78;
+
+  /* ---- Color roles (Figma variable names) → primitive ---- */
+  --color-text-and-icon-primary: var(--color-charcoal);
+  --color-text-and-icon-secondary_white: var(--color-gray-mid);
+  --color-text-and-icon-secondary_black: var(--color-gray-light);
+  --color-text-and-icon-tertiary: var(--color-slate);
+  --color-text-and-icon-white: var(--color-white);
+  --color-line-on_white-gray_1: var(--color-gray-line);
+  --color-project-action: var(--color-black);
+  --color-project-active_state: var(--color-gold);
+  --color-project-green: var(--color-green);
+  --color-project-orange: var(--color-orange);
+  --color-project-red: var(--color-red);
+  --color-project-gray_bg: var(--color-gray-bg);
+  --color-surface-glass: var(--color-white);
+
+  /* ---- Spacing (spacing/none + indent/* leaf names) ---- */
+  --spacing-none: 0px;
+  --spacing-xxs: 2px;
+  --spacing-xs_1: 4px;
+  --spacing-xs_2: 6px;
+  --spacing-s: 8px;
+  --spacing-m: 12px;
+  --spacing-l: 16px;
+  --spacing-2xl: 24px;
+  --spacing-xxl: 28px;
+  --spacing-2xxl: 32px;
+  --spacing-xxxl: 40px;
+
+  /* ---- Radius ---- */
+  --radius-m: 10px;
+
+  /* ---- Font families ---- */
+  --font-headers: 'Geist', system-ui, sans-serif;
+  --font-text: 'Geist', system-ui, sans-serif;
 }
 
-@theme inline {
-  --color-bg: var(--color-bg);
-  --color-surface: var(--color-surface);
-  --color-ink: var(--color-ink);
-  --color-accent: var(--color-accent);
+/* ---- Gradient primitives (stops exported from Figma) ---- */
+:root {
+  --gradient-white_gray: linear-gradient(255deg, #9c9c9c 0%, #ffffff 100%);
+  --gradient-black_gold: linear-gradient(
+    90deg,
+    #2a2a2a 0%,
+    #787776 25%,
+    #dbcab4 41.83%,
+    #787776 75%,
+    #2a2a2a 100%
+  );
+  --gradient-gold: linear-gradient(90deg, #6c6459 0%, #eeddc4 51.92%, #6c6459 100%);
+}
+
+@utility bg-gradient-white_gray {
+  background-image: var(--gradient-white_gray);
+}
+@utility bg-gradient-black_gold {
+  background-image: var(--gradient-black_gold);
+}
+@utility bg-gradient-gold {
+  background-image: var(--gradient-gold);
+}
+
+/* ---- Typography styles (one class per Figma text style) ---- */
+@layer components {
+  .type-h1 {
+    font-family: var(--font-headers);
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 44px;
+    letter-spacing: -2px;
+  }
+  .type-h2 {
+    font-family: var(--font-headers);
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    letter-spacing: -0.6px;
+  }
+  .type-h3 {
+    font-family: var(--font-headers);
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 19px;
+    letter-spacing: -0.5px;
+  }
+  .type-body_1 {
+    font-family: var(--font-text);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: -0.5px;
+  }
+  .type-body_2 {
+    font-family: var(--font-text);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    letter-spacing: -0.5px;
+  }
+  .type-button_input_1 {
+    font-family: var(--font-text);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: -0.7px;
+  }
+  .type-caption_1 {
+    font-family: var(--font-text);
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: -0.1px;
+  }
+  .type-caption_2 {
+    font-family: var(--font-text);
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 12px;
+    letter-spacing: -0.1px;
+  }
 }
 
 html,
@@ -23,20 +149,8 @@ body,
 
 body {
   margin: 0;
-  background: var(--color-bg);
-  color: var(--color-ink);
-  font-family:
-    Inter,
-    system-ui,
-    -apple-system,
-    'Segoe UI',
-    sans-serif;
-  -webkit-tap-highlight-color: transparent;
-  overscroll-behavior-y: none;
-}
-
-#root {
-  min-height: 100dvh;
-  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom)
-    env(safe-area-inset-left);
+  background: var(--color-project-gray_bg);
+  color: var(--color-text-and-icon-primary);
+  font-family: var(--font-text);
+  -webkit-font-smoothing: antialiased;
 }
