@@ -7,20 +7,32 @@
  */
 
 @theme static {
-  /* ---- Color roles (Figma variable names) — hex declared here ---- */
+  /* ---- Colors (exact Figma variable names) — hex declared here ---- */
+  /* text-and-icon */
   --color-text-and-icon-primary: #2a2a2a;
   --color-text-and-icon-secondary_white: #969696;
   --color-text-and-icon-secondary_black: #b1b1b1;
-  --color-text-and-icon-tertiary: #4e4f5c;
   --color-text-and-icon-white: #ffffff;
-  --color-line-on_white-gray_1: #e8e8e8;
+  /* project */
   --color-project-action: #221f22;
   --color-project-active_state: #c2a377;
+  --color-project-black_bg: #221f22;
+  --color-project-gray_bg: #f6f6f6;
+  --color-project-white: #ffffff;
+  --color-project-blue: #647feb;
   --color-project-green: #00b98b;
   --color-project-orange: #fe8f0b;
   --color-project-red: #eb6e78;
-  --color-project-gray_bg: #f6f6f6;
-  --color-surface-glass: #ffffff;
+  /* project / on_black */
+  --color-project-on_black-gray_1: #312e31;
+  --color-project-on_black-gray_2: #474547;
+  /* project / on_white */
+  --color-project-on_white-gray_1: #f2f2f2;
+  --color-project-on_white-gray_2: #eaebeb;
+  --color-project-on_white-gray_3: #dddddd;
+  /* line */
+  --color-line-on_white-gray_1: #e8e8e8;
+  --color-line-on_black-gray: #3a3a3a;
 
   /* ---- Spacing (spacing/none + indent/* leaf names) ---- */
   --spacing-none: 0px;

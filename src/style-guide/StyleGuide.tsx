@@ -1,5 +1,5 @@
 import { useEffect, useRef, type ReactNode } from 'react'
-import { colorRoles, gradients, radii, spacingScale, typeStyles } from './tokens'
+import { colorVariables, gradients, radii, spacingScale, typeStyles } from './tokens'
 import { readVar, resolveColorHex } from './cssValue'
 
 function useText<T extends HTMLElement>(compute: () => string, deps: unknown[]) {
@@ -62,7 +62,7 @@ function RadiusCard({ name }: { name: string }) {
   return (
     <div className="flex flex-col items-center gap-xs_1">
       <div
-        className="h-xxxl w-xxxl bg-surface-glass border border-line-on_white-gray_1"
+        className="h-xxxl w-xxxl bg-project-white border border-line-on_white-gray_1"
         style={{ borderRadius: `var(--radius-${name})` }}
       />
       <div className="type-caption_1 text-text-and-icon-primary">round/{name}</div>
@@ -78,10 +78,10 @@ function Foundation() {
         Основа
       </h2>
 
-      <Block id="colors" title="Цвета — роли">
+      <Block id="colors" title="Цвета">
         <div className="grid grid-cols-6 gap-l">
-          {colorRoles.map((role) => (
-            <ColorSwatch key={role} varName={`--color-${role}`} label={role} />
+          {colorVariables.map((name) => (
+            <ColorSwatch key={name} varName={`--color-${name}`} label={name} />
           ))}
         </div>
       </Block>
@@ -165,7 +165,7 @@ function Placeholder({ id, title }: { id: string; title: string }) {
 
 export function StyleGuide() {
   return (
-    <div className="mx-auto flex w-[1440px] gap-2xxl bg-surface-glass">
+    <div className="mx-auto flex w-[1440px] gap-2xxl bg-project-white">
       <nav className="sticky top-0 h-screen w-60 shrink-0 border-r border-line-on_white-gray_1 p-l">
         <div className="type-h3 text-text-and-icon-primary mb-l">Salmon UI</div>
         <ul className="flex flex-col gap-s">

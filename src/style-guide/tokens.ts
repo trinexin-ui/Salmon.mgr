@@ -1,20 +1,27 @@
 // Token names only — values are read at runtime from CSS variables so the
 // showcase never hardcodes a value. Mirrors docs/DESIGN.md.
 
-export const colorRoles: string[] = [
+export const colorVariables: string[] = [
   'text-and-icon-primary',
   'text-and-icon-secondary_white',
   'text-and-icon-secondary_black',
-  'text-and-icon-tertiary',
   'text-and-icon-white',
-  'line-on_white-gray_1',
   'project-action',
   'project-active_state',
+  'project-black_bg',
+  'project-gray_bg',
+  'project-white',
+  'project-blue',
   'project-green',
   'project-orange',
   'project-red',
-  'project-gray_bg',
-  'surface-glass',
+  'project-on_black-gray_1',
+  'project-on_black-gray_2',
+  'project-on_white-gray_1',
+  'project-on_white-gray_2',
+  'project-on_white-gray_3',
+  'line-on_white-gray_1',
+  'line-on_black-gray',
 ]
 
 export const gradients = ['white_gray', 'black_gold', 'gold'] as const

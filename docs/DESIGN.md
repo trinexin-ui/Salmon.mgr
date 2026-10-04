@@ -69,27 +69,36 @@
 
 ## Colors
 
-Один уровень — **роли** (точные имена переменных Figma), хекс объявляется прямо в роли. Слой примитивов не ведём (решение владельца, 2026-10-04): реальный слой примитивов Figma MCP не отдаёт по именам, выдумывать имена не будем. Плюс градиенты.
+Один уровень — **переменные Figma** (точные имена), хекс объявляется прямо в переменной. Слой «примитивов» не ведём: берём полный список переменных из панели Variables как есть.
 
-### Роли (13 — точные имена переменных Figma)
+### Переменные цветов (20 — точные имена Figma)
 
-| Роль (Figma)                        | Значение |
+| Переменная (Figma)                  | Значение |
 | ----------------------------------- | -------- |
 | color/text-and-icon/primary         | #2a2a2a  |
 | color/text-and-icon/secondary_white | #969696  |
 | color/text-and-icon/secondary_black | #b1b1b1  |
-| color/text-and-icon/tertiary        | #4e4f5c  |
 | color/text-and-icon/white           | #ffffff  |
-| color/line/on_white/gray_1          | #e8e8e8  |
 | color/project/action                | #221f22  |
 | color/project/active_state          | #c2a377  |
+| color/project/black_bg              | #221f22  |
+| color/project/gray_bg               | #f6f6f6  |
+| color/project/white                 | #ffffff  |
+| color/project/blue                  | #647feb  |
 | color/project/green                 | #00b98b  |
 | color/project/orange                | #fe8f0b  |
 | color/project/red                   | #eb6e78  |
-| color/project/gray_bg               | #f6f6f6  |
-| color/surface/glass                 | #ffffff  |
+| color/project/on_black/gray_1       | #312e31  |
+| color/project/on_black/gray_2       | #474547  |
+| color/project/on_white/gray_1       | #f2f2f2  |
+| color/project/on_white/gray_2       | #eaebeb  |
+| color/project/on_white/gray_3       | #dddddd  |
+| color/line/on_white/gray_1          | #e8e8e8  |
+| color/line/on_black/gray            | #3a3a3a  |
 
-`color/text-and-icon/white` и `color/surface/glass` — две разные переменные Figma с одним значением #ffffff; обе сохраняем как есть.
+Дубли значений оставлены как в Figma: `action` / `black_bg` = #221f22; `text-and-icon/white` / `project/white` = #ffffff.
+
+> Ранее MCP отдавал `text-and-icon/tertiary` (#4e4f5c) и `surface/glass` (#ffffff) — в полном списке владельца их нет, поэтому убраны (`surface/glass` в коде заменён на `project/white`).
 
 ### Градиенты (3)
 
@@ -105,5 +114,5 @@
 
 ## Проверка количества
 
-- Ролей-цветов (точные переменные Figma): **13**
+- Переменных цветов (точные имена Figma): **20**
 - Градиентов: **3**
