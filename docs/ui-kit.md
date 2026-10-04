@@ -16,13 +16,15 @@
 ## Атомы (`d-atoms`) — `src/shared/ui/atoms`
 
 - [x] **radiobutton** — `active` (yes/no)
-- [ ] **icon_button** — `color` (black / gray), `size` (big / middle / small)
+- [x] **icon_button** — `color` (black / gray), `size` (big / middle / small); проп `icon`
 - [x] **card_button** — без вариантов (Default); пропсы `label`, `icon`, `notification`
 - [x] **tag** — без вариантов (Default); пропсы `label`, `icon`. _(в макете было type white/black — сейчас один Default)_
-- [ ] **step_item** — `active` (yes/no)
-- [ ] **reaction** — `type` (default / more3), `active` (yes/no)
+- [x] **step_item** — `active` (yes/no); проп `label`
+- [x] **reaction** — `type` (default / more3), `active` (yes/no); пропсы `emoji`, `avatars`, `count`
 - [x] **chips** — `active` (yes/no); пропсы `label`, `active`, `isNew`
-- [ ] **person_tag** — без вариантов (Default)
+- [x] **person_tag** — без вариантов (Default); пропсы `name`, `avatar`
+
+Все 8 атомов собраны и показаны на витрине. Контент (иконки/аватары/эмодзи) — через пропсы.
 
 ---
 

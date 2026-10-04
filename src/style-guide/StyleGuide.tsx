@@ -6,6 +6,10 @@ import { Radiobutton } from '@/shared/ui/atoms/Radiobutton'
 import { Tag } from '@/shared/ui/atoms/Tag'
 import { CardButton } from '@/shared/ui/atoms/CardButton'
 import { Chips } from '@/shared/ui/atoms/Chips'
+import { IconButton } from '@/shared/ui/atoms/IconButton'
+import { StepItem } from '@/shared/ui/atoms/StepItem'
+import { PersonTag } from '@/shared/ui/atoms/PersonTag'
+import { Reaction } from '@/shared/ui/atoms/Reaction'
 
 function useText<T extends HTMLElement>(compute: () => string, deps: unknown[]) {
   const ref = useRef<T>(null)
@@ -189,9 +193,63 @@ function Atoms() {
           <CardButton label="Whisper" icon="bubble-chat" />
         </div>
       </Block>
-      <p className="type-body_2 text-text-and-icon-secondary_white">
-        Остальные атомы собираются по одному — скоро.
-      </p>
+      <Block id="icon_button" title="icon_button">
+        <div className="flex flex-col gap-l">
+          {(['black', 'gray'] as const).map((color) => (
+            <div key={color} className="flex items-center gap-l">
+              <span className="type-caption_1 w-16 text-text-and-icon-secondary_white">
+                {color}
+              </span>
+              {(['big', 'middle', 'small'] as const).map((size) => (
+                <div key={size} className="flex flex-col items-center gap-xs_1">
+                  <IconButton icon="close" color={color} size={size} />
+                  <span className="type-caption_2 text-text-and-icon-secondary_white">{size}</span>
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+      </Block>
+      <Block id="step_item" title="step_item">
+        <div className="flex gap-2xl">
+          <div style={{ width: 120 }}>
+            <StepItem label="Period goal" active />
+          </div>
+          <div style={{ width: 120 }}>
+            <StepItem label="Choose split" />
+          </div>
+        </div>
+      </Block>
+      <Block id="person_tag" title="person_tag">
+        <div className="flex items-center gap-l">
+          <PersonTag name="Jose Reyes" />
+          <PersonTag name="Maria Santos" />
+        </div>
+      </Block>
+      <Block id="reaction" title="reaction">
+        <div className="flex items-center gap-2xl">
+          <div className="flex flex-col items-center gap-xs_1">
+            <Reaction emoji="🔔" type="default" active avatars={['', '', '']} />
+            <span className="type-caption_2 text-text-and-icon-secondary_white">
+              default · active
+            </span>
+          </div>
+          <div className="flex flex-col items-center gap-xs_1">
+            <Reaction emoji="🔔" type="default" avatars={['', '', '']} />
+            <span className="type-caption_2 text-text-and-icon-secondary_white">default · no</span>
+          </div>
+          <div className="flex flex-col items-center gap-xs_1">
+            <Reaction emoji="🔔" type="more3" active count={4} />
+            <span className="type-caption_2 text-text-and-icon-secondary_white">
+              more3 · active
+            </span>
+          </div>
+          <div className="flex flex-col items-center gap-xs_1">
+            <Reaction emoji="🔔" type="more3" count={4} />
+            <span className="type-caption_2 text-text-and-icon-secondary_white">more3 · no</span>
+          </div>
+        </div>
+      </Block>
     </section>
   )
 }
