@@ -34,7 +34,7 @@
 
 - [x] **reaction** — `type` (default / more3), `active`; пропсы `smile`, `people`, `count`. Собран из: smile_reaction, avatar_reaction
 - [x] **person_tag** — проп `person`. Собран из: avatar_reaction
-- [ ] **card_button** — пропсы `label`, `icon`, `notification` _(собран как атом, нужно перенести в молекулы)_
+- [x] **card_button** — пропсы `label`, `icon`, `notification`; фикс-ширина 118px. Собран из: icon _(перенесён в молекулы)_
 - [ ] **segment_button** — `size` (small)
 - [ ] **tab** — `active` (yes/no)
 - [ ] **item_menu** — `type` (up / middle / down)

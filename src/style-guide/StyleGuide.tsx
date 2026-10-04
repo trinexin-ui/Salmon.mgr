@@ -4,8 +4,8 @@ import { readVar, resolveColorHex } from './cssValue'
 import { Icon, iconNames } from '@/shared/ui/icons/Icon'
 import { Radiobutton } from '@/shared/ui/atoms/Radiobutton'
 import { Tag } from '@/shared/ui/atoms/Tag'
-import { CardButton } from '@/shared/ui/atoms/CardButton'
 import { Chips } from '@/shared/ui/atoms/Chips'
+import { CardButton } from '@/shared/ui/molecules/CardButton'
 import { IconButton } from '@/shared/ui/atoms/IconButton'
 import { StepItem } from '@/shared/ui/atoms/StepItem'
 import { Button } from '@/shared/ui/atoms/Button'
@@ -190,13 +190,6 @@ function Atoms() {
           <Tag label="Tag name" />
         </div>
       </Block>
-      <Block id="card_button" title="card_button">
-        <div className="flex items-start gap-l">
-          <CardButton label="Summary" icon="book" />
-          <CardButton label="Recognition" icon="star" />
-          <CardButton label="Whisper" icon="chating" />
-        </div>
-      </Block>
       <Block id="icon_button" title="icon_button">
         <div className="flex flex-col gap-l">
           {(['black', 'gray'] as const).map((color) => (
@@ -322,6 +315,13 @@ function Molecules() {
   return (
     <section id="molecules" className="scroll-mt-l flex flex-col gap-2xl">
       <h2 className="type-h2 text-text-and-icon-primary">Молекулы</h2>
+      <Block id="m-card_button" title="card_button">
+        <div className="flex items-start gap-l">
+          <CardButton label="Summary" icon="book" />
+          <CardButton label="Recognition" icon="star" />
+          <CardButton label="Whisper" icon="chating" />
+        </div>
+      </Block>
       <Block id="m-person_tag" title="person_tag">
         <p className="type-caption_1 text-text-and-icon-secondary_white mb-s">
           собран из: avatar_reaction

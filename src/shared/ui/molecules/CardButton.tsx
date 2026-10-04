@@ -7,8 +7,9 @@ type CardButtonProps = {
   className?: string
 }
 
-// Figma: atom d-atoms/card_button (Default). on_white/gray_2 bg, rounded-l,
-// p-m, flex-col center, 24px icon + body_1 label, optional 8px corner dot.
+// Figma: d-atoms/card_button (118x78). on_white/gray_2 card, rounded-l, p-m,
+// flex-col center: 24px icon + body_1 label, optional 8px corner dot.
+// Fixed 118 width (no spacing token for 118); height follows content = 78.
 export function CardButton({
   label,
   icon = 'book',
@@ -18,6 +19,7 @@ export function CardButton({
   return (
     <button
       type="button"
+      style={{ width: 118 }}
       className={[
         'relative inline-flex cursor-pointer flex-col items-center justify-center gap-s rounded-l bg-project-on_white-gray_2 p-m',
         className ?? '',
