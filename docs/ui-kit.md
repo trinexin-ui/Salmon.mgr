@@ -62,9 +62,11 @@
 
 31 шт. Экспортируются из Figma, подставляются везде, в т.ч. внутрь компонентов, где иконка вшита.
 
-- [ ] Chevron Right · Chevron Left · Notification · Fire · Crown · Bubble-Chat · Bubble-Chat_fill · Horizontal · Book · Phone
-- [ ] Group · Award · Favourite · Star · Alert · Close · Calendar · Edit · slider · home
-- [ ] home_fill · Chating · Plus · Pin · Wallet · Possibilities · File · Unlock · Lock · Exit · Setting
+- [x] Chevron Right · Chevron Left · Notification · Fire · Crown · Bubble-Chat · Bubble-Chat_fill · Horizontal · Book · Phone
+- [x] Group · Award · Favourite · Star · Alert · Close · Calendar · Edit · slider · home
+- [x] home_fill · Chating · Plus · Pin · Wallet · Possibilities · File · Unlock · Lock · Exit · Setting
+
+Выгружены в `src/shared/ui/icons/*.svg` (24×24, `currentColor`), доступ через `Icon` (`name`, `size`, `className`). Имена → kebab-case (`bubble-chat-fill`, `home-fill`). Показаны на витрине в секции «Атомы».
 
 ---
 

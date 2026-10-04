@@ -1,6 +1,7 @@
 import { useEffect, useRef, type ReactNode } from 'react'
 import { colorVariables, gradients, radii, spacingScale, typeStyles } from './tokens'
 import { readVar, resolveColorHex } from './cssValue'
+import { Icon, iconNames } from '@/shared/ui/icons/Icon'
 
 function useText<T extends HTMLElement>(compute: () => string, deps: unknown[]) {
   const ref = useRef<T>(null)
@@ -147,10 +148,34 @@ const NAV: { label: string; href: string; children?: { label: string; href: stri
       { label: 'Радиусы', href: '#radius' },
     ],
   },
-  { label: 'Атомы', href: '#atoms' },
+  { label: 'Атомы', href: '#atoms', children: [{ label: 'Иконки', href: '#icons' }] },
   { label: 'Молекулы', href: '#molecules' },
   { label: 'Организмы', href: '#organisms' },
 ]
+
+function Atoms() {
+  return (
+    <section id="atoms" className="scroll-mt-l flex flex-col gap-2xl">
+      <h2 className="type-h2 text-text-and-icon-primary">Атомы</h2>
+      <Block id="icons" title={`Иконки (${iconNames.length})`}>
+        <div className="grid grid-cols-8 gap-l">
+          {iconNames.map((n) => (
+            <div
+              key={n}
+              className="flex flex-col items-center gap-xs_1 rounded-m border border-line-on_white-gray_1 py-m"
+            >
+              <Icon name={n} className="text-text-and-icon-primary" />
+              <div className="type-caption_2 text-text-and-icon-secondary_white">{n}</div>
+            </div>
+          ))}
+        </div>
+      </Block>
+      <p className="type-body_2 text-text-and-icon-secondary_white">
+        Компоненты-атомы собираются по одному — скоро.
+      </p>
+    </section>
+  )
+}
 
 function Placeholder({ id, title }: { id: string; title: string }) {
   return (
@@ -198,7 +223,7 @@ export function StyleGuide() {
 
       <main className="flex flex-1 flex-col gap-xxxl py-xxxl pr-xxxl">
         <Foundation />
-        <Placeholder id="atoms" title="Атомы" />
+        <Atoms />
         <Placeholder id="molecules" title="Молекулы" />
         <Placeholder id="organisms" title="Организмы" />
       </main>
