@@ -3,6 +3,9 @@ import { colorVariables, gradients, radii, spacingScale, typeStyles } from './to
 import { readVar, resolveColorHex } from './cssValue'
 import { Icon, iconNames } from '@/shared/ui/icons/Icon'
 import { Radiobutton } from '@/shared/ui/atoms/Radiobutton'
+import { Tag } from '@/shared/ui/atoms/Tag'
+import { CardButton } from '@/shared/ui/atoms/CardButton'
+import { Chips } from '@/shared/ui/atoms/Chips'
 
 function useText<T extends HTMLElement>(compute: () => string, deps: unknown[]) {
   const ref = useRef<T>(null)
@@ -172,10 +175,64 @@ function Atoms() {
         </div>
       </Block>
       <RadiobuttonDemo />
+      <ChipsDemo />
+      <Block id="tag" title="tag">
+        <div className="flex items-center gap-l">
+          <Tag label="Tag name" />
+          <Tag label="On fire" icon="fire" />
+        </div>
+      </Block>
+      <Block id="card_button" title="card_button">
+        <div className="flex items-start gap-l">
+          <CardButton label="Summary" icon="book" />
+          <CardButton label="Training" icon="award" notification />
+          <CardButton label="Whisper" icon="bubble-chat" />
+        </div>
+      </Block>
       <p className="type-body_2 text-text-and-icon-secondary_white">
         Остальные атомы собираются по одному — скоро.
       </p>
     </section>
+  )
+}
+
+function ChipsDemo() {
+  const [active, setActive] = useState(false)
+  const [isNew, setIsNew] = useState(true)
+  return (
+    <Block id="chips" title="chips">
+      <div className="flex flex-col gap-l">
+        <div className="flex items-center gap-2xl">
+          <Chips label="All" active />
+          <Chips label="Pinned" isNew />
+          <Chips label="Posts" />
+        </div>
+        <div className="flex items-center gap-l">
+          <label className="type-body_2 flex cursor-pointer items-center gap-s text-text-and-icon-primary">
+            <input
+              type="checkbox"
+              checked={active}
+              onChange={(e) => setActive(e.target.checked)}
+              className="cursor-pointer"
+            />
+            active
+          </label>
+          <label className="type-body_2 flex cursor-pointer items-center gap-s text-text-and-icon-primary">
+            <input
+              type="checkbox"
+              checked={isNew}
+              onChange={(e) => setIsNew(e.target.checked)}
+              className="cursor-pointer"
+            />
+            isNew
+          </label>
+        </div>
+        <div className="flex items-center gap-l">
+          <Chips label="Recognitions" active={active} isNew={isNew} />
+          <code className="type-caption_1 text-text-and-icon-secondary_white">{`<Chips label="Recognitions" active={${active}} isNew={${isNew}} />`}</code>
+        </div>
+      </div>
+    </Block>
   )
 }
 

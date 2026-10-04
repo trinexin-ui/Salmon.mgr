@@ -17,11 +17,11 @@
 
 - [x] **radiobutton** — `active` (yes/no)
 - [ ] **icon_button** — `color` (black / gray), `size` (big / middle / small)
-- [ ] **card_button** — без вариантов (Default)
-- [ ] **tag** — `type` (white / black)
+- [x] **card_button** — без вариантов (Default); пропсы `label`, `icon`, `notification`
+- [x] **tag** — без вариантов (Default); пропсы `label`, `icon`. _(в макете было type white/black — сейчас один Default)_
 - [ ] **step_item** — `active` (yes/no)
 - [ ] **reaction** — `type` (default / more3), `active` (yes/no)
-- [ ] **chips** — `active` (yes/no)
+- [x] **chips** — `active` (yes/no); пропсы `label`, `active`, `isNew`
 - [ ] **person_tag** — без вариантов (Default)
 
 ---
