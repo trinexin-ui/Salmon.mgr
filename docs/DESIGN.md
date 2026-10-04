@@ -69,62 +69,41 @@
 
 ## Colors
 
-Два уровня. **Примитив** — одно значение = одно имя, хекс только здесь. **Роль** — имя по назначению из переменных Figma, ссылается на примитив, своего значения не имеет.
-
-> В Figma отдельного слоя примитивов с именами нет — все переменные названы по назначению (роли). Имена примитивов ниже **выведены мной** из значений (их нужно подтвердить/переименовать). Роли — точные имена переменных Figma.
-
-### Примитивы — solid (12)
-
-| Примитив   | Hex     |
-| ---------- | ------- |
-| black      | #221f22 |
-| charcoal   | #2a2a2a |
-| slate      | #4e4f5c |
-| gray-mid   | #969696 |
-| gray-light | #b1b1b1 |
-| gray-line  | #e8e8e8 |
-| gray-bg    | #f6f6f6 |
-| white      | #ffffff |
-| gold       | #c2a377 |
-| green      | #00b98b |
-| orange     | #fe8f0b |
-| red        | #eb6e78 |
-
-### Примитивы — gradient (3)
-
-Металлические градиенты, экспортированы из Figma как многоступенчатые. Стопы точные, направление по координатам Figma.
-
-| Примитив            | Направление    | Стопы                                                                  |
-| ------------------- | -------------- | ---------------------------------------------------------------------- |
-| gradient-white_gray | ≈255°          | #9C9C9C 0% → #FFFFFF 100%                                              |
-| gradient-black_gold | 90° (to right) | #2A2A2A 0% → #787776 25% → #DBCAB4 41.83% → #787776 75% → #2A2A2A 100% |
-| gradient-gold       | 90° (to right) | #6C6459 0% → #EEDDC4 51.92% → #6C6459 100%                             |
+Один уровень — **роли** (точные имена переменных Figma), хекс объявляется прямо в роли. Слой примитивов не ведём (решение владельца, 2026-10-04): реальный слой примитивов Figma MCP не отдаёт по именам, выдумывать имена не будем. Плюс градиенты.
 
 ### Роли (13 — точные имена переменных Figma)
 
-| Роль (Figma)                        | → Примитив | Значение |
-| ----------------------------------- | ---------- | -------- |
-| color/text-and-icon/primary         | charcoal   | #2a2a2a  |
-| color/text-and-icon/secondary_white | gray-mid   | #969696  |
-| color/text-and-icon/secondary_black | gray-light | #b1b1b1  |
-| color/text-and-icon/tertiary        | slate      | #4e4f5c  |
-| color/text-and-icon/white           | white      | #ffffff  |
-| color/line/on_white/gray_1          | gray-line  | #e8e8e8  |
-| color/project/action                | black      | #221f22  |
-| color/project/active_state          | gold       | #c2a377  |
-| color/project/green                 | green      | #00b98b  |
-| color/project/orange                | orange     | #fe8f0b  |
-| color/project/red                   | red        | #eb6e78  |
-| color/project/gray_bg               | gray-bg    | #f6f6f6  |
-| color/surface/glass                 | white      | #ffffff  |
+| Роль (Figma)                        | Значение |
+| ----------------------------------- | -------- |
+| color/text-and-icon/primary         | #2a2a2a  |
+| color/text-and-icon/secondary_white | #969696  |
+| color/text-and-icon/secondary_black | #b1b1b1  |
+| color/text-and-icon/tertiary        | #4e4f5c  |
+| color/text-and-icon/white           | #ffffff  |
+| color/line/on_white/gray_1          | #e8e8e8  |
+| color/project/action                | #221f22  |
+| color/project/active_state          | #c2a377  |
+| color/project/green                 | #00b98b  |
+| color/project/orange                | #fe8f0b  |
+| color/project/red                   | #eb6e78  |
+| color/project/gray_bg               | #f6f6f6  |
+| color/surface/glass                 | #ffffff  |
 
-> `color/text-and-icon/white` и `color/surface/glass` указывают на один примитив `white` (#ffffff) — поэтому 13 ролей, но 12 solid-примитивов.
+`color/text-and-icon/white` и `color/surface/glass` — две разные переменные Figma с одним значением #ffffff; обе сохраняем как есть.
+
+### Градиенты (3)
+
+Металлические, экспортированы из Figma как многоступенчатые. Стопы точные, направление по координатам Figma.
+
+| Градиент (Figma)    | Направление    | Стопы                                                                  |
+| ------------------- | -------------- | ---------------------------------------------------------------------- |
+| d/linear-white_gray | ≈255°          | #9C9C9C 0% → #FFFFFF 100%                                              |
+| d/linear-black_gold | 90° (to right) | #2A2A2A 0% → #787776 25% → #DBCAB4 41.83% → #787776 75% → #2A2A2A 100% |
+| d/linear-gold       | 90° (to right) | #6C6459 0% → #EEDDC4 51.92% → #6C6459 100%                             |
 
 ---
 
 ## Проверка количества
 
-- Разных solid-цветов в макете (по значениям переменных, дубль #ffffff посчитан один раз): **12**
-- Solid-примитивов в DESIGN.md: **12** ✓
-- Палитра-кружки в макете: 13 (10 solid + 3 градиента). #e8e8e8 и #f6f6f6 заведены переменными, но кружками не показаны; белый показан одним кружком.
-- Gradient-примитивов: **3** (= 3 градиентных кружка) ✓
+- Ролей-цветов (точные переменные Figma): **13**
+- Градиентов: **3**

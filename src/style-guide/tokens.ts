@@ -1,35 +1,20 @@
 // Token names only — values are read at runtime from CSS variables so the
 // showcase never hardcodes a value. Mirrors docs/DESIGN.md.
 
-export const colorPrimitives = [
-  'black',
-  'charcoal',
-  'slate',
-  'gray-mid',
-  'gray-light',
-  'gray-line',
-  'gray-bg',
-  'white',
-  'gold',
-  'green',
-  'orange',
-  'red',
-] as const
-
-export const colorRoles: { role: string; primitive: string }[] = [
-  { role: 'text-and-icon-primary', primitive: 'charcoal' },
-  { role: 'text-and-icon-secondary_white', primitive: 'gray-mid' },
-  { role: 'text-and-icon-secondary_black', primitive: 'gray-light' },
-  { role: 'text-and-icon-tertiary', primitive: 'slate' },
-  { role: 'text-and-icon-white', primitive: 'white' },
-  { role: 'line-on_white-gray_1', primitive: 'gray-line' },
-  { role: 'project-action', primitive: 'black' },
-  { role: 'project-active_state', primitive: 'gold' },
-  { role: 'project-green', primitive: 'green' },
-  { role: 'project-orange', primitive: 'orange' },
-  { role: 'project-red', primitive: 'red' },
-  { role: 'project-gray_bg', primitive: 'gray-bg' },
-  { role: 'surface-glass', primitive: 'white' },
+export const colorRoles: string[] = [
+  'text-and-icon-primary',
+  'text-and-icon-secondary_white',
+  'text-and-icon-secondary_black',
+  'text-and-icon-tertiary',
+  'text-and-icon-white',
+  'line-on_white-gray_1',
+  'project-action',
+  'project-active_state',
+  'project-green',
+  'project-orange',
+  'project-red',
+  'project-gray_bg',
+  'surface-glass',
 ]
 
 export const gradients = ['white_gray', 'black_gold', 'gold'] as const

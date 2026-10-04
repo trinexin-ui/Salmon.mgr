@@ -7,34 +7,20 @@
  */
 
 @theme static {
-  /* ---- Color primitives (solid) — hex only here ---- */
-  --color-black: #221f22;
-  --color-charcoal: #2a2a2a;
-  --color-slate: #4e4f5c;
-  --color-gray-mid: #969696;
-  --color-gray-light: #b1b1b1;
-  --color-gray-line: #e8e8e8;
-  --color-gray-bg: #f6f6f6;
-  --color-white: #ffffff;
-  --color-gold: #c2a377;
-  --color-green: #00b98b;
-  --color-orange: #fe8f0b;
-  --color-red: #eb6e78;
-
-  /* ---- Color roles (Figma variable names) → primitive ---- */
-  --color-text-and-icon-primary: var(--color-charcoal);
-  --color-text-and-icon-secondary_white: var(--color-gray-mid);
-  --color-text-and-icon-secondary_black: var(--color-gray-light);
-  --color-text-and-icon-tertiary: var(--color-slate);
-  --color-text-and-icon-white: var(--color-white);
-  --color-line-on_white-gray_1: var(--color-gray-line);
-  --color-project-action: var(--color-black);
-  --color-project-active_state: var(--color-gold);
-  --color-project-green: var(--color-green);
-  --color-project-orange: var(--color-orange);
-  --color-project-red: var(--color-red);
-  --color-project-gray_bg: var(--color-gray-bg);
-  --color-surface-glass: var(--color-white);
+  /* ---- Color roles (Figma variable names) — hex declared here ---- */
+  --color-text-and-icon-primary: #2a2a2a;
+  --color-text-and-icon-secondary_white: #969696;
+  --color-text-and-icon-secondary_black: #b1b1b1;
+  --color-text-and-icon-tertiary: #4e4f5c;
+  --color-text-and-icon-white: #ffffff;
+  --color-line-on_white-gray_1: #e8e8e8;
+  --color-project-action: #221f22;
+  --color-project-active_state: #c2a377;
+  --color-project-green: #00b98b;
+  --color-project-orange: #fe8f0b;
+  --color-project-red: #eb6e78;
+  --color-project-gray_bg: #f6f6f6;
+  --color-surface-glass: #ffffff;
 
   /* ---- Spacing (spacing/none + indent/* leaf names) ---- */
   --spacing-none: 0px;

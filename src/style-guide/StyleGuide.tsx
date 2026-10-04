@@ -1,5 +1,5 @@
 import { useEffect, useRef, type ReactNode } from 'react'
-import { colorPrimitives, colorRoles, gradients, radii, spacingScale, typeStyles } from './tokens'
+import { colorRoles, gradients, radii, spacingScale, typeStyles } from './tokens'
 import { readVar, resolveColorHex } from './cssValue'
 
 function useText<T extends HTMLElement>(compute: () => string, deps: unknown[]) {
@@ -11,7 +11,7 @@ function useText<T extends HTMLElement>(compute: () => string, deps: unknown[]) 
   return ref
 }
 
-function ColorSwatch({ varName, label, sub }: { varName: string; label: string; sub?: string }) {
+function ColorSwatch({ varName, label }: { varName: string; label: string }) {
   const hexRef = useText<HTMLDivElement>(() => resolveColorHex(varName), [varName])
   return (
     <div className="flex flex-col gap-xs_1">
@@ -20,7 +20,6 @@ function ColorSwatch({ varName, label, sub }: { varName: string; label: string; 
         style={{ background: `var(${varName})` }}
       />
       <div className="type-caption_1 text-text-and-icon-primary">{label}</div>
-      {sub && <div className="type-caption_2 text-text-and-icon-secondary_white">{sub}</div>}
       <div ref={hexRef} className="type-caption_2 text-text-and-icon-secondary_white" />
     </div>
   )
@@ -79,23 +78,10 @@ function Foundation() {
         Основа
       </h2>
 
-      <Block id="colors" title="Цвета — примитивы">
+      <Block id="colors" title="Цвета — роли">
         <div className="grid grid-cols-6 gap-l">
-          {colorPrimitives.map((name) => (
-            <ColorSwatch key={name} varName={`--color-${name}`} label={name} />
-          ))}
-        </div>
-      </Block>
-
-      <Block id="colors-roles" title="Цвета — роли">
-        <div className="grid grid-cols-6 gap-l">
-          {colorRoles.map(({ role, primitive }) => (
-            <ColorSwatch
-              key={role}
-              varName={`--color-${role}`}
-              label={role}
-              sub={`→ ${primitive}`}
-            />
+          {colorRoles.map((role) => (
+            <ColorSwatch key={role} varName={`--color-${role}`} label={role} />
           ))}
         </div>
       </Block>
