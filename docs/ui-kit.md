@@ -21,7 +21,12 @@
 - [x] **tag** — без вариантов (Default); пропсы `label`, `icon`. _(в макете было type white/black — сейчас один Default)_
 - [x] **step_item** — `active` (yes/no); проп `label`
 - [x] **reaction** — `type` (default / more3), `active` (yes/no); пропсы `emoji`, `avatars`, `count`
-- [x] **chips** — `active` (yes/no); пропсы `label`, `active`, `isNew`
+- [x] **chips** — `state` (active / non_active / new); проп `label`
+- [x] **button** — `state` (primary / secondary / tertiary), `color` (black / gray); пропсы `label`, `icon` _(перенесён из молекул в атомы)_
+- [x] **input** — `state` (filled / active / default / disabled); пропсы `label`, `value`, `placeholder`, `leftIcon` _(перенесён в атомы; иконка Search отсутствует в d-icon → `leftIcon` опционален)_
+- [ ] **smile_reaction** — `name` (cry / ok / cool / laugh / heart) — нужны ассеты
+- [ ] **avatar** — `person` (7 персон, 68px) — нужны ассеты
+- [ ] **avatar_reaction** — `person` (7 персон, 24px) — нужны ассеты
 - [x] **person_tag** — без вариантов (Default); пропсы `name`, `avatar`
 
 Все 8 атомов собраны и показаны на витрине. Контент (иконки/аватары/эмодзи) — через пропсы.

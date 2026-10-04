@@ -10,6 +10,8 @@ import { IconButton } from '@/shared/ui/atoms/IconButton'
 import { StepItem } from '@/shared/ui/atoms/StepItem'
 import { PersonTag } from '@/shared/ui/atoms/PersonTag'
 import { Reaction } from '@/shared/ui/atoms/Reaction'
+import { Button } from '@/shared/ui/atoms/Button'
+import { Input } from '@/shared/ui/atoms/Input'
 
 function useText<T extends HTMLElement>(compute: () => string, deps: unknown[]) {
   const ref = useRef<T>(null)
@@ -189,8 +191,8 @@ function Atoms() {
       <Block id="card_button" title="card_button">
         <div className="flex items-start gap-l">
           <CardButton label="Summary" icon="book" />
-          <CardButton label="Training" icon="award" notification />
-          <CardButton label="Whisper" icon="bubble-chat" />
+          <CardButton label="Recognition" icon="star" />
+          <CardButton label="Whisper" icon="chating" />
         </div>
       </Block>
       <Block id="icon_button" title="icon_button">
@@ -250,44 +252,43 @@ function Atoms() {
           </div>
         </div>
       </Block>
+      <Block id="button" title="button">
+        <div className="flex flex-col gap-l" style={{ maxWidth: 386 }}>
+          <Button label="Create new trip" state="primary" icon="plus" />
+          <Button label="Create new trip" state="secondary" icon="plus" />
+          <div className="flex items-center gap-l">
+            <Button label="View All" state="tertiary" color="black" />
+            <Button label="View All" state="tertiary" color="gray" />
+          </div>
+        </div>
+      </Block>
+      <Block id="input" title="input">
+        <div className="flex flex-col gap-l" style={{ maxWidth: 362 }}>
+          <Input state="filled" label="Label" value="Search for a distanation" />
+          <Input state="active" label="Label" value="Search for a distanation" />
+          <Input state="default" placeholder="Search for a distanation" />
+          <Input state="disabled" placeholder="Search for a distanation" />
+        </div>
+      </Block>
     </section>
   )
 }
 
 function ChipsDemo() {
-  const [active, setActive] = useState(false)
-  const [isNew, setIsNew] = useState(true)
   return (
     <Block id="chips" title="chips">
-      <div className="flex flex-col gap-l">
-        <div className="flex items-center gap-2xl">
-          <Chips label="All" active />
-          <Chips label="Pinned" isNew />
-          <Chips label="Posts" />
+      <div className="flex items-center gap-2xl">
+        <div className="flex flex-col items-center gap-xs_1">
+          <Chips label="All" state="active" />
+          <span className="type-caption_2 text-text-and-icon-secondary_white">active</span>
         </div>
-        <div className="flex items-center gap-l">
-          <label className="type-body_2 flex cursor-pointer items-center gap-s text-text-and-icon-primary">
-            <input
-              type="checkbox"
-              checked={active}
-              onChange={(e) => setActive(e.target.checked)}
-              className="cursor-pointer"
-            />
-            active
-          </label>
-          <label className="type-body_2 flex cursor-pointer items-center gap-s text-text-and-icon-primary">
-            <input
-              type="checkbox"
-              checked={isNew}
-              onChange={(e) => setIsNew(e.target.checked)}
-              className="cursor-pointer"
-            />
-            isNew
-          </label>
+        <div className="flex flex-col items-center gap-xs_1">
+          <Chips label="Posts" state="non_active" />
+          <span className="type-caption_2 text-text-and-icon-secondary_white">non_active</span>
         </div>
-        <div className="flex items-center gap-l">
-          <Chips label="Recognitions" active={active} isNew={isNew} />
-          <code className="type-caption_1 text-text-and-icon-secondary_white">{`<Chips label="Recognitions" active={${active}} isNew={${isNew}} />`}</code>
+        <div className="flex flex-col items-center gap-xs_1">
+          <Chips label="Pinned" state="new" />
+          <span className="type-caption_2 text-text-and-icon-secondary_white">new</span>
         </div>
       </div>
     </Block>
