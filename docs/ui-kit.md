@@ -56,7 +56,7 @@
 - [x] **menu** — проп `items`. Собран из: item_menu
 - [x] **header** — `type` (#1 / #2); пропсы `title`, `description`, `person`, `secondButton`. Собран из: icon_button, avatar
 - [ ] **goal_card** — `type` (period_plan / distribution)
-- [ ] **slider** — `type` (60/40)
+- [x] **slider** — интерактивный сплит (перетаскивание ползунка); пропсы `defaultPercent`, `total`. Собран из: icon
 - [ ] **wall_card** — `type` (vote / recognitions / post)
 - [ ] **stats_card** — `type` (employee / manager)
 - [x] **possibilities_card** — `unlock` (yes/no); медаль + unlock/lock. Собран из: icon

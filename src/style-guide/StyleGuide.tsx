@@ -28,6 +28,7 @@ import { BankGoal } from '@/shared/ui/organisms/BankGoal'
 import { ImportantInformation } from '@/shared/ui/organisms/ImportantInformation'
 import { NameRow } from '@/shared/ui/organisms/NameRow'
 import { PossibilitiesCard } from '@/shared/ui/organisms/PossibilitiesCard'
+import { Slider } from '@/shared/ui/organisms/Slider'
 import { PERSON_LIST } from '@/shared/ui/avatars/people'
 
 function useText<T extends HTMLElement>(compute: () => string, deps: unknown[]) {
@@ -493,6 +494,14 @@ function Organisms() {
             title="Custom challenge templates"
             description="Build your own team challenges"
           />
+        </div>
+      </Block>
+      <Block id="o-slider" title="slider">
+        <p className="type-caption_1 text-text-and-icon-secondary_white mb-s">
+          интерактивный — потяни ползунок
+        </p>
+        <div style={{ width: 360 }}>
+          <Slider defaultPercent={60} total={10000} />
         </div>
       </Block>
     </section>
