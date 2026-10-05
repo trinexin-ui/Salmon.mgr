@@ -444,7 +444,6 @@ function Organisms() {
         </p>
         <div className="flex flex-col gap-l" style={{ width: 390 }}>
           <Header title="Jose Reyes" />
-          <Header title="Clients" secondButton />
         </div>
       </Block>
       <Block id="o-tab_bar" title="tab_bar">
