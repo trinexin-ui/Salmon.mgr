@@ -53,7 +53,7 @@ export function GoalCard({
     <div
       style={{ borderRadius: 'var(--radius-l)' }}
       className={[
-        'flex w-full flex-col gap-2xxl overflow-hidden bg-project-white p-l',
+        'relative flex w-full flex-col gap-2xl overflow-hidden bg-project-white p-l',
         className ?? '',
       ].join(' ')}
     >
@@ -66,15 +66,17 @@ export function GoalCard({
         </div>
         <Radiobutton active={selected} />
       </div>
-      <div className="flex items-center justify-between">
-        <img
-          src={GOAL_IMG[img]}
-          alt=""
-          className="shrink-0 object-contain"
-          style={{ width: 110, height: 110 }}
-        />
+      {/* Lower band: amount right; illustration absolutely placed bottom-left,
+          bleeding past the card edge (clipped by overflow-hidden). */}
+      <div className="flex h-[94px] items-center justify-end">
         <span className="type-h2 bg-gradient-gold bg-clip-text text-transparent">{amount}</span>
       </div>
+      <img
+        src={GOAL_IMG[img]}
+        alt=""
+        className="pointer-events-none absolute object-contain object-bottom"
+        style={{ left: 'var(--spacing-l)', bottom: -20, width: 110, height: 110 }}
+      />
     </div>
   )
 }
