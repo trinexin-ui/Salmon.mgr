@@ -19,9 +19,9 @@ export function CardButton({
   return (
     <button
       type="button"
-      style={{ width: 118 }}
+      style={{ width: 118, borderRadius: 'var(--radius-l)' }}
       className={[
-        'relative inline-flex cursor-pointer flex-col items-center justify-center gap-s rounded-l bg-project-on_white-gray_2 p-m',
+        'relative inline-flex cursor-pointer flex-col items-center justify-center gap-s bg-project-on_white-gray_2 p-m',
         className ?? '',
       ].join(' ')}
     >
