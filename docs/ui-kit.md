@@ -49,7 +49,7 @@
 ## Организмы (`d-organism`) — `src/shared/ui/organisms`
 
 - [x] **bank-goal** — пропсы label/title/progress/… Собран из: button
-- [ ] **employee_card** — `state` (state2) _(в макете захвачен один вариант; уточнить остальные состояния)_
+- [x] **employee_card** — пропсы person/name/tags/status/starButton/offerProgress/slots. Собран из: avatar, icon_button, tag, icon
 - [x] **tab_bar** — без вариантов. Собран из: tab
 - [x] **important_information** — gold-градиент заголовок + колокольчик. Собран из: button
 - [x] **name_row** — пропсы person/name/role/located/avg. Собран из: avatar, icon_button
@@ -57,8 +57,8 @@
 - [x] **header** — `type` (#1 / #2); пропсы `title`, `description`, `person`, `secondButton`. Собран из: icon_button, avatar
 - [x] **goal_card** — `type` (period_plan / distribution); gold-сумма + radiobutton + колокольчик. Собран из: radiobutton _(встроенный slider в distribution пока не включён)_
 - [x] **slider** — интерактивный сплит (перетаскивание ползунка); пропсы `defaultPercent`, `total`. Собран из: icon
-- [ ] **wall_card** — `type` (vote / recognitions / post)
-- [ ] **stats_card** — `type` (employee / manager)
+- [x] **wall_card** — `type` (vote / recognitions / post); пропсы `description`, `img`. Собран из: reaction, person_tag, avatar, avatar_reaction, tag, icon_button, icon
+- [x] **stats_card** — `type` (employee / manager); employee: бар-чарт по дням, manager: 2 плитки. Собран из: button, icon_button
 - [x] **possibilities_card** — `unlock` (yes/no); медаль + unlock/lock. Собран из: icon
 
 ---

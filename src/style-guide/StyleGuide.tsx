@@ -30,6 +30,9 @@ import { NameRow } from '@/shared/ui/organisms/NameRow'
 import { PossibilitiesCard } from '@/shared/ui/organisms/PossibilitiesCard'
 import { Slider } from '@/shared/ui/organisms/Slider'
 import { GoalCard } from '@/shared/ui/organisms/GoalCard'
+import { EmployeeCard } from '@/shared/ui/organisms/EmployeeCard'
+import { StatsCard } from '@/shared/ui/organisms/StatsCard'
+import { WallCard } from '@/shared/ui/organisms/WallCard'
 import { PERSON_LIST } from '@/shared/ui/avatars/people'
 
 function useText<T extends HTMLElement>(compute: () => string, deps: unknown[]) {
@@ -524,6 +527,40 @@ function Organisms() {
             title="Equal"
             subtitle="Split evenly ₱6,000 across all team"
           />
+        </div>
+      </Block>
+      <Block id="o-employee_card" title="employee_card">
+        <p className="type-caption_1 text-text-and-icon-secondary_white mb-s">
+          собран из: avatar, icon_button, tag, icon
+        </p>
+        <div className="bg-project-gray_bg p-l" style={{ width: 402, borderRadius: 16 }}>
+          <EmployeeCard />
+        </div>
+      </Block>
+      <Block id="o-stats_card" title="stats_card">
+        <p className="type-caption_1 text-text-and-icon-secondary_white mb-s">
+          собран из: button, icon_button · type employee / manager
+        </p>
+        <div
+          className="flex flex-col gap-l bg-project-gray_bg p-l"
+          style={{ width: 402, borderRadius: 16 }}
+        >
+          <StatsCard type="employee" />
+          <StatsCard type="manager" />
+        </div>
+      </Block>
+      <Block id="o-wall_card" title="wall_card">
+        <p className="type-caption_1 text-text-and-icon-secondary_white mb-s">
+          собран из: reaction, person_tag, avatar, avatar_reaction, tag, icon_button, icon · type
+          vote / recognitions / post
+        </p>
+        <div
+          className="flex flex-col gap-l bg-project-gray_bg p-l"
+          style={{ width: 402, borderRadius: 16 }}
+        >
+          <WallCard type="vote" />
+          <WallCard type="recognitions" />
+          <WallCard type="post" description img />
         </div>
       </Block>
     </section>
