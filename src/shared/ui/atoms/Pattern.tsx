@@ -1,31 +1,49 @@
+import { useId } from 'react'
+
 type PatternProps = {
   type?: 'on_black' | 'on_white'
   className?: string
 }
 
 // Figma: atom pattern (type on_black / on_white) — "line_pattern" hatch.
-// Diagonal lines (/) at ~45°, stroke 1.5px, 20% opacity, perpendicular step ≈4.36px
-// (6px horizontal). on_black: light lines (#F4F4F4) on a medium-gray base;
-// on_white: dark lines (#474547) on a light base. Imports nothing (foundational).
+// Even diagonal lines (/) at ~45°, stroke 1.5px, 20% opacity, perpendicular
+// step ≈4.36px (6px horizontal). No background fill — the surface shows through.
+// on_black: light lines (#F4F4F4). on_white: dark lines (#474547).
+// SVG keeps every line the same width (CSS gradients alias at fractional steps).
 const LINE = {
-  on_black: 'rgba(244,244,244,0.2)',
-  on_white: 'rgba(71,69,71,0.2)',
-} as const
-const BASE = {
-  on_black: '#4f4f4f',
-  on_white: 'var(--color-project-on_white-gray_1)',
+  on_black: '#f4f4f4',
+  on_white: '#474547',
 } as const
 
 export function Pattern({ type = 'on_black', className }: PatternProps) {
-  const line = LINE[type]
+  const uid = useId()
+  const pid = `line-pattern-${uid}`
   return (
-    <div
+    <svg
       aria-hidden
+      preserveAspectRatio="none"
       className={['h-full w-full', className ?? ''].join(' ')}
-      style={{
-        backgroundColor: BASE[type],
-        backgroundImage: `repeating-linear-gradient(135deg, ${line} 0, ${line} 1.5px, transparent 1.5px, transparent 4.36px)`,
-      }}
-    />
+    >
+      <defs>
+        <pattern
+          id={pid}
+          patternUnits="userSpaceOnUse"
+          width="4.364"
+          height="20"
+          patternTransform="rotate(43.35)"
+        >
+          <line
+            x1="0.75"
+            y1="0"
+            x2="0.75"
+            y2="20"
+            stroke={LINE[type]}
+            strokeWidth="1.5"
+            strokeOpacity="0.2"
+          />
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill={`url(#${pid})`} />
+    </svg>
   )
 }
