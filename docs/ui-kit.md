@@ -26,7 +26,7 @@
 - [x] **avatar_reaction** — `person` (7 персон); фото в `src/shared/ui/avatars`, рендер 24px
 - [x] **avatar** — `person` (8 персон, 68px, белый бордер) _(добавлен Carlos Domingo)_
 - [x] **pattern** — `type` (on_black / on_white); диагональная штриховка line_pattern (#F4F4F4/20% или #474547/20%, 1.5px, ~45°). Используется в bank-goal
-- [x] **img_goal-card** — `type` (75 / 100 / 135); иллюстрации (монеты / мешок / сундук), 110px, PNG в `src/shared/ui/illustrations`. Используется в goal_card
+- [x] **img_goal-card** — один вариант (монеты на подставке), 110px, PNG в `src/shared/ui/illustrations`. Используется в goal_card
 
 > `reaction`, `person_tag`, `card_button` перенесены в молекулы (состоят из атомов).
 
@@ -57,7 +57,7 @@
 - [x] **name_row** — пропсы person/name/role/located/avg. Собран из: avatar, icon_button
 - [x] **menu** — проп `items`. Собран из: item_menu
 - [x] **header** — один вариант; пропсы `title`, `description`. Собран из: icon_button _(в ките один вариант: назад + заголовок + одна кнопка)_
-- [x] **goal_card** — `type` (period_plan / distribution), `img` (75 / 100 / 135); иллюстрация img_goal-card (110px) + gold-сумма + radiobutton. Собран из: radiobutton, img_goal-card _(встроенный slider в distribution пока не включён)_
+- [x] **goal_card** — `type` (period_plan / distribution); фикс-высота 140px, иллюстрация img_goal-card (110px, absolute left:16/top:53) + gold-сумма + radiobutton. Собран из: radiobutton, img_goal-card _(встроенный slider в distribution пока не включён)_
 - [x] **slider** — интерактивный сплит (перетаскивание ползунка); пропсы `defaultPercent`, `total`. Собран из: icon
 - [x] **wall_card** — `type` (vote / recognitions / post); пропсы `description`, `img`. Собран из: reaction, person_tag, avatar, avatar_reaction, tag, icon_button, icon
 - [x] **stats_card** — `type` (employee / manager); employee: бар-чарт по дням, manager: 2 плитки. Собран из: button, icon_button

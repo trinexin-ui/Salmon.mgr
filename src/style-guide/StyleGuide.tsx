@@ -536,28 +536,7 @@ function Organisms() {
           className="flex flex-col gap-l bg-project-gray_bg p-l"
           style={{ width: 400, borderRadius: 16 }}
         >
-          <GoalCard
-            type="period_plan"
-            img="75"
-            category="Easy"
-            title="75 approved offers"
-            amount="₱5,000"
-          />
-          <GoalCard
-            type="period_plan"
-            img="100"
-            category="Ambitious"
-            title="100 approved offers"
-            amount="₱10,000"
-            selected
-          />
-          <GoalCard
-            type="period_plan"
-            img="135"
-            category="Legendary"
-            title="135 approved offers"
-            amount="₱15,000"
-          />
+          <GoalCard type="period_plan" category="Realistic" title="75 approved offers" amount="₱5,000" />
           <GoalCard
             type="distribution"
             title="Equal"
