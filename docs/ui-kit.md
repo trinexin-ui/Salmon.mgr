@@ -8,7 +8,7 @@
 
 ## Основа
 
-- [x] Токены (цвета: 20 переменных + 3 градиента; типографика 9 стилей; spacing 14; radius 7) → `docs/DESIGN.md`, `src/index.css`
+- [x] Токены (цвета: 20 переменных + 3 градиента; типографика 9 стилей; spacing 15; radius 7) → `docs/DESIGN.md`, `src/index.css`
 - [x] Витрина `/style-guide`: секция «основа»
 
 ---
@@ -24,7 +24,7 @@
 - [x] **input** — `state` (filled / active / default / disabled); пропсы `label`, `value`, `placeholder`, `leftIcon` _(перенесён в атомы; иконка Search отсутствует в d-icon → `leftIcon` опционален; высота 50px фикс)_
 - [x] **smile_reaction** — `name` (cry / ok / cool / laugh / heart); PNG 48px в `src/shared/ui/smiles`
 - [x] **avatar_reaction** — `person` (7 персон); фото в `src/shared/ui/avatars`, рендер 24px
-- [ ] **avatar** — `person` (7 персон, 68px) — пока не собран
+- [x] **avatar** — `person` (7 персон, 68px, белый бордер)
 
 > `reaction`, `person_tag`, `card_button` перенесены в молекулы (состоят из атомов).
 
@@ -35,12 +35,12 @@
 - [x] **reaction** — `type` (default / more3), `active`; пропсы `smile`, `people`, `count`. Собран из: smile_reaction, avatar_reaction
 - [x] **person_tag** — проп `person`. Собран из: avatar_reaction
 - [x] **card_button** — пропсы `label`, `icon`, `notification`; фикс-ширина 118px. Собран из: icon _(перенесён в молекулы)_
-- [ ] **segment_button** — `size` (small)
+- [x] **segment_button** — пропсы `items`, `activeIndex` (сегменты D/W/M)
+- [x] **step_bar** — пропсы `steps`, `activeIndex`. Собран из: step_item
+- [x] **chips_group** — активный + разделитель + группа. Собран из: chips
 - [ ] **tab** — `active` (yes/no)
 - [ ] **item_menu** — `type` (up / middle / down)
-- [ ] **step_bar** — без вариантов (Default)
 - [ ] **edit_card** — без вариантов (Default)
-- [ ] **chips_group** — без вариантов (Default)
 
 ---
 

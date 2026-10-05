@@ -46,6 +46,7 @@ export const spacingScale = [
   's',
   'm',
   'l',
+  'xl',
   '2xl',
   'xxl',
   '2xxl',

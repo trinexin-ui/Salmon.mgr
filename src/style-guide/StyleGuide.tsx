@@ -12,8 +12,12 @@ import { Button } from '@/shared/ui/atoms/Button'
 import { Input } from '@/shared/ui/atoms/Input'
 import { SmileReaction, type SmileName } from '@/shared/ui/atoms/SmileReaction'
 import { AvatarReaction } from '@/shared/ui/atoms/AvatarReaction'
+import { Avatar } from '@/shared/ui/atoms/Avatar'
 import { Reaction } from '@/shared/ui/molecules/Reaction'
 import { PersonTag } from '@/shared/ui/molecules/PersonTag'
+import { StepBar } from '@/shared/ui/molecules/StepBar'
+import { SegmentButton } from '@/shared/ui/molecules/SegmentButton'
+import { ChipsGroup } from '@/shared/ui/molecules/ChipsGroup'
 import { PERSON_LIST } from '@/shared/ui/avatars/people'
 
 function useText<T extends HTMLElement>(compute: () => string, deps: unknown[]) {
@@ -234,6 +238,13 @@ function Atoms() {
           ))}
         </div>
       </Block>
+      <Block id="avatar" title="avatar">
+        <div className="flex items-center gap-l">
+          {PERSON_LIST.map((p) => (
+            <Avatar key={p} person={p} />
+          ))}
+        </div>
+      </Block>
       <Block id="button" title="button">
         <div className="flex flex-col gap-l" style={{ maxWidth: 386 }}>
           <Button label="Create new trip" state="primary" />
@@ -320,6 +331,24 @@ function Molecules() {
           <CardButton label="Summary" icon="book" />
           <CardButton label="Recognition" icon="star" />
           <CardButton label="Whisper" icon="chating" />
+        </div>
+      </Block>
+      <Block id="m-segment_button" title="segment_button">
+        <SegmentButton items={['D', 'W', 'M']} activeIndex={0} />
+      </Block>
+      <Block id="m-chips_group" title="chips_group">
+        <p className="type-caption_1 text-text-and-icon-secondary_white mb-s">собран из: chips</p>
+        <ChipsGroup />
+      </Block>
+      <Block id="m-step_bar" title="step_bar">
+        <p className="type-caption_1 text-text-and-icon-secondary_white mb-s">
+          собран из: step_item
+        </p>
+        <div style={{ width: 368 }}>
+          <StepBar
+            steps={['Period plan', 'Choose split', 'Distribution', 'Review']}
+            activeIndex={0}
+          />
         </div>
       </Block>
       <Block id="m-person_tag" title="person_tag">
