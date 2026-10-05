@@ -43,9 +43,18 @@ export function BankGoal({
           style={{ borderRadius: 'var(--radius-xs)' }}
           className="w-full border border-line-on_black-gray p-xxs"
         >
-          <div className="h-l w-full overflow-hidden" style={{ borderRadius: 'var(--radius-xxs)' }}>
+          <div
+            className="relative h-l w-full overflow-hidden"
+            style={{
+              borderRadius: 'var(--radius-xxs)',
+              // Unfilled part: diagonal hatching (как в макете).
+              backgroundColor: 'var(--color-project-on_black-gray_2)',
+              backgroundImage:
+                'repeating-linear-gradient(45deg, rgba(255,255,255,0.10) 0, rgba(255,255,255,0.10) 1.5px, transparent 1.5px, transparent 6px)',
+            }}
+          >
             <div
-              className="bg-gradient-gold h-l"
+              className="bg-gradient-gold absolute inset-y-0 left-0"
               style={{ width: `${Math.round(progress * 100)}%`, borderRadius: 'var(--radius-xxs)' }}
             />
           </div>
