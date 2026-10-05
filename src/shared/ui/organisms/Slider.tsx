@@ -67,9 +67,10 @@ export function Slider({ defaultPercent = 60, total = 10000, className }: Slider
         style={{
           borderRadius: 'var(--radius-s)',
           height: 71,
-          // Figma: slider track gradient (warm → light).
+          // Figma: slider track gradient — gray edges fading to white centre,
+          // stops run past the element (132.25%) so it bleeds past the border.
           backgroundImage:
-            'linear-gradient(90deg, #fef7ee 30.325%, #f4f4f4 9.5364%, #ffffff 50.18%, #f4f4f4 91.605%, #dddddd 132.25%)',
+            'linear-gradient(90deg, #dddddd 30.325%, #f4f4f4 9.5364%, #ffffff 50.18%, #f4f4f4 91.605%, #dddddd 132.25%)',
         }}
         className="relative flex cursor-pointer items-center overflow-hidden px-m"
       >
