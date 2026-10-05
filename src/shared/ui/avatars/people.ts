@@ -7,6 +7,7 @@ export const PEOPLE = {
   'maria-santos': 'Maria Santos',
   'bea-ocampo': 'Bea Ocampo',
   'carlo-del-rosa': 'Carlo Del Rosa',
+  'carlos-domingo': 'Carlos Domingo',
 } as const
 
 export type Person = keyof typeof PEOPLE

@@ -503,7 +503,7 @@ function Organisms() {
           собран из: avatar, icon_button
         </p>
         <div className="bg-project-gray_bg p-l" style={{ width: 410, borderRadius: 16 }}>
-          <NameRow person="carlo-del-rosa" name="Carlo Del Rosa" />
+          <NameRow person="carlos-domingo" name="Carlos Domingo" />
         </div>
       </Block>
       <Block id="o-possibilities_card" title="possibilities_card">
@@ -530,7 +530,7 @@ function Organisms() {
       </Block>
       <Block id="o-goal_card" title="goal_card">
         <p className="type-caption_1 text-text-and-icon-secondary_white mb-s">
-          собран из: radiobutton
+          собран из: radiobutton, img_goal-card
         </p>
         <div
           className="flex flex-col gap-l bg-project-gray_bg p-l"
@@ -538,9 +538,25 @@ function Organisms() {
         >
           <GoalCard
             type="period_plan"
-            category="Realistic"
+            img="75"
+            category="Easy"
             title="75 approved offers"
             amount="₱5,000"
+          />
+          <GoalCard
+            type="period_plan"
+            img="100"
+            category="Ambitious"
+            title="100 approved offers"
+            amount="₱10,000"
+            selected
+          />
+          <GoalCard
+            type="period_plan"
+            img="135"
+            category="Legendary"
+            title="135 approved offers"
+            amount="₱15,000"
           />
           <GoalCard
             type="distribution"

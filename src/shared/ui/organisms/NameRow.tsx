@@ -14,7 +14,7 @@ type NameRowProps = {
 // Figma: d-organism/name_row. White card: gray sub-card (avatar + name/role + phone
 // button) + two info rows. Собран из: avatar, icon_button.
 export function NameRow({
-  person = 'jose-reyes',
+  person = 'carlos-domingo',
   name,
   role = 'Agent',
   located = 'Electronics section',
@@ -32,7 +32,7 @@ export function NameRow({
       >
         <div className="flex items-center gap-m">
           <Avatar person={person} size={52} />
-          <div className="flex flex-col gap-xs_1">
+          <div className="flex flex-col gap-xxs">
             <span className="type-body_1 text-text-and-icon-primary">{name ?? PEOPLE[person]}</span>
             <span className="type-body_1 text-text-and-icon-secondary_white">{role}</span>
           </div>
