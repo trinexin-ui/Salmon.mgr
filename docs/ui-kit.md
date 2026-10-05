@@ -59,7 +59,7 @@
 - [x] **header** — один вариант; пропсы `title`, `description`. Собран из: icon_button _(в ките один вариант: назад + заголовок + одна кнопка)_
 - [x] **goal_card** — `type` (period_plan / distribution); фикс-высота 140px, иллюстрация img_goal-card (110px, absolute left:16/top:53) + gold-сумма + radiobutton. Собран из: radiobutton, img_goal-card _(встроенный slider в distribution пока не включён)_
 - [x] **slider** — интерактивный сплит (перетаскивание ползунка); пропсы `defaultPercent`, `total`. Собран из: icon
-- [x] **wall_card** — `type` (vote / recognitions / post); пропсы `description`, `img`. Собран из: reaction, person_tag, avatar, avatar_reaction, tag, icon_button, icon
+- [x] **wall_card** — `type` (vote / recognitions / post); проп `description`. Собран из: reaction, person_tag, avatar, avatar_reaction, tag, icon_button, icon
 - [x] **stats_card** — `type` (employee / manager); employee: бар-чарт по дням, manager: 2 плитки. Собран из: button, icon_button
 - [x] **possibilities_card** — `unlock` (yes/no); медаль + unlock/lock. Собран из: icon
 

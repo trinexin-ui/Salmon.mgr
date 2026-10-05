@@ -11,7 +11,6 @@ import bellUrl from '@/shared/ui/illustrations/bell.png'
 type WallCardProps = {
   type?: 'vote' | 'recognitions' | 'post'
   description?: boolean
-  img?: boolean
   className?: string
 }
 
@@ -21,9 +20,9 @@ const REACT_PEOPLE: Person[] = ['louis-bautista', 'lyn-dela-cruz', 'jun-reyes']
 // Figma: d-organism/wall_card (type vote/recognitions/post). White card, rounded-l.
 // vote: title+Pin + "Voting open" tag + prompt + avatar stack + "X of Y responded" progress.
 // recognitions: illustration + person_tag + quote + reactions + time.
-// post: author (avatar+name) + menu + text bubbles (+optional image) + reaction + time.
+// post: author (avatar+name) + menu + text bubbles (tight, no gap) + reaction + time.
 // Собран из: reaction, person_tag, avatar, avatar_reaction, tag, icon_button, icon.
-export function WallCard({ type = 'vote', description = false, img = false, className }: WallCardProps) {
+export function WallCard({ type = 'vote', description = false, className }: WallCardProps) {
   const base = 'flex w-full flex-col bg-project-white'
 
   if (type === 'recognitions') {
@@ -77,23 +76,15 @@ export function WallCard({ type = 'vote', description = false, img = false, clas
           </div>
           <IconButton icon="horizontal" color="gray" size="big" />
         </div>
-        <div className="flex w-full flex-col items-start gap-l">
-          {img && (
-            <div
-              className="w-full bg-project-on_white-gray_1"
-              style={{ height: 200, borderRadius: 'var(--radius-m)' }}
-            />
-          )}
-          <div className="flex flex-col items-start gap-xxs">
-            {lines.map((l) => (
-              <span
-                key={l}
-                className="type-body_1 inline-flex items-center rounded-max bg-project-gray_bg px-s py-xs_1 text-text-and-icon-primary"
-              >
-                {l}
-              </span>
-            ))}
-          </div>
+        <div className="flex w-full flex-col items-start">
+          {lines.map((l) => (
+            <span
+              key={l}
+              className="type-body_1 inline-flex items-center rounded-max bg-project-gray_bg px-s py-xs_1 text-text-and-icon-primary"
+            >
+              {l}
+            </span>
+          ))}
         </div>
         <div className="flex w-full items-center justify-between">
           <Reaction smile="heart" people={REACT_PEOPLE} />

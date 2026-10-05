@@ -575,7 +575,7 @@ function Organisms() {
         >
           <WallCard type="vote" />
           <WallCard type="recognitions" />
-          <WallCard type="post" description img />
+          <WallCard type="post" description />
         </div>
       </Block>
     </section>
