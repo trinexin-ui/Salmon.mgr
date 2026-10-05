@@ -46,18 +46,11 @@ export function ImportantInformation({
         <img
           src={stopwatchUrl}
           alt=""
-          className="absolute left-0 w-full max-w-none"
-          style={{ height: '107.81%', top: '-7.82%' }}
+          style={{ display: 'block', width: 111, maxWidth: 'none', marginTop: -8 }}
         />
       </div>
       <div className="relative flex flex-col gap-xs_1">
-        <span
-          className="type-h3 whitespace-nowrap bg-clip-text text-transparent"
-          style={{
-            backgroundImage:
-              'linear-gradient(90deg, #6c6459 0%, #eeddc4 56.438%, #6c6459 108.7%)',
-          }}
-        >
+        <span className="type-h3 bg-gradient-gold whitespace-nowrap bg-clip-text text-transparent">
           {title}
         </span>
         <span className="type-body_1 text-text-and-icon-secondary_black">{subtitle}</span>

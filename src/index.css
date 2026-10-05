@@ -76,7 +76,7 @@
     #787776 75%,
     #2a2a2a 100%
   );
-  --gradient-gold: linear-gradient(90deg, #6c6459 0%, #eeddc4 51.92%, #6c6459 100%);
+  --gradient-gold: linear-gradient(90deg, #6c6459 0%, #eeddc4 56.438%, #6c6459 108.7%);
 }
 
 @utility bg-gradient-white_gray {
