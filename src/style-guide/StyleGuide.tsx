@@ -24,6 +24,10 @@ import { EditCard } from '@/shared/ui/molecules/EditCard'
 import { Header } from '@/shared/ui/organisms/Header'
 import { TabBar } from '@/shared/ui/organisms/TabBar'
 import { Menu } from '@/shared/ui/organisms/Menu'
+import { BankGoal } from '@/shared/ui/organisms/BankGoal'
+import { ImportantInformation } from '@/shared/ui/organisms/ImportantInformation'
+import { NameRow } from '@/shared/ui/organisms/NameRow'
+import { PossibilitiesCard } from '@/shared/ui/organisms/PossibilitiesCard'
 import { PERSON_LIST } from '@/shared/ui/avatars/people'
 
 function useText<T extends HTMLElement>(compute: () => string, deps: unknown[]) {
@@ -454,6 +458,40 @@ function Organisms() {
               { label: 'Clients', icon: 'group' },
               { label: 'Challenges', icon: 'star' },
             ]}
+          />
+        </div>
+      </Block>
+      <Block id="o-bank-goal" title="bank-goal">
+        <p className="type-caption_1 text-text-and-icon-secondary_white mb-s">собран из: button</p>
+        <div style={{ width: 390 }}>
+          <BankGoal />
+        </div>
+      </Block>
+      <Block id="o-important_information" title="important_information">
+        <p className="type-caption_1 text-text-and-icon-secondary_white mb-s">собран из: button</p>
+        <div style={{ width: 390 }}>
+          <ImportantInformation />
+        </div>
+      </Block>
+      <Block id="o-name_row" title="name_row">
+        <p className="type-caption_1 text-text-and-icon-secondary_white mb-s">
+          собран из: avatar, icon_button
+        </p>
+        <div className="bg-project-gray_bg p-l" style={{ width: 410, borderRadius: 16 }}>
+          <NameRow person="carlo-del-rosa" name="Carlo Del Rosa" />
+        </div>
+      </Block>
+      <Block id="o-possibilities_card" title="possibilities_card">
+        <div
+          className="flex flex-col gap-l bg-project-gray_bg p-l"
+          style={{ width: 410, borderRadius: 16 }}
+        >
+          <PossibilitiesCard unlock />
+          <PossibilitiesCard
+            unlock={false}
+            hint="Become a Golden Manager"
+            title="Custom challenge templates"
+            description="Build your own team challenges"
           />
         </div>
       </Block>
