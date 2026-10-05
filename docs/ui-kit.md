@@ -53,7 +53,7 @@
 - [x] **bank-goal** — пропсы label/title/progress/… Собран из: button
 - [x] **employee_card** — пропсы person/name/tags/status/starButton/offerProgress/slots. Собран из: avatar, icon_button, tag, icon
 - [x] **tab_bar** — без вариантов. Собран из: tab
-- [x] **important_information** — gold-градиент заголовок + колокольчик. Собран из: button
+- [x] **important_information** — gold-градиент заголовок (d/linear-gold, пик 56.4%) + секундомер с размытым тёплым эллипсом (Layer Blur) позади. Собран из: button
 - [x] **name_row** — пропсы person/name/role/located/avg. Собран из: avatar, icon_button
 - [x] **menu** — проп `items`. Собран из: item_menu
 - [x] **header** — один вариант; пропсы `title`, `description`. Собран из: icon_button _(в ките один вариант: назад + заголовок + одна кнопка)_
