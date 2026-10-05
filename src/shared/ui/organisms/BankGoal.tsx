@@ -1,4 +1,5 @@
 import { Button } from '@/shared/ui/atoms/Button'
+import { Pattern } from '@/shared/ui/atoms/Pattern'
 
 type BankGoalProps = {
   label?: string
@@ -45,14 +46,10 @@ export function BankGoal({
         >
           <div
             className="relative h-l w-full overflow-hidden"
-            style={{
-              borderRadius: 'var(--radius-xxs)',
-              // Unfilled part: diagonal hatching (как в макете).
-              backgroundColor: 'var(--color-project-on_black-gray_2)',
-              backgroundImage:
-                'repeating-linear-gradient(45deg, rgba(255,255,255,0.10) 0, rgba(255,255,255,0.10) 1.5px, transparent 1.5px, transparent 6px)',
-            }}
+            style={{ borderRadius: 'var(--radius-xxs)' }}
           >
+            {/* Unfilled part: line_pattern hatch (atom). */}
+            <Pattern type="on_black" className="absolute inset-0" />
             <div
               className="bg-gradient-gold absolute inset-y-0 left-0"
               style={{ width: `${Math.round(progress * 100)}%`, borderRadius: 'var(--radius-xxs)' }}

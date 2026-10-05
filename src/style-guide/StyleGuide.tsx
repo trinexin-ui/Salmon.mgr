@@ -29,6 +29,7 @@ import { ImportantInformation } from '@/shared/ui/organisms/ImportantInformation
 import { NameRow } from '@/shared/ui/organisms/NameRow'
 import { PossibilitiesCard } from '@/shared/ui/organisms/PossibilitiesCard'
 import { Slider } from '@/shared/ui/organisms/Slider'
+import { Pattern } from '@/shared/ui/atoms/Pattern'
 import { GoalCard } from '@/shared/ui/organisms/GoalCard'
 import { EmployeeCard } from '@/shared/ui/organisms/EmployeeCard'
 import { StatsCard } from '@/shared/ui/organisms/StatsCard'
@@ -276,6 +277,26 @@ function Atoms() {
           <Input state="active" label="Label" value="Search for a distanation" />
           <Input state="default" placeholder="Search for a distanation" />
           <Input state="disabled" placeholder="Search for a distanation" />
+        </div>
+      </Block>
+      <Block id="pattern" title="pattern">
+        <p className="type-caption_1 text-text-and-icon-secondary_white mb-s">
+          line_pattern · type on_black / on_white
+        </p>
+        <div className="flex flex-col gap-l" style={{ width: 300 }}>
+          <div
+            className="overflow-hidden bg-project-on_black-gray_1 p-s"
+            style={{ borderRadius: 8 }}
+          >
+            <div className="h-l w-full overflow-hidden" style={{ borderRadius: 'var(--radius-xxs)' }}>
+              <Pattern type="on_black" />
+            </div>
+          </div>
+          <div className="overflow-hidden bg-project-white p-s" style={{ borderRadius: 8 }}>
+            <div className="h-l w-full overflow-hidden" style={{ borderRadius: 'var(--radius-xxs)' }}>
+              <Pattern type="on_white" />
+            </div>
+          </div>
         </div>
       </Block>
     </section>

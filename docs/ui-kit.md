@@ -25,6 +25,7 @@
 - [x] **smile_reaction** — `name` (cry / ok / cool / laugh / heart); PNG 48px в `src/shared/ui/smiles`
 - [x] **avatar_reaction** — `person` (7 персон); фото в `src/shared/ui/avatars`, рендер 24px
 - [x] **avatar** — `person` (7 персон, 68px, белый бордер)
+- [x] **pattern** — `type` (on_black / on_white); диагональная штриховка line_pattern (#F4F4F4/20% или #474547/20%, 1.5px, ~45°). Используется в bank-goal
 
 > `reaction`, `person_tag`, `card_button` перенесены в молекулы (состоят из атомов).
 
