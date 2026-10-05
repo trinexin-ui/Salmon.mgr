@@ -38,9 +38,11 @@
 - [x] **segment_button** — пропсы `items`, `activeIndex` (сегменты D/W/M)
 - [x] **step_bar** — пропсы `steps`, `activeIndex`. Собран из: step_item
 - [x] **chips_group** — активный + разделитель + группа. Собран из: chips
-- [ ] **tab** — `active` (yes/no)
-- [ ] **item_menu** — `type` (up / middle / down)
-- [ ] **edit_card** — без вариантов (Default)
+- [x] **tab** — `active`; пропсы `label`, `icon`, `iconActive`. Собран из: icon
+- [x] **item_menu** — `type` (up / middle / down); пропсы `label`, `icon`. Собран из: icon
+- [x] **edit_card** — пропсы `title`, `left`, `right`. Собран из: button
+
+Все молекулы собраны.
 
 ---
 

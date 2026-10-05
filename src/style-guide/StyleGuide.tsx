@@ -18,6 +18,9 @@ import { PersonTag } from '@/shared/ui/molecules/PersonTag'
 import { StepBar } from '@/shared/ui/molecules/StepBar'
 import { SegmentButton } from '@/shared/ui/molecules/SegmentButton'
 import { ChipsGroup } from '@/shared/ui/molecules/ChipsGroup'
+import { Tab } from '@/shared/ui/molecules/Tab'
+import { ItemMenu } from '@/shared/ui/molecules/ItemMenu'
+import { EditCard } from '@/shared/ui/molecules/EditCard'
 import { PERSON_LIST } from '@/shared/ui/avatars/people'
 
 function useText<T extends HTMLElement>(compute: () => string, deps: unknown[]) {
@@ -349,6 +352,29 @@ function Molecules() {
             steps={['Period plan', 'Choose split', 'Distribution', 'Review']}
             activeIndex={0}
           />
+        </div>
+      </Block>
+      <Block id="m-tab" title="tab">
+        <div
+          className="inline-flex items-center gap-l bg-project-gray_bg p-s"
+          style={{ borderRadius: 16 }}
+        >
+          <Tab label="Home" icon="home" iconActive="home-fill" active />
+          <Tab label="Home" icon="home" iconActive="home-fill" />
+        </div>
+      </Block>
+      <Block id="m-item_menu" title="item_menu">
+        <p className="type-caption_1 text-text-and-icon-secondary_white mb-s">собран из: icon</p>
+        <div style={{ width: 334 }}>
+          <ItemMenu label="Clients" icon="group" type="up" />
+          <ItemMenu label="Clients" icon="group" type="middle" />
+          <ItemMenu label="Clients" icon="group" type="down" />
+        </div>
+      </Block>
+      <Block id="m-edit_card" title="edit_card">
+        <p className="type-caption_1 text-text-and-icon-secondary_white mb-s">собран из: button</p>
+        <div style={{ width: 336 }}>
+          <EditCard title="Split" left="₱6,000 employees" right="₱4,000 team goal" />
         </div>
       </Block>
       <Block id="m-person_tag" title="person_tag">
