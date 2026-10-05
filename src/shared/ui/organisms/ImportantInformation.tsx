@@ -41,7 +41,7 @@ export function ImportantInformation({
       {/* Figma: image 109370 — stopwatch, top-right, slightly cropped. */}
       <div
         className="pointer-events-none absolute overflow-hidden"
-        style={{ width: 111, height: 104, right: 0, top: 13 }}
+        style={{ width: 111, right: 0, top: 13, bottom: 0 }}
       >
         <img
           src={stopwatchUrl}
