@@ -440,11 +440,11 @@ function Organisms() {
       <h2 className="type-h2 text-text-and-icon-primary">Организмы</h2>
       <Block id="o-header" title="header">
         <p className="type-caption_1 text-text-and-icon-secondary_white mb-s">
-          собран из: icon_button, avatar
+          собран из: icon_button
         </p>
         <div className="flex flex-col gap-l" style={{ width: 390 }}>
-          <Header type="#1" title="Jose Reyes" />
-          <Header type="#2" title="Jose Reyes" description="July" person="jose-reyes" />
+          <Header title="Jose Reyes" />
+          <Header title="Clients" secondButton />
         </div>
       </Block>
       <Block id="o-tab_bar" title="tab_bar">
