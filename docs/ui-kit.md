@@ -50,11 +50,11 @@
 
 - [ ] **bank-goal** — без вариантов (Default)
 - [ ] **employee_card** — `state` (state2) _(в макете захвачен один вариант; уточнить остальные состояния)_
-- [ ] **tab_bar** — без вариантов (Default)
+- [x] **tab_bar** — без вариантов. Собран из: tab
 - [ ] **important_information** — без вариантов (Default)
 - [ ] **name_row** — без вариантов (Default)
-- [ ] **menu** — без вариантов (Default)
-- [ ] **header** — `type` (#1 / #2)
+- [x] **menu** — проп `items`. Собран из: item_menu
+- [x] **header** — `type` (#1 / #2); пропсы `title`, `description`, `person`, `secondButton`. Собран из: icon_button, avatar
 - [ ] **goal_card** — `type` (period_plan / distribution)
 - [ ] **slider** — `type` (60/40)
 - [ ] **wall_card** — `type` (vote / recognitions / post)

@@ -21,6 +21,9 @@ import { ChipsGroup } from '@/shared/ui/molecules/ChipsGroup'
 import { Tab } from '@/shared/ui/molecules/Tab'
 import { ItemMenu } from '@/shared/ui/molecules/ItemMenu'
 import { EditCard } from '@/shared/ui/molecules/EditCard'
+import { Header } from '@/shared/ui/organisms/Header'
+import { TabBar } from '@/shared/ui/organisms/TabBar'
+import { Menu } from '@/shared/ui/organisms/Menu'
 import { PERSON_LIST } from '@/shared/ui/avatars/people'
 
 function useText<T extends HTMLElement>(compute: () => string, deps: unknown[]) {
@@ -359,8 +362,12 @@ function Molecules() {
           className="inline-flex items-center gap-l bg-project-gray_bg p-s"
           style={{ borderRadius: 16 }}
         >
-          <Tab label="Home" icon="home" iconActive="home-fill" active />
-          <Tab label="Home" icon="home" iconActive="home-fill" />
+          <div style={{ width: 123 }}>
+            <Tab label="Home" icon="home" iconActive="home-fill" active />
+          </div>
+          <div style={{ width: 123 }}>
+            <Tab label="Home" icon="home" iconActive="home-fill" />
+          </div>
         </div>
       </Block>
       <Block id="m-item_menu" title="item_menu">
@@ -418,13 +425,38 @@ function Molecules() {
   )
 }
 
-function Placeholder({ id, title }: { id: string; title: string }) {
+function Organisms() {
   return (
-    <section id={id} className="scroll-mt-l">
-      <h2 className="type-h2 text-text-and-icon-primary">{title}</h2>
-      <p className="type-body_2 text-text-and-icon-secondary_white mt-s">
-        Скоро — собирается по макету.
-      </p>
+    <section id="organisms" className="scroll-mt-l flex flex-col gap-2xl">
+      <h2 className="type-h2 text-text-and-icon-primary">Организмы</h2>
+      <Block id="o-header" title="header">
+        <p className="type-caption_1 text-text-and-icon-secondary_white mb-s">
+          собран из: icon_button, avatar
+        </p>
+        <div className="flex flex-col gap-l" style={{ width: 390 }}>
+          <Header type="#1" title="Jose Reyes" />
+          <Header type="#2" title="Jose Reyes" description="July" person="jose-reyes" />
+        </div>
+      </Block>
+      <Block id="o-tab_bar" title="tab_bar">
+        <p className="type-caption_1 text-text-and-icon-secondary_white mb-s">собран из: tab</p>
+        <div className="bg-project-gray_bg" style={{ width: 390, borderRadius: 16 }}>
+          <TabBar />
+        </div>
+      </Block>
+      <Block id="o-menu" title="menu">
+        <p className="type-caption_1 text-text-and-icon-secondary_white mb-s">
+          собран из: item_menu
+        </p>
+        <div className="bg-project-gray_bg p-l" style={{ width: 372, borderRadius: 16 }}>
+          <Menu
+            items={[
+              { label: 'Clients', icon: 'group' },
+              { label: 'Challenges', icon: 'star' },
+            ]}
+          />
+        </div>
+      </Block>
     </section>
   )
 }
@@ -466,7 +498,7 @@ export function StyleGuide() {
         <Foundation />
         <Atoms />
         <Molecules />
-        <Placeholder id="organisms" title="Организмы" />
+        <Organisms />
       </main>
     </div>
   )

@@ -9,13 +9,12 @@ type TabProps = {
 }
 
 // Figma: d-molecules/tab (active? yes/no). Bottom-nav item: 28px icon + caption_2 label.
-// active -> white pill bg + filled icon. Fixed 123 width (no token).
+// active -> white pill bg + filled icon. Width-flexible (fills parent / flex-1).
 export function Tab({ label, icon, iconActive, active = false, className }: TabProps) {
   return (
     <span
-      style={{ width: 123 }}
       className={[
-        'inline-flex cursor-pointer flex-col items-center gap-xxs rounded-max py-xs_2',
+        'flex w-full cursor-pointer flex-col items-center gap-xxs rounded-max py-xs_2',
         active ? 'bg-project-white' : '',
         className ?? '',
       ].join(' ')}
