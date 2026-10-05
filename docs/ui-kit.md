@@ -55,7 +55,7 @@
 - [x] **name_row** — пропсы person/name/role/located/avg. Собран из: avatar, icon_button
 - [x] **menu** — проп `items`. Собран из: item_menu
 - [x] **header** — `type` (#1 / #2); пропсы `title`, `description`, `person`, `secondButton`. Собран из: icon_button, avatar
-- [ ] **goal_card** — `type` (period_plan / distribution)
+- [x] **goal_card** — `type` (period_plan / distribution); gold-сумма + radiobutton + колокольчик. Собран из: radiobutton _(встроенный slider в distribution пока не включён)_
 - [x] **slider** — интерактивный сплит (перетаскивание ползунка); пропсы `defaultPercent`, `total`. Собран из: icon
 - [ ] **wall_card** — `type` (vote / recognitions / post)
 - [ ] **stats_card** — `type` (employee / manager)

@@ -29,6 +29,7 @@ import { ImportantInformation } from '@/shared/ui/organisms/ImportantInformation
 import { NameRow } from '@/shared/ui/organisms/NameRow'
 import { PossibilitiesCard } from '@/shared/ui/organisms/PossibilitiesCard'
 import { Slider } from '@/shared/ui/organisms/Slider'
+import { GoalCard } from '@/shared/ui/organisms/GoalCard'
 import { PERSON_LIST } from '@/shared/ui/avatars/people'
 
 function useText<T extends HTMLElement>(compute: () => string, deps: unknown[]) {
@@ -502,6 +503,27 @@ function Organisms() {
         </p>
         <div style={{ width: 360 }}>
           <Slider defaultPercent={60} total={10000} />
+        </div>
+      </Block>
+      <Block id="o-goal_card" title="goal_card">
+        <p className="type-caption_1 text-text-and-icon-secondary_white mb-s">
+          собран из: radiobutton
+        </p>
+        <div
+          className="flex flex-col gap-l bg-project-gray_bg p-l"
+          style={{ width: 400, borderRadius: 16 }}
+        >
+          <GoalCard
+            type="period_plan"
+            category="Realistic"
+            title="75 approved offers"
+            amount="₱5,000"
+          />
+          <GoalCard
+            type="distribution"
+            title="Equal"
+            subtitle="Split evenly ₱6,000 across all team"
+          />
         </div>
       </Block>
     </section>
