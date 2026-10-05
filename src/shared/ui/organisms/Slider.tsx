@@ -64,8 +64,14 @@ export function Slider({ defaultPercent = 60, total = 10000, className }: Slider
       <div
         ref={trackRef}
         onPointerDown={onPointerDown}
-        style={{ borderRadius: 'var(--radius-s)', height: 71 }}
-        className="relative flex cursor-pointer items-center overflow-hidden bg-project-white px-m"
+        style={{
+          borderRadius: 'var(--radius-s)',
+          height: 71,
+          // Figma: slider track gradient (warm → light).
+          backgroundImage:
+            'linear-gradient(90deg, #fef7ee 30.325%, #f4f4f4 9.5364%, #ffffff 50.18%, #f4f4f4 91.605%, #dddddd 132.25%)',
+        }}
+        className="relative flex cursor-pointer items-center overflow-hidden px-m"
       >
         <div className="flex w-full items-center justify-between">
           {Array.from({ length: 41 }).map((_, i) => (
