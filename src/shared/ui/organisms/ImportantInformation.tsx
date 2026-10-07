@@ -5,6 +5,7 @@ type ImportantInformationProps = {
   title?: string
   subtitle?: string
   buttonLabel?: string
+  onSchedule?: () => void
   className?: string
 }
 
@@ -12,9 +13,10 @@ type ImportantInformationProps = {
 // (d/linear-gold, peak 56.4%), subtitle, Schedule tertiary button, stopwatch image
 // with a blurred warm ellipse behind it. Собран из: button.
 export function ImportantInformation({
-  title = 'Jose rarely offers moto loans',
+  title = 'Jose rarely offers POS loans',
   subtitle = 'Schedule a training session',
   buttonLabel = 'Schedule',
+  onSchedule,
   className,
 }: ImportantInformationProps) {
   return (
@@ -56,7 +58,13 @@ export function ImportantInformation({
         <span className="type-body_1 text-text-and-icon-secondary_black">{subtitle}</span>
       </div>
       <div className="relative">
-        <Button label={buttonLabel} state="tertiary" color="black" />
+        {onSchedule ? (
+          <span data-ui-path style={{ display: 'contents' }}>
+            <Button label={buttonLabel} state="tertiary" color="black" onClick={onSchedule} />
+          </span>
+        ) : (
+          <Button label={buttonLabel} state="tertiary" color="black" />
+        )}
       </div>
     </div>
   )

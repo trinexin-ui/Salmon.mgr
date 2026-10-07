@@ -5,6 +5,7 @@ type ButtonProps = {
   state?: 'primary' | 'secondary' | 'tertiary'
   color?: 'black' | 'gray'
   icon?: IconName
+  onClick?: () => void
   className?: string
 }
 
@@ -17,6 +18,7 @@ export function Button({
   state = 'primary',
   color = 'black',
   icon,
+  onClick,
   className,
 }: ButtonProps) {
   if (state === 'tertiary') {
@@ -25,6 +27,7 @@ export function Button({
     return (
       <button
         type="button"
+        onClick={onClick}
         className={[
           'inline-flex cursor-pointer items-center gap-xs_1 rounded-max py-xs_2 pl-m pr-s',
           bg,
@@ -44,6 +47,7 @@ export function Button({
     return (
       <button
         type="button"
+        onClick={onClick}
         className={[base, 'border border-line-on_white-gray_1', className ?? ''].join(' ')}
       >
         {icon && <Icon name={icon} size={24} className="text-text-and-icon-primary" />}
@@ -53,7 +57,11 @@ export function Button({
   }
 
   return (
-    <button type="button" className={[base, 'bg-project-action', className ?? ''].join(' ')}>
+    <button
+      type="button"
+      onClick={onClick}
+      className={[base, 'bg-project-action', className ?? ''].join(' ')}
+    >
       {icon && <Icon name={icon} size={24} className="text-project-white" />}
       <span className="type-button_input_1 bg-gradient-white_gray bg-clip-text text-transparent">
         {label}

@@ -24,7 +24,8 @@
 - [x] **input** — `state` (filled / active / default / disabled); пропсы `label`, `value`, `placeholder`, `leftIcon` _(перенесён в атомы; иконка Search отсутствует в d-icon → `leftIcon` опционален; высота 50px фикс)_
 - [x] **smile_reaction** — `name` (cry / ok / cool / laugh / heart); PNG 48px в `src/shared/ui/smiles`
 - [x] **avatar_reaction** — `person` (7 персон); фото в `src/shared/ui/avatars`, рендер 24px
-- [x] **avatar** — `person` (8 персон, 68px, белый бордер) _(добавлен Carlos Domingo)_
+- [x] **avatar** — `person` (8 персон, 68px, обводка 1px градиентом `white_gray`, inside) _(добавлен Carlos Domingo)_
+- [x] **date_item** — пропсы `weekday`, `day` (оба body_1), `opacity`. Цвет один — `text-and-icon/secondary_black`; активность задаётся прозрачностью (активный 100%, не чисто белый). _(добавлен для flow_1: Home)_
 - [x] **pattern** — `type` (on_black / on_white); диагональная штриховка line_pattern (#F4F4F4/20% или #474547/20%, 1.5px, ~45°). Используется в bank-goal
 - [x] **img_goal-card** — один вариант (монеты на подставке), 110px, PNG в `src/shared/ui/illustrations`. Используется в goal_card
 
@@ -43,8 +44,9 @@
 - [x] **tab** — `active`; пропсы `label`, `icon`, `iconActive`. Собран из: icon
 - [x] **item_menu** — `type` (up / middle / down); пропсы `label`, `icon`. Собран из: icon
 - [x] **edit_card** — пропсы `title`, `left`, `right`. Собран из: button
-
-Все молекулы собраны.
+- [x] **week_calendar** — пропсы `days`, `activeIndex`; прозрачность по удалению от активного дня (100/40/20%). Собран из: date_item. _(добавлен для flow_1: Home)_
+- [x] **stats_summary** — пропсы `items` (label/value/delta); лейбл `secondary_black`, значение `text-and-icon/white`, дельта `green` (всё body_1); первые колонки flex-1, последняя по контенту (раскладка по ширине). Pending/Approved/Earned на Home. _(добавлен для flow_1: Home)_
+- [x] **datetime_row** — пропсы `title`, `subtitle`; эмодзи-календарь + тексты + Edit. Собран из: button. Строка даты/времени на экране тренировки. _(добавлен для flow_1: Training)_
 
 ---
 
@@ -62,6 +64,9 @@
 - [x] **wall_card** — `type` (vote / recognitions / post); проп `description`. Собран из: reaction, person_tag, avatar, avatar_reaction, tag, icon_button, icon
 - [x] **stats_card** — `type` (employee / manager); employee: бар-чарт по дням, manager: 2 плитки. Собран из: button, icon_button
 - [x] **possibilities_card** — `unlock` (yes/no); медаль + unlock/lock. Собран из: icon
+- [x] **status_bar** — пропсы `ink` (#ffffff / #000000), `className`; вектор из `Status Bar.svg` владельца (currentColor), прозрачный фон. Закреплён сверху экрана в `PhoneShell` (всегда виден при скролле). **НЕ срисовывать с макета заново.** Цвет ink **динамический**: вычисляется в `PhoneShell` по тому, что под баром (`elementFromPoint`) — белый над зоной с атрибутом `data-sb-dark`, иначе `#000000`. Чрома устройства iOS — не из секций `d-*`, но нужна для рендера фреймов. _(добавлен для flow_1)_
+
+> Примечание по flow_1: расширены существующие компоненты — **header** (необязательный `title`, настраиваемая/скрываемая правая кнопка `rightIcon`, `onBack`/`onRight`), **bank-goal** (`buttonLabel`), **important_information** (дефолт «POS loans», `onSchedule`), **employee_card** (`statusIcon`, `actions`, `showOffers`, `onClick`, опциональный `pendingLabel`), **card_button** (`fluid`, `onClick`), **button**/**icon_button** (`onClick`). Стили не менялись — только пропы для вариантов из макета и кликабельности.
 
 ---
 

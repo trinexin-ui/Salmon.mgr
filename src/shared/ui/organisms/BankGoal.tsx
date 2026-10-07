@@ -5,6 +5,7 @@ type BankGoalProps = {
   label?: string
   title?: string
   progress?: number
+  buttonLabel?: string
   getLabel?: string
   getValue?: string
   needLabel?: string
@@ -18,6 +19,7 @@ export function BankGoal({
   label = 'Bank bonus',
   title = '34 of 50 offers',
   progress = 0.71,
+  buttonLabel = 'View All',
   getLabel = 'Get',
   getValue = '₱2,000',
   needLabel = 'Need offers',
@@ -37,7 +39,7 @@ export function BankGoal({
           <span className="type-body_1 text-text-and-icon-secondary_black">{label}</span>
           <span className="type-h2 text-text-and-icon-white">{title}</span>
         </div>
-        <Button label="View All" state="tertiary" color="black" />
+        <Button label={buttonLabel} state="tertiary" color="black" />
       </div>
       <div className="flex flex-col gap-s">
         <div

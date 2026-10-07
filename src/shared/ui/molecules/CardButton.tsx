@@ -4,6 +4,8 @@ type CardButtonProps = {
   label: string
   icon?: IconName
   notification?: boolean
+  fluid?: boolean
+  onClick?: () => void
   className?: string
 }
 
@@ -14,14 +16,18 @@ export function CardButton({
   label,
   icon = 'book',
   notification = false,
+  fluid = false,
+  onClick,
   className,
 }: CardButtonProps) {
   return (
     <button
       type="button"
-      style={{ width: 118, borderRadius: 'var(--radius-l)' }}
+      onClick={onClick}
+      style={{ width: fluid ? undefined : 118, borderRadius: 'var(--radius-l)' }}
       className={[
-        'relative inline-flex cursor-pointer flex-col items-center justify-center gap-s bg-project-on_white-gray_2 p-m',
+        'relative cursor-pointer flex-col items-center justify-center gap-s bg-project-on_white-gray_2 p-m',
+        fluid ? 'flex w-full' : 'inline-flex',
         className ?? '',
       ].join(' ')}
     >

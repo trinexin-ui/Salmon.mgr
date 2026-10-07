@@ -4,6 +4,7 @@ type IconButtonProps = {
   icon: IconName
   color?: 'black' | 'gray'
   size?: 'big' | 'middle' | 'small'
+  onClick?: () => void
   className?: string
 }
 
@@ -13,12 +14,19 @@ type IconButtonProps = {
 const PADDING = { big: 'p-m', middle: 'p-s', small: 'p-xxs' } as const
 const GLYPH = { big: 20, middle: 16, small: 16 } as const
 
-export function IconButton({ icon, color = 'black', size = 'big', className }: IconButtonProps) {
+export function IconButton({
+  icon,
+  color = 'black',
+  size = 'big',
+  onClick,
+  className,
+}: IconButtonProps) {
   const bg = color === 'black' ? 'bg-project-on_black-gray_1' : 'bg-project-on_white-gray_2'
   const ink = color === 'black' ? 'text-project-white' : 'text-text-and-icon-primary'
   return (
     <button
       type="button"
+      onClick={onClick}
       className={[
         'inline-flex cursor-pointer items-center justify-center rounded-max',
         PADDING[size],

@@ -1,0 +1,60 @@
+/* Prototype-only chrome: soft screen transitions, cursor rules, inactive hint.
+ * No design tokens are defined here — only prototype behavior. */
+
+/* Soft transition between screens (no full page reload). */
+@keyframes screen-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.screen-anim {
+  animation: screen-in 220ms ease-out;
+}
+
+/* Hide scrollbars inside the phone (scrolling still works). */
+.phone-screen,
+.hide-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* legacy Edge */
+}
+.phone-screen::-webkit-scrollbar,
+.hide-scrollbar::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+/* Only wired path controls ([data-ui-path]) show a pointer; everything else in a
+ * screen keeps the default cursor, even kit controls that render cursor-pointer. */
+.phone-screen button,
+.phone-screen [role='button'],
+.phone-screen .cursor-pointer {
+  cursor: default;
+}
+.phone-screen [data-ui-path],
+.phone-screen [data-ui-path] * {
+  cursor: pointer;
+}
+
+/* "этого нет в сценарии" hint bubble. */
+@keyframes hint-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.proto-hint {
+  position: fixed;
+  z-index: 50;
+  transform: translate(-50%, -140%);
+  white-space: nowrap;
+  pointer-events: none;
+  animation: hint-in 140ms ease-out;
+}

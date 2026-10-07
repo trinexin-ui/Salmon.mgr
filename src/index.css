@@ -68,6 +68,9 @@
 /* ---- Gradient primitives (stops exported from Figma) ---- */
 :root {
   --gradient-white_gray: linear-gradient(255deg, #9c9c9c 0%, #ffffff 100%);
+  /* Same white_gray stops, positioned for the avatar stroke (Figma per-node transform):
+     light to the top-left, gray to the bottom-right. */
+  --gradient-white_gray_avatar: linear-gradient(315deg, #9c9c9c 0%, #ffffff 100%);
   --gradient-black_gold: linear-gradient(
     90deg,
     #2a2a2a 0%,
@@ -81,6 +84,9 @@
 
 @utility bg-gradient-white_gray {
   background-image: var(--gradient-white_gray);
+}
+@utility bg-gradient-white_gray_avatar {
+  background-image: var(--gradient-white_gray_avatar);
 }
 @utility bg-gradient-black_gold {
   background-image: var(--gradient-black_gold);
@@ -139,6 +145,9 @@
     font-size: 14px;
     line-height: 20px;
     letter-spacing: -0.7px;
+    /* Figma: Vertical trim — Cap height to baseline. */
+    text-box-trim: trim-both;
+    text-box-edge: cap alphabetic;
   }
   .type-caption_1 {
     font-family: var(--font-text);
