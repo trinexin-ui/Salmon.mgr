@@ -16,6 +16,11 @@
   animation: screen-in 220ms ease-out;
 }
 
+/* No rubber-band / pull-to-refresh chaining out of the screen on a phone. */
+.phone-screen {
+  overscroll-behavior: none;
+}
+
 /* Hide scrollbars inside the phone (scrolling still works). */
 .phone-screen,
 .hide-scrollbar {

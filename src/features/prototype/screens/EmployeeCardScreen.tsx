@@ -19,7 +19,7 @@ export function EmployeeCardScreen() {
     <div className="flex min-h-full flex-col bg-project-gray_bg">
       {/* Pinned nav: back + "..." stay on top while the page scrolls, over a backdrop
           that matches the page background. */}
-      <div className="sticky top-0 z-10 bg-project-gray_bg px-l pb-xs_1" style={{ paddingTop: 74 }}>
+      <div className="sticky top-0 z-10 bg-project-gray_bg px-l pb-xs_1" style={{ paddingTop: 'var(--status-h)' }}>
         <Header rightIcon="horizontal" onBack={() => navigate('/')} />
       </div>
 

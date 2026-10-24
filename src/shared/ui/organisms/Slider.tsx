@@ -140,6 +140,8 @@ export function Slider({
         style={{
           borderRadius: 'var(--radius-s)',
           height: 71,
+          // a touch drag moves the thumb instead of scrolling the page
+          touchAction: 'none',
           // Figma: slider track gradient — smooth symmetric vignette, light-gray
           // edges fading to white centre. Dark stops (gray_3) sit past the element
           // (−32.25% / 132.25%) so the gradient bleeds beyond the border without a

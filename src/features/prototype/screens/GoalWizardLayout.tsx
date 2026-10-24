@@ -27,7 +27,7 @@ export function GoalWizardLayout({
   return (
     <div className="relative flex h-full flex-col bg-project-gray_bg">
       {/* Pinned top: header + step bar. */}
-      <div className="flex shrink-0 flex-col gap-2xxl bg-project-gray_bg px-l" style={{ paddingTop: 74 }}>
+      <div className="flex shrink-0 flex-col gap-2xxl bg-project-gray_bg px-l" style={{ paddingTop: 'var(--status-h)' }}>
         <Header
           title="Set team goal"
           rightIcon="close"

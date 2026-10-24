@@ -9,6 +9,7 @@ import { PathLink } from '@/features/prototype/PathLink'
 import { useFlow } from '@/features/prototype/flow'
 import { BottomSheet } from '@/shared/ui/organisms/BottomSheet'
 import { MomentsBackdrop } from '@/features/prototype/screens/MomentsScreen'
+import { useShell } from '@/features/prototype/shell'
 import { usePull } from '@/features/prototype/usePull'
 
 type Card = { kind: 'Pinned' | 'Recognitions' | 'Posts'; card: Parameters<typeof WallCard>[0] }
@@ -66,8 +67,6 @@ const CARDS: Card[] = [
   },
 ]
 
-// Wall status-bar zone above the pull handle (the status bar sits over it).
-const TOP = 74
 // Distance the grabber sits below the sheet's top edge in the Moments sheet (BottomSheet pt-xs_1).
 const SHEET_PAD = 4
 
@@ -78,6 +77,9 @@ const SHEET_PAD = 4
 // cards.
 export function ShoutoutsScreen() {
   const navigate = useNavigate()
+  // top band above the pull handle (the status bar sits over it on desktop); scale — screen px per
+  // design px (measured rects are in screen px)
+  const { top: TOP, scale } = useShell()
   const { pathname } = useLocation()
   const open = pathname.endsWith('/moments')
   const { pinnedSeen, setPinnedSeen } = useFlow()
@@ -95,7 +97,8 @@ export function ShoutoutsScreen() {
   // Two passes: the tab bar height first (it sets the invisible sheet's footer), then the rest.
   useLayoutEffect(() => {
     const tab = tabRef.current?.getBoundingClientRect()
-    if (tab) setM((v) => ({ ...v, tab: tab.height }))
+    if (tab) setM((v) => ({ ...v, tab: tab.height / scale }))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   useLayoutEffect(() => {
     if (!m.tab) return
@@ -106,16 +109,17 @@ export function ShoutoutsScreen() {
     if (!root || !anchor) return
     setM((v) => ({
       ...v,
-      sheetTop: anchor.top - root.top,
-      caption: caption?.getBoundingClientRect().height ?? 0,
+      sheetTop: (anchor.top - root.top) / scale,
+      caption: (caption?.getBoundingClientRect().height ?? 0) / scale,
     }))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [m.tab])
 
   // The sheet's grabber must end up where the Moments sheet's grabber is.
   const distance = m.sheetTop + SHEET_PAD - TOP
   const clipTop = m.sheetTop - distance
 
-  const pull = usePull(distance, open ? 1 : 0, scrollRef, (isOpen) => {
+  const pull = usePull(distance, scale, open ? 1 : 0, scrollRef, rootRef, (isOpen) => {
     navigate(isOpen ? '/shoutouts/moments' : '/shoutouts', { replace: true })
   })
   const p = pull.progress

@@ -10,7 +10,7 @@ export function TrainingScreen() {
 
   return (
     <div className="flex min-h-full flex-col bg-project-gray_bg">
-      <div className="px-l" style={{ paddingTop: 74 }}>
+      <div className="px-l" style={{ paddingTop: 'var(--status-h)' }}>
         <Header title="Training" rightIcon={null} onBack={() => navigate('/employee')} />
       </div>
 
