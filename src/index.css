@@ -80,6 +80,23 @@
     #2a2a2a 100%
   );
   --gradient-gold: linear-gradient(90deg, #6c6459 0%, #eeddc4 56.438%, #6c6459 108.7%);
+  /* Prize label (selected tile): gold with the peak at 45% and Figma's in-between stops. */
+  --gradient-gold_label: linear-gradient(
+    90deg,
+    #6c6459 0%,
+    #9f9483 24.426%,
+    #eeddc4 45.338%,
+    #afa290 71.793%,
+    #6c6459 100%
+  );
+  --gradient-silver: linear-gradient(
+    90deg,
+    #696969 0%,
+    #c7c7c7 25%,
+    #dddddd 50%,
+    #c7c7c7 75%,
+    #696969 99.519%
+  );
 }
 
 @utility bg-gradient-white_gray {
@@ -93,6 +110,12 @@
 }
 @utility bg-gradient-gold {
   background-image: var(--gradient-gold);
+}
+@utility bg-gradient-gold_label {
+  background-image: var(--gradient-gold_label);
+}
+@utility bg-gradient-silver {
+  background-image: var(--gradient-silver);
 }
 
 /* ---- Typography styles (one class per Figma text style) ---- */

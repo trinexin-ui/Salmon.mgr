@@ -2,30 +2,95 @@ import { Avatar } from '@/shared/ui/atoms/Avatar'
 import { AvatarReaction } from '@/shared/ui/atoms/AvatarReaction'
 import { IconButton } from '@/shared/ui/atoms/IconButton'
 import { Tag } from '@/shared/ui/atoms/Tag'
+import { type SmileName } from '@/shared/ui/atoms/SmileReaction'
 import { Icon } from '@/shared/ui/icons/Icon'
 import { Reaction } from '@/shared/ui/molecules/Reaction'
 import { PersonTag } from '@/shared/ui/molecules/PersonTag'
-import { type Person } from '@/shared/ui/avatars/people'
+import { PEOPLE, type Person } from '@/shared/ui/avatars/people'
 import bellUrl from '@/shared/ui/illustrations/bell.png'
+import flameUrl from '@/shared/ui/illustrations/shoutout-flame.png'
+import ribbonUrl from '@/shared/ui/illustrations/shoutout-ribbon.png'
+
+const ILLUSTRATIONS = { bell: bellUrl, flame: flameUrl, ribbon: ribbonUrl } as const
+
+export type WallReaction = {
+  smile: SmileName
+  type?: 'default' | 'more3'
+  active?: boolean
+  people?: Person[]
+  count?: number
+}
 
 type WallCardProps = {
   type?: 'vote' | 'recognitions' | 'post'
+  // post: show the "You" caption under the author (kept for the old API)
   description?: boolean
+  // recognitions
+  illustration?: keyof typeof ILLUSTRATIONS
+  person?: Person
+  text?: string
+  // recognitions / post
+  reactions?: WallReaction[]
+  time?: string
+  // post
+  author?: Person
+  subtitle?: string
+  lines?: string[]
   className?: string
 }
 
 const VOTE_PEOPLE: Person[] = ['louis-bautista', 'lyn-dela-cruz', 'jun-reyes', 'jose-reyes']
 const REACT_PEOPLE: Person[] = ['louis-bautista', 'lyn-dela-cruz', 'jun-reyes']
 
+const DEFAULT_LINES = [
+  'Thanks everyone who helped with the walk-ins',
+  'this afternoon. We were so fast when we',
+  'worked together',
+]
+
+function Reactions({ items }: { items: WallReaction[] }) {
+  return (
+    <div className="flex items-center gap-s">
+      {items.map((r, i) => (
+        <Reaction
+          key={i}
+          smile={r.smile}
+          type={r.type}
+          active={r.active}
+          people={r.people}
+          count={r.count}
+        />
+      ))}
+    </div>
+  )
+}
+
 // Figma: d-organism/wall_card (type vote/recognitions/post). White card, rounded-l.
 // vote: title+Pin + "Voting open" tag + prompt + avatar stack + "X of Y responded" progress.
 // recognitions: illustration + person_tag + quote + reactions + time.
-// post: author (avatar+name) + menu + text bubbles (tight, no gap) + reaction + time.
+// post: author (avatar+name[+caption]) + menu + text bubbles (tight, no gap) + reactions + time.
+// Данные recognitions / post — пропсами (без пропсов выглядят как раньше).
 // Собран из: reaction, person_tag, avatar, avatar_reaction, tag, icon_button, icon.
-export function WallCard({ type = 'vote', description = false, className }: WallCardProps) {
+export function WallCard({
+  type = 'vote',
+  description = false,
+  illustration = 'bell',
+  person = 'maria-santos',
+  text = 'Closed three offers before lunch. Unstoppable!',
+  reactions,
+  time,
+  author = 'lyn-dela-cruz',
+  subtitle,
+  lines = DEFAULT_LINES,
+  className,
+}: WallCardProps) {
   const base = 'flex w-full flex-col bg-project-white'
 
   if (type === 'recognitions') {
+    const items: WallReaction[] = reactions ?? [
+      { smile: 'heart', people: REACT_PEOPLE },
+      { smile: 'heart', type: 'more3', active: true, count: 5 },
+    ]
     return (
       <div
         style={{ borderRadius: 'var(--radius-l)' }}
@@ -34,31 +99,28 @@ export function WallCard({ type = 'vote', description = false, className }: Wall
         )}
       >
         <div className="flex w-full flex-col items-center gap-2xl">
-          <img src={bellUrl} alt="" className="object-contain" style={{ width: 80, height: 80 }} />
+          <img
+            src={ILLUSTRATIONS[illustration]}
+            alt=""
+            className="object-contain"
+            style={{ width: 80, height: 80 }}
+          />
           <div className="flex w-full flex-col items-center gap-s">
-            <PersonTag person="maria-santos" />
-            <span className="type-h2 text-center text-text-and-icon-primary">
-              Closed three offers before lunch. Unstoppable!
-            </span>
+            <PersonTag person={person} />
+            <span className="type-h2 text-center text-text-and-icon-primary">{text}</span>
           </div>
         </div>
         <div className="flex w-full items-center justify-between">
-          <div className="flex items-center gap-s">
-            <Reaction smile="heart" people={REACT_PEOPLE} />
-            <Reaction smile="heart" type="more3" active count={5} />
-          </div>
-          <span className="type-body_2 text-text-and-icon-secondary_white">6 min ago</span>
+          <Reactions items={items} />
+          <span className="type-body_2 text-text-and-icon-secondary_white">{time ?? '6 min ago'}</span>
         </div>
       </div>
     )
   }
 
   if (type === 'post') {
-    const lines = [
-      'Thanks everyone who helped with the walk-ins',
-      'this afternoon. We were so fast when we',
-      'worked together',
-    ]
+    const items: WallReaction[] = reactions ?? [{ smile: 'heart', people: REACT_PEOPLE }]
+    const caption = subtitle ?? (description ? 'You' : undefined)
     return (
       <div
         style={{ borderRadius: 'var(--radius-l)' }}
@@ -66,11 +128,13 @@ export function WallCard({ type = 'vote', description = false, className }: Wall
       >
         <div className="flex w-full items-center justify-between">
           <div className="flex items-center gap-m">
-            <Avatar person="lyn-dela-cruz" size={44} />
+            <Avatar person={author} size={44} />
             <div className="flex flex-col justify-center gap-xxs">
-              <span className="type-h3 text-text-and-icon-primary">Lyn Dela Cruz</span>
-              {description && (
-                <span className="type-body_2 text-text-and-icon-secondary_white">You</span>
+              <span className="type-h3 whitespace-nowrap text-text-and-icon-primary">
+                {PEOPLE[author]}
+              </span>
+              {caption && (
+                <span className="type-body_2 text-text-and-icon-secondary_white">{caption}</span>
               )}
             </div>
           </div>
@@ -80,15 +144,15 @@ export function WallCard({ type = 'vote', description = false, className }: Wall
           {lines.map((l) => (
             <span
               key={l}
-              className="type-body_1 inline-flex items-center rounded-max bg-project-gray_bg px-s py-xs_1 text-text-and-icon-primary"
+              className="type-body_1 inline-flex items-center whitespace-nowrap rounded-max bg-project-gray_bg px-s py-xs_1 text-text-and-icon-primary"
             >
               {l}
             </span>
           ))}
         </div>
         <div className="flex w-full items-center justify-between">
-          <Reaction smile="heart" people={REACT_PEOPLE} />
-          <span className="type-body_2 text-text-and-icon-secondary_white">3:56 PM</span>
+          <Reactions items={items} />
+          <span className="type-body_2 text-text-and-icon-secondary_white">{time ?? '3:56 PM'}</span>
         </div>
       </div>
     )

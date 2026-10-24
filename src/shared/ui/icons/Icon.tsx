@@ -51,15 +51,27 @@ export type IconName =
 
 export const iconNames = Object.keys(inner).sort() as IconName[]
 
+// `lineWidth` — rendered stroke thickness in px. By default the stroke scales with the icon
+// (1.5 in the 24px box); pass it to keep a line as thin as on a smaller icon, e.g. the slider
+// handle (33px) uses the same 1.25px line as the 20px chevron / close in the header.
 export function Icon({
   name,
   size = 24,
+  lineWidth,
   className,
 }: {
   name: IconName
   size?: number
+  lineWidth?: number
   className?: string
 }) {
+  const html =
+    lineWidth === undefined
+      ? (inner[name] ?? '')
+      : (inner[name] ?? '').replace(
+          /stroke-width="[^"]*"/g,
+          `stroke-width="${((lineWidth * 24) / size).toFixed(3)}"`,
+        )
   return (
     <svg
       width={size}
@@ -69,7 +81,7 @@ export function Icon({
       className={className}
       aria-hidden="true"
       focusable="false"
-      dangerouslySetInnerHTML={{ __html: inner[name] ?? '' }}
+      dangerouslySetInnerHTML={{ __html: html }}
     />
   )
 }

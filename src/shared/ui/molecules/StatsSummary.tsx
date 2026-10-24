@@ -1,25 +1,10 @@
+import { Delta } from '@/shared/ui/atoms/Delta'
+
 export type SummaryStat = { label: string; value: string; delta: string }
 
 type StatsSummaryProps = {
   items: SummaryStat[]
   className?: string
-}
-
-// Small upward delta triangle (Figma Polygon 2), green.
-function DeltaUp() {
-  return (
-    <span
-      aria-hidden
-      className="inline-block shrink-0"
-      style={{
-        width: 0,
-        height: 0,
-        borderLeft: '5px solid transparent',
-        borderRight: '5px solid transparent',
-        borderBottom: '7px solid var(--color-project-green)',
-      }}
-    />
-  )
 }
 
 // Figma: home summary row — Pending / Approved / Earned. Each: label (secondary_black)
@@ -41,10 +26,7 @@ export function StatsSummary({ items, className }: StatsSummaryProps) {
             <span className="text-text-and-icon-secondary_black">{s.label}</span>
             <span className="text-text-and-icon-white">{s.value}</span>
           </div>
-          <div className="flex items-center gap-xs_1">
-            <DeltaUp />
-            <span className="type-body_1 text-project-green">{s.delta}</span>
-          </div>
+          <Delta direction="up" label={s.delta} />
         </div>
       ))}
     </div>

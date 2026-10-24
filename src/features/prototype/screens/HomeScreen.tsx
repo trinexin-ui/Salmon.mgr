@@ -108,11 +108,23 @@ const CARDS: Card[] = [
 
 export function HomeScreen() {
   const navigate = useNavigate()
-  const { setScheduled } = useFlow()
+  const { setScheduled, setGoalSent, setPinnedSeen } = useFlow()
 
   function openJose() {
     setScheduled(false)
     navigate('/employee')
+  }
+
+  // flow_4 entry: the Shoutouts tab opens the wall (Pinned shows "new" again).
+  function openShoutouts() {
+    setPinnedSeen(false)
+    navigate('/shoutouts')
+  }
+
+  // flow_2 entry: the bank-goal card opens Period plan (banner shown again).
+  function openPeriodPlan() {
+    setGoalSent(false)
+    navigate('/period-plan')
   }
 
   return (
@@ -124,7 +136,10 @@ export function HomeScreen() {
         <div className="flex flex-col gap-xxl px-l pb-2xxl" style={{ paddingTop: 74 }}>
           <div className="flex items-center justify-between">
             <SegmentButton items={['D', 'W', 'M']} activeIndex={0} />
-            <Avatar person="louis-bautista" size={44} />
+            {/* flow_3 entry: the manager avatar opens the profile. */}
+            <PathLink onClick={() => navigate('/profile')}>
+              <Avatar person="louis-bautista" size={44} />
+            </PathLink>
           </div>
           <WeekCalendar days={WEEK} activeIndex={2} />
           <StatsSummary items={SUMMARY} />
@@ -151,7 +166,11 @@ export function HomeScreen() {
         {/* Scrolling white sheet. A transparent spacer reveals the bank-goal; the sheet's
             rounded top is a sticky backdrop that pins at the cap; cards clip at that line. */}
         <div className="hide-scrollbar absolute inset-0 overflow-y-auto">
-          <div style={{ height: 203 }} />
+          {/* The transparent spacer sits over the static bank-goal, so it carries the
+              flow_2 link to Period plan (the card itself is not reachable through it). */}
+          <PathLink onClick={openPeriodPlan}>
+            <div style={{ height: 203 }} />
+          </PathLink>
 
           <div className="relative">
             <div className="pointer-events-none sticky top-0 z-0" style={{ height: 0 }}>
@@ -174,7 +193,7 @@ export function HomeScreen() {
             </div>
 
             <div className="sticky bottom-0 z-20">
-              <TabBar />
+              <TabBar links={{ shoutouts: openShoutouts }} />
             </div>
           </div>
         </div>

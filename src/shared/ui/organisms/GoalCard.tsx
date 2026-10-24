@@ -1,5 +1,6 @@
+import { type ReactNode } from 'react'
 import { Radiobutton } from '@/shared/ui/atoms/Radiobutton'
-import goalImg from '@/shared/ui/illustrations/goal-card.png'
+import { GOAL_ILLUSTRATIONS, type GoalIllustration } from '@/shared/ui/illustrations/goalIllustrations'
 
 type GoalCardProps = {
   type?: 'period_plan' | 'distribution'
@@ -8,13 +9,18 @@ type GoalCardProps = {
   subtitle?: string
   amount?: string
   selected?: boolean
+  illustration?: GoalIllustration
+  onClick?: () => void
+  // distribution: content shown under the title row (Hybrid — the embedded slider)
+  children?: ReactNode
   className?: string
 }
 
 // Figma: d-organism/goal_card (type period_plan/distribution). White card + radiobutton.
 // period_plan: fixed 140px card, category + title (top) + gold amount (bottom), with the
 // img_goal-card coins illustration absolutely placed at left:16/top:53 (clipped).
-// distribution: title + subtitle. Собран из: radiobutton, img_goal-card.
+// distribution: title + subtitle (+ `children` под строкой — у Hybrid встроенный slider).
+// Собран из: radiobutton, img_goal-card.
 export function GoalCard({
   type = 'period_plan',
   category = 'Realistic',
@@ -22,29 +28,35 @@ export function GoalCard({
   subtitle = 'Split evenly ₱6,000 across all team',
   amount = '₱5,000',
   selected = false,
+  illustration = 'coins',
+  onClick,
+  children,
   className,
 }: GoalCardProps) {
   if (type === 'distribution') {
     return (
       <div
         style={{ borderRadius: 'var(--radius-l)' }}
-        className={['flex w-full items-center gap-xl bg-project-white p-l', className ?? ''].join(
-          ' ',
-        )}
+        onClick={onClick}
+        className={['flex w-full flex-col gap-2xl bg-project-white p-l', className ?? ''].join(' ')}
       >
-        <div className="flex flex-1 flex-col gap-s">
-          <span className="type-h3 text-text-and-icon-primary">{title ?? 'Equal'}</span>
-          {subtitle && (
-            <span className="type-body_2 text-text-and-icon-secondary_white">{subtitle}</span>
-          )}
+        <div className="flex w-full items-center gap-xl">
+          <div className="flex flex-1 flex-col gap-s">
+            <span className="type-h3 text-text-and-icon-primary">{title ?? 'Equal'}</span>
+            {subtitle && (
+              <span className="type-body_2 text-text-and-icon-secondary_white">{subtitle}</span>
+            )}
+          </div>
+          <Radiobutton active={selected} />
         </div>
-        <Radiobutton active={selected} />
+        {children}
       </div>
     )
   }
   return (
     <div
       style={{ borderRadius: 'var(--radius-l)', height: 140 }}
+      onClick={onClick}
       className={[
         'relative flex w-full flex-col overflow-hidden bg-project-white p-l',
         className ?? '',
@@ -64,7 +76,7 @@ export function GoalCard({
       </div>
       {/* Figma: img_goal-card — coins, absolute left:16 / top:53, clipped by the card. */}
       <img
-        src={goalImg}
+        src={GOAL_ILLUSTRATIONS[illustration]}
         alt=""
         className="pointer-events-none absolute"
         style={{ left: 16, top: 53, width: 110, height: 110, objectFit: 'contain', objectPosition: 'bottom' }}

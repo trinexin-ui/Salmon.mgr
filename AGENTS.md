@@ -20,7 +20,7 @@ Claude Code читает `CLAUDE.md` (ссылается сюда), Codex — э
 
 Цвета-роли (20): `text-and-icon/primary`, `text-and-icon/secondary_white`, `text-and-icon/secondary_black`, `text-and-icon/white`, `project/action`, `project/active_state`, `project/black_bg`, `project/gray_bg`, `project/white`, `project/blue`, `project/green`, `project/orange`, `project/red`, `project/on_black/gray_1`, `project/on_black/gray_2`, `project/on_white/gray_1`, `project/on_white/gray_2`, `project/on_white/gray_3`, `line/on_white/gray_1`, `line/on_black/gray`.
 
-Градиенты (3): `d/linear-white_gray`, `d/linear-black_gold`, `d/linear-gold`.
+Градиенты (5): `d/linear-white_gray`, `d/linear-black_gold`, `d/linear-gold`, `d/linear-silver`, `d/linear-gold_label`.
 
 Стили текста (9): `d/H1`, `d/H2`, `d/H3`, `d/body_1`, `d/body_2`, `d/button_input_1`, `d/button_input_2`, `d/caption_1`, `d/caption_2`.
 
@@ -32,11 +32,11 @@ Claude Code читает `CLAUDE.md` (ссылается сюда), Codex — э
 
 Основа: токены (DESIGN.md), иконки (32), аватары (8 персон), смайлы (5), иллюстрации.
 
-Атомы (`src/shared/ui/atoms`): `radiobutton`, `icon_button`, `tag`, `step_item`, `chips`, `button`, `input`, `smile_reaction`, `avatar_reaction`, `avatar`, `pattern`, `img_goal-card` (изображение), `date_item`.
+Атомы (`src/shared/ui/atoms`): `radiobutton`, `icon_button`, `tag`, `step_item`, `chips`, `button`, `input`, `smile_reaction`, `avatar_reaction`, `avatar`, `pattern`, `img_goal-card` (изображение), `date_item`, `progress_bar`, `delta`, `gauge`, `grabber`, `grid_pattern`.
 
-Молекулы (`src/shared/ui/molecules`): `reaction`, `person_tag`, `card_button`, `segment_button`, `step_bar`, `chips_group`, `tab`, `item_menu`, `edit_card`, `week_calendar`, `stats_summary`, `datetime_row`.
+Молекулы (`src/shared/ui/molecules`): `reaction`, `person_tag`, `card_button`, `segment_button`, `step_bar`, `chips_group`, `tab`, `item_menu`, `edit_card`, `week_calendar`, `stats_summary`, `datetime_row`, `goal_banner`, `contribution_row`, `prize_tile`, `pull_handle`, `moment_tile`.
 
-Организмы (`src/shared/ui/organisms`): `header`, `tab_bar`, `menu`, `bank-goal`, `important_information`, `name_row`, `possibilities_card`, `slider`, `goal_card`, `employee_card`, `stats_card`, `wall_card`, `status_bar`.
+Организмы (`src/shared/ui/organisms`): `header`, `tab_bar`, `menu`, `bank-goal`, `important_information`, `name_row`, `possibilities_card`, `slider`, `goal_card`, `employee_card`, `stats_card`, `wall_card`, `status_bar`, `chart_card`, `goal_progress_card`, `contribution_card`, `prize_card`, `goal_summary`, `success_notice`, `profile_hero`, `league_card`, `moment_cluster`, `bottom_sheet`.
 
 Собрал компонент — допиши строку в этот список и отметь галочкой в `docs/ui-kit.md`.
 

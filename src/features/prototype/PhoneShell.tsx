@@ -35,6 +35,21 @@ export function PhoneShell() {
     return () => cancelAnimationFrame(id)
   }, [location.pathname])
 
+  // A screen whose backdrop changes without a route change (e.g. a pinned header turning light
+  // over a white sheet) asks for a fresh ink with `window.dispatchEvent(new Event('proto:ink'))`.
+  useEffect(() => {
+    let raf = 0
+    const onInk = () => {
+      cancelAnimationFrame(raf)
+      raf = requestAnimationFrame(updateInk)
+    }
+    window.addEventListener('proto:ink', onInk)
+    return () => {
+      window.removeEventListener('proto:ink', onInk)
+      cancelAnimationFrame(raf)
+    }
+  }, [])
+
   function onContentClick(e: MouseEvent) {
     const el = e.target as HTMLElement
     if (el.closest('[data-ui-path]')) return
@@ -73,7 +88,10 @@ export function PhoneShell() {
         {/* Titanium outer rim */}
         <div className="bg-gradient-white_gray" style={{ padding: 3, borderRadius: 66 }}>
           {/* Black bezel */}
-          <div className="bg-project-black_bg" style={{ padding: 13, borderRadius: 63 }}>
+          <div
+            className="relative overflow-hidden bg-project-black_bg"
+            style={{ padding: 13, borderRadius: 63 }}
+          >
             {/* Screen */}
             <div
               className="relative overflow-hidden bg-project-gray_bg"
@@ -109,6 +127,24 @@ export function PhoneShell() {
                 }}
               />
             </div>
+
+            {/* Corner mask. A browser (Firefox) may not clip nested scrolling layers to the screen's
+                border-radius, so the square corners of the screen content would stick out over the
+                bezel. This mask sits on the bezel (outside the screen, so the screen's clip does not
+                apply to it) and paints the corner wedges around the rounded screen in the bezel color. */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute"
+              style={{
+                zIndex: 40,
+                left: 13,
+                top: 13,
+                width: 402,
+                height: 874,
+                borderRadius: 50,
+                boxShadow: '0 0 0 24px var(--color-project-black_bg)',
+              }}
+            />
           </div>
         </div>
       </div>
