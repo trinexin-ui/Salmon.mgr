@@ -7,6 +7,7 @@ import { ChartCard } from '@/shared/ui/organisms/ChartCard'
 import { GoalProgressCard } from '@/shared/ui/organisms/GoalProgressCard'
 import { ContributionCard } from '@/shared/ui/organisms/ContributionCard'
 import { PathLink } from '@/features/prototype/PathLink'
+import { useShell } from '@/features/prototype/shell'
 import { useFlow } from '@/features/prototype/flow'
 
 // Stub data (rule 6: data inline in code).
@@ -20,15 +21,16 @@ const ROWS = [
 ] as const
 
 // The pinned header turns light (gray backing) once the white sheet rises under it: when the
-// sheet's top edge is within this many px of the screen top (the band is 122px, the sheet's
-// rounded corner is 24px, so the band always covers the corners).
-const HEADER_SWITCH = 98
+// sheet's top edge is within the top band + 24px of the screen top (the band is the top band +
+// header, the sheet's rounded corner is 24px, so the band always covers the corners).
+const SWITCH_BELOW_TOP = 24
 
 // Figma d-team_goal (3094:14320). Dark top (banner, progress) + white sheet. As on Home, the dark
 // block stays put and the white sheet rises over it; the header is pinned and, over the white
 // sheet, gets a gray backing and the light colors of the employee screen.
 export function PeriodPlanScreen() {
   const navigate = useNavigate()
+  const { top: bandTop, scale } = useShell()
   const { goalSent, resetGoal } = useFlow()
   const rootRef = useRef<HTMLDivElement>(null)
   const sheetRef = useRef<HTMLDivElement>(null)
@@ -44,8 +46,8 @@ export function PeriodPlanScreen() {
     const sheet = sheetRef.current
     if (!root || !sheet) return
     const top = sheet.getBoundingClientRect().top - root.getBoundingClientRect().top
-    setOver(top <= HEADER_SWITCH)
-  }, [])
+    setOver(top / scale <= bandTop + SWITCH_BELOW_TOP)
+  }, [bandTop, scale])
 
   useLayoutEffect(update, [update, goalSent])
 
@@ -60,7 +62,7 @@ export function PeriodPlanScreen() {
   const dark = (interactive: boolean) => {
     const banner = <GoalBanner title="Set a goal for the next period" subtitle="August 1–31" />
     return (
-      <div className="flex flex-col gap-xxxl px-l pb-2xxl" style={{ paddingTop: 74 }}>
+      <div className="flex flex-col gap-xxxl px-l pb-2xxl" style={{ paddingTop: 'var(--status-h)' }}>
         <div style={{ height: 44 }} />
         {!goalSent &&
           (interactive ? <PathLink onClick={openWizard}>{banner}</PathLink> : banner)}
@@ -137,7 +139,7 @@ export function PeriodPlanScreen() {
           'absolute inset-x-0 top-0 z-10 px-l pb-xs_1 transition-colors duration-150',
           over ? 'bg-project-gray_bg' : '',
         ].join(' ')}
-        style={{ paddingTop: 74 }}
+        style={{ paddingTop: 'var(--status-h)' }}
       >
         <Header
           theme={over ? 'light' : 'dark'}

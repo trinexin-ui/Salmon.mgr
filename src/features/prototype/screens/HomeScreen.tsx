@@ -133,7 +133,7 @@ export function HomeScreen() {
     // stats; then the employee cards scroll inside the white sheet.
     <div className="flex h-full flex-col overflow-hidden bg-project-black_bg">
       <div data-sb-dark className="shrink-0 bg-project-black_bg">
-        <div className="flex flex-col gap-xxl px-l pb-2xxl" style={{ paddingTop: 74 }}>
+        <div className="flex flex-col gap-xxl px-l pb-2xxl" style={{ paddingTop: 'var(--status-h)' }}>
           <div className="flex items-center justify-between">
             <SegmentButton items={['D', 'W', 'M']} activeIndex={0} />
             {/* flow_3 entry: the manager avatar opens the profile. */}
@@ -165,7 +165,12 @@ export function HomeScreen() {
 
         {/* Scrolling white sheet. A transparent spacer reveals the bank-goal; the sheet's
             rounded top is a sticky backdrop that pins at the cap; cards clip at that line. */}
-        <div className="hide-scrollbar absolute inset-0 overflow-y-auto">
+        {/* The clip follows the sheet's rounded top (radius xl), so a card scrolling up under the cap
+            line is cut along the curve instead of sticking out into the corners. */}
+        <div
+          className="hide-scrollbar absolute inset-0 overflow-y-auto"
+          style={{ clipPath: 'inset(0 round var(--radius-xl) var(--radius-xl) 0 0)' }}
+        >
           {/* The transparent spacer sits over the static bank-goal, so it carries the
               flow_2 link to Period plan (the card itself is not reachable through it). */}
           <PathLink onClick={openPeriodPlan}>

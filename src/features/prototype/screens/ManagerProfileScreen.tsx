@@ -15,7 +15,7 @@ export function ManagerProfileScreen() {
     <div className="flex min-h-full flex-col bg-project-gray_bg pb-2xxl">
       {/* Pinned nav: back + icons stay on top while the page scrolls, over a backdrop that
           matches the page background (as on the employee card). */}
-      <div className="sticky top-0 z-10 bg-project-gray_bg px-l pb-s" style={{ paddingTop: 74 }}>
+      <div className="sticky top-0 z-10 bg-project-gray_bg px-l pb-s" style={{ paddingTop: 'var(--status-h)' }}>
         <Header rightIcons={['notification', 'setting']} onBack={() => navigate(from)} />
       </div>
       <div className="flex flex-col px-l">
