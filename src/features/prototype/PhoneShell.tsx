@@ -11,6 +11,9 @@ const SB_SAMPLE_Y = 34
 // Clicks that do not land on a wired path control ([data-ui-path]) raise the inactive hint.
 export function PhoneShell() {
   const location = useLocation()
+  // Shoutouts and Moments are one screen (a sheet pulled between two states): the path changes
+  // under it without a remount.
+  const screenKey = location.pathname.startsWith('/shoutouts') ? '/shoutouts' : location.pathname
   const [hint, setHint] = useState<{ x: number; y: number } | null>(null)
   const timer = useRef<number | undefined>(undefined)
 
@@ -34,6 +37,21 @@ export function PhoneShell() {
     const id = requestAnimationFrame(updateInk)
     return () => cancelAnimationFrame(id)
   }, [location.pathname])
+
+  // A screen whose backdrop changes without a route change (e.g. a pinned header turning light
+  // over a white sheet) asks for a fresh ink with `window.dispatchEvent(new Event('proto:ink'))`.
+  useEffect(() => {
+    let raf = 0
+    const onInk = () => {
+      cancelAnimationFrame(raf)
+      raf = requestAnimationFrame(updateInk)
+    }
+    window.addEventListener('proto:ink', onInk)
+    return () => {
+      window.removeEventListener('proto:ink', onInk)
+      cancelAnimationFrame(raf)
+    }
+  }, [])
 
   function onContentClick(e: MouseEvent) {
     const el = e.target as HTMLElement
@@ -73,14 +91,17 @@ export function PhoneShell() {
         {/* Titanium outer rim */}
         <div className="bg-gradient-white_gray" style={{ padding: 3, borderRadius: 66 }}>
           {/* Black bezel */}
-          <div className="bg-project-black_bg" style={{ padding: 13, borderRadius: 63 }}>
+          <div
+            className="relative overflow-hidden bg-project-black_bg"
+            style={{ padding: 13, borderRadius: 63 }}
+          >
             {/* Screen */}
             <div
               className="relative overflow-hidden bg-project-gray_bg"
               style={{ width: 402, height: 874, borderRadius: 50 }}
             >
               <div
-                key={location.pathname}
+                key={screenKey}
                 ref={scrollRef}
                 onClick={onContentClick}
                 onScroll={updateInk}
@@ -109,6 +130,24 @@ export function PhoneShell() {
                 }}
               />
             </div>
+
+            {/* Corner mask. A browser (Firefox) may not clip nested scrolling layers to the screen's
+                border-radius, so the square corners of the screen content would stick out over the
+                bezel. This mask sits on the bezel (outside the screen, so the screen's clip does not
+                apply to it) and paints the corner wedges around the rounded screen in the bezel color. */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute"
+              style={{
+                zIndex: 40,
+                left: 13,
+                top: 13,
+                width: 402,
+                height: 874,
+                borderRadius: 50,
+                boxShadow: '0 0 0 24px var(--color-project-black_bg)',
+              }}
+            />
           </div>
         </div>
       </div>

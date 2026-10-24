@@ -1,4 +1,5 @@
 import { Button } from '@/shared/ui/atoms/Button'
+import { Delta } from '@/shared/ui/atoms/Delta'
 import { IconButton } from '@/shared/ui/atoms/IconButton'
 
 type Seg = 'green' | 'gray'
@@ -7,6 +8,8 @@ type Bar = { label: string; segments: Seg[] }
 type StatsCardProps = {
   type?: 'employee' | 'manager'
   title?: string
+  // manager: wallet button in the reward tile (profile hides it)
+  wallet?: boolean
   className?: string
 }
 
@@ -28,23 +31,6 @@ const DAYS: Bar[] = [
   { label: '29', segments: ['green', 'green'] },
 ]
 
-// Small upward delta triangle (Figma Polygon 2), green.
-function DeltaUp() {
-  return (
-    <span
-      aria-hidden
-      className="inline-block shrink-0"
-      style={{
-        width: 0,
-        height: 0,
-        borderLeft: '5px solid transparent',
-        borderRight: '5px solid transparent',
-        borderBottom: '7px solid var(--color-project-green)',
-      }}
-    />
-  )
-}
-
 function Header({ title }: { title: string }) {
   return (
     <div className="flex w-full items-center justify-between">
@@ -54,7 +40,12 @@ function Header({ title }: { title: string }) {
   )
 }
 
-export function StatsCard({ type = 'employee', title = 'Stats for July', className }: StatsCardProps) {
+export function StatsCard({
+  type = 'employee',
+  title = 'Stats for July',
+  wallet = true,
+  className,
+}: StatsCardProps) {
   if (type === 'manager') {
     return (
       <div
@@ -64,26 +55,23 @@ export function StatsCard({ type = 'employee', title = 'Stats for July', classNa
         <Header title={title} />
         <div className="flex w-full items-stretch gap-m">
           <div
-            style={{ borderRadius: 'var(--radius-m)' }}
+            style={{ borderRadius: 'var(--radius-s)' }}
             className="flex flex-1 flex-col justify-between gap-m bg-project-gray_bg p-m"
           >
             <span className="type-body_2 text-text-and-icon-secondary_white">Team offers</span>
             <div className="flex items-end gap-s">
               <span className="type-h2 text-text-and-icon-primary">120</span>
-              <div className="flex items-center gap-xs_1">
-                <DeltaUp />
-                <span className="type-body_1 text-project-green">+12%</span>
-              </div>
+              <Delta direction="up" label="+12%" />
             </div>
           </div>
           <div
-            style={{ borderRadius: 'var(--radius-m)' }}
+            style={{ borderRadius: 'var(--radius-s)' }}
             className="flex flex-1 flex-col gap-s bg-project-gray_bg p-m"
           >
             <span className="type-body_2 text-text-and-icon-secondary_white">Your reward</span>
             <div className="flex items-center justify-between">
               <span className="type-h2 text-text-and-icon-primary">₱2,500</span>
-              <IconButton icon="wallet" color="gray" size="middle" />
+              {wallet && <IconButton icon="wallet" color="gray" size="middle" />}
             </div>
           </div>
         </div>
@@ -102,10 +90,7 @@ export function StatsCard({ type = 'employee', title = 'Stats for July', classNa
           <span className="type-body_2 text-text-and-icon-secondary_white">Total earned</span>
           <div className="flex items-end gap-xs_2">
             <span className="type-h2 text-text-and-icon-primary">₱3,300</span>
-            <div className="flex items-center gap-xs_1">
-              <DeltaUp />
-              <span className="type-body_1 text-project-green">+3%</span>
-            </div>
+            <Delta direction="up" label="+3%" />
           </div>
         </div>
         <div className="flex flex-col gap-s">
@@ -164,8 +149,7 @@ function LegendRow({
       <div className="flex w-[72px] items-center justify-between">
         <span className="type-body_2 text-text-and-icon-primary">{value}</span>
         <div className="flex items-center gap-xs_1">
-          <DeltaUp />
-          <span className="type-body_2 text-project-green">{delta}</span>
+          <Delta direction="up" label={delta} size="body_2" />
         </div>
       </div>
     </div>

@@ -27,7 +27,7 @@ export function NameRow({
       className={['flex w-full flex-col gap-l bg-project-white p-l', className ?? ''].join(' ')}
     >
       <div
-        style={{ borderRadius: 'var(--radius-m)' }}
+        style={{ borderRadius: 'var(--radius-s)' }}
         className="flex items-center justify-between bg-project-gray_bg p-m"
       >
         <div className="flex items-center gap-m">

@@ -8,6 +8,7 @@ export const colorVariables: string[] = [
   'text-and-icon-white',
   'project-action',
   'project-active_state',
+  'project-moment_frame',
   'project-black_bg',
   'project-gray_bg',
   'project-white',
@@ -24,7 +25,7 @@ export const colorVariables: string[] = [
   'line-on_black-gray',
 ]
 
-export const gradients = ['white_gray', 'black_gold', 'gold'] as const
+export const gradients = ['white_gray', 'black_gold', 'gold', 'silver', 'gold_label'] as const
 
 export const typeStyles = [
   'h1',

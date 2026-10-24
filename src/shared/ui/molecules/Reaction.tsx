@@ -34,12 +34,14 @@ export function Reaction({
         <span className="type-body_1 text-text-and-icon-primary">{count}</span>
       ) : (
         <span className="flex items-center">
-          {people.slice(0, 3).map((p, i) => (
+          {/* Figma: the first avatar is on top (each next one tucks under the previous). */}
+          {people.slice(0, 3).map((p, i, list) => (
             <AvatarReaction
               key={p}
               person={p}
               size={24}
-              className={['border border-text-and-icon-white', i > 0 ? 'ml-minus_2' : ''].join(' ')}
+              style={{ zIndex: list.length - i }}
+              className={['relative border border-text-and-icon-white', i > 0 ? 'ml-minus_2' : ''].join(' ')}
             />
           ))}
         </span>

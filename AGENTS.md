@@ -20,7 +20,7 @@ Claude Code читает `CLAUDE.md` (ссылается сюда), Codex — э
 
 Цвета-роли (20): `text-and-icon/primary`, `text-and-icon/secondary_white`, `text-and-icon/secondary_black`, `text-and-icon/white`, `project/action`, `project/active_state`, `project/black_bg`, `project/gray_bg`, `project/white`, `project/blue`, `project/green`, `project/orange`, `project/red`, `project/on_black/gray_1`, `project/on_black/gray_2`, `project/on_white/gray_1`, `project/on_white/gray_2`, `project/on_white/gray_3`, `line/on_white/gray_1`, `line/on_black/gray`.
 
-Градиенты (3): `d/linear-white_gray`, `d/linear-black_gold`, `d/linear-gold`.
+Градиенты (5): `d/linear-white_gray`, `d/linear-black_gold`, `d/linear-gold`, `d/linear-silver`, `d/linear-gold_label`.
 
 Стили текста (9): `d/H1`, `d/H2`, `d/H3`, `d/body_1`, `d/body_2`, `d/button_input_1`, `d/button_input_2`, `d/caption_1`, `d/caption_2`.
 
@@ -32,11 +32,11 @@ Claude Code читает `CLAUDE.md` (ссылается сюда), Codex — э
 
 Основа: токены (DESIGN.md), иконки (32), аватары (8 персон), смайлы (5), иллюстрации.
 
-Атомы (`src/shared/ui/atoms`): `radiobutton`, `icon_button`, `tag`, `step_item`, `chips`, `button`, `input`, `smile_reaction`, `avatar_reaction`, `avatar`, `pattern`, `img_goal-card` (изображение), `date_item`.
+Атомы (`src/shared/ui/atoms`): `radiobutton`, `icon_button`, `tag`, `step_item`, `chips`, `button`, `input`, `smile_reaction`, `avatar_reaction`, `avatar`, `pattern`, `img_goal-card` (изображение), `date_item`, `progress_bar`, `delta`, `gauge`, `grabber`, `grid_pattern`, `segment`.
 
-Молекулы (`src/shared/ui/molecules`): `reaction`, `person_tag`, `card_button`, `segment_button`, `step_bar`, `chips_group`, `tab`, `item_menu`, `edit_card`, `week_calendar`, `stats_summary`, `datetime_row`.
+Молекулы (`src/shared/ui/molecules`): `reaction`, `person_tag`, `card_button`, `segment_button`, `step_bar`, `chips_group`, `tab`, `item_menu`, `edit_card`, `week_calendar`, `stats_summary`, `datetime_row`, `goal_banner`, `contribution_row`, `prize_tile`, `pull_handle`, `moment_tile`.
 
-Организмы (`src/shared/ui/organisms`): `header`, `tab_bar`, `menu`, `bank-goal`, `important_information`, `name_row`, `possibilities_card`, `slider`, `goal_card`, `employee_card`, `stats_card`, `wall_card`, `status_bar`.
+Организмы (`src/shared/ui/organisms`): `header`, `tab_bar`, `menu`, `bank-goal`, `important_information`, `name_row`, `possibilities_card`, `slider`, `goal_card`, `employee_card`, `stats_card`, `wall_card`, `status_bar`, `chart_card`, `goal_progress_card`, `contribution_card`, `prize_card`, `goal_summary`, `success_notice`, `profile_hero`, `league_card`, `moment_cluster`, `bottom_sheet`.
 
 Собрал компонент — допиши строку в этот список и отметь галочкой в `docs/ui-kit.md`.
 
@@ -46,6 +46,7 @@ Claude Code читает `CLAUDE.md` (ссылается сюда), Codex — э
 
 - **`PhoneShell`** — мокап устройства (титановая рамка `bg-gradient-white_gray`, чёрный безель, Dynamic Island, боковые кнопки), фон `project/black_bg`, по центру экран 402×874. Оборачивает каждый флоу через `Outlet` роутера; между экранами не перемонтируется (анимируется и скроллится только содержимое). Новый флоу не пересобирает мокап.
 - **`status_bar` (организм)** — готов и финален: вектор владельца (`Status Bar.svg`, `currentColor`), прозрачный, закреплён сверху, всегда виден при скролле. **Статус-бар НЕ срисовывать с макета заново и не хардкодить его цвет под экран.** Цвет (ink) **динамический**: белый над тёмным содержимым, `#000000` над светлым — вычисляется по тому, что находится под баром (`elementFromPoint` в `PhoneShell`). Чтобы тёмная зона под баром делала ink белым — пометь её атрибутом `data-sb-dark`.
+- **Шапка (`header`) на скроллящемся экране всегда закреплена** (`sticky top-0 z-10`, `bg-project-gray_bg`, `paddingTop: 74` под статус-бар), контент уезжает под неё. Образец — `EmployeeCardScreen`. Исключения: экраны без прокрутки; экран Period plan и мастер цели (своя схема, см. docs/flow.md). Новый экран с шапкой сразу делать закреплённым.
 - **Неактивные элементы**: всё, что не завязано на сценарий, показывает подсказку «этого нет в сценарии» и обычный курсор. Указатель (pointer) только у контролов с `data-ui-path`. Навигацию по пути вешать через `PathLink`.
 - **Переходы** между экранами мягкие, скроллбары скрыты (`prototype.css`). Данные — инлайн-заглушки в коде.
 - **Экраны переиспользуются между флоу — не пересобирать.** Готовые экраны лежат в `src/features/prototype/screens` (сейчас: `HomeScreen`, `EmployeeCardScreen`, `TrainingScreen`, `SuccessScreen`). Разные флоу часто стартуют с одного и того же `Home` — его НЕ делать заново.
