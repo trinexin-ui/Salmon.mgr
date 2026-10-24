@@ -32,7 +32,7 @@ Claude Code читает `CLAUDE.md` (ссылается сюда), Codex — э
 
 Основа: токены (DESIGN.md), иконки (32), аватары (8 персон), смайлы (5), иллюстрации.
 
-Атомы (`src/shared/ui/atoms`): `radiobutton`, `icon_button`, `tag`, `step_item`, `chips`, `button`, `input`, `smile_reaction`, `avatar_reaction`, `avatar`, `pattern`, `img_goal-card` (изображение), `date_item`, `progress_bar`, `delta`, `gauge`, `grabber`, `grid_pattern`.
+Атомы (`src/shared/ui/atoms`): `radiobutton`, `icon_button`, `tag`, `step_item`, `chips`, `button`, `input`, `smile_reaction`, `avatar_reaction`, `avatar`, `pattern`, `img_goal-card` (изображение), `date_item`, `progress_bar`, `delta`, `gauge`, `grabber`, `grid_pattern`, `segment`.
 
 Молекулы (`src/shared/ui/molecules`): `reaction`, `person_tag`, `card_button`, `segment_button`, `step_bar`, `chips_group`, `tab`, `item_menu`, `edit_card`, `week_calendar`, `stats_summary`, `datetime_row`, `goal_banner`, `contribution_row`, `prize_tile`, `pull_handle`, `moment_tile`.
 

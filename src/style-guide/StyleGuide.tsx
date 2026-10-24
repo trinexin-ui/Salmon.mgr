@@ -34,6 +34,19 @@ import { GoalCard } from '@/shared/ui/organisms/GoalCard'
 import { EmployeeCard } from '@/shared/ui/organisms/EmployeeCard'
 import { StatsCard } from '@/shared/ui/organisms/StatsCard'
 import { WallCard } from '@/shared/ui/organisms/WallCard'
+import { ProgressBar } from '@/shared/ui/atoms/ProgressBar'
+import { Segment } from '@/shared/ui/atoms/Segment'
+import { Delta } from '@/shared/ui/atoms/Delta'
+import { Gauge } from '@/shared/ui/atoms/Gauge'
+import { Grabber } from '@/shared/ui/atoms/Grabber'
+import { ContributionRow } from '@/shared/ui/molecules/ContributionRow'
+import { PullHandle } from '@/shared/ui/molecules/PullHandle'
+import { ChartCard } from '@/shared/ui/organisms/ChartCard'
+import { GoalProgressCard } from '@/shared/ui/organisms/GoalProgressCard'
+import { ContributionCard } from '@/shared/ui/organisms/ContributionCard'
+import { ProfileHero } from '@/shared/ui/organisms/ProfileHero'
+import { LeagueCard } from '@/shared/ui/organisms/LeagueCard'
+import { MomentCluster } from '@/shared/ui/organisms/MomentCluster'
 import { PERSON_LIST } from '@/shared/ui/avatars/people'
 
 function useText<T extends HTMLElement>(compute: () => string, deps: unknown[]) {
@@ -299,6 +312,57 @@ function Atoms() {
           </div>
         </div>
       </Block>
+      <Block id="progress_bar" title="progress_bar">
+        <p className="type-caption_1 text-text-and-icon-secondary_white mb-s">
+          type on_black / on_white · tone gold / silver
+        </p>
+        <div className="flex flex-col gap-l" style={{ width: 300 }}>
+          <div className="bg-project-black_bg p-m" style={{ borderRadius: 'var(--radius-m)' }}>
+            <ProgressBar type="on_black" progress={0.7} />
+          </div>
+          <div className="bg-project-black_bg p-m" style={{ borderRadius: 'var(--radius-m)' }}>
+            <ProgressBar type="on_black" tone="silver" progress={0.5} />
+          </div>
+          <div className="bg-project-gray_bg p-m" style={{ borderRadius: 'var(--radius-m)' }}>
+            <ProgressBar type="on_white" progress={0.4} />
+          </div>
+        </div>
+      </Block>
+      <Block id="segment" title="segment">
+        <p className="type-caption_1 text-text-and-icon-secondary_white mb-s">
+          state default / active · сегмент segment_button
+        </p>
+        <div className="flex items-center gap-l bg-project-on_black-gray_1 p-m" style={{ width: 200, borderRadius: 'var(--radius-m)' }}>
+          <Segment label="D" state="default" />
+          <Segment label="D" state="active" />
+        </div>
+      </Block>
+      <Block id="delta" title="delta">
+        <p className="type-caption_1 text-text-and-icon-secondary_white mb-s">
+          direction up / down · size body_1 / body_2
+        </p>
+        <div className="flex items-center gap-2xl">
+          <Delta direction="up" label="+24%" />
+          <Delta direction="down" label="-11%" />
+          <Delta direction="up" label="+12%" size="body_2" />
+          <Delta direction="down" label="-3%" size="body_2" />
+        </div>
+      </Block>
+      <Block id="gauge" title="gauge">
+        <p className="type-caption_1 text-text-and-icon-secondary_white mb-s">
+          percent — доля зелёной дуги
+        </p>
+        <div className="flex items-end gap-2xl">
+          <Gauge percent={30} />
+          <Gauge percent={60} />
+          <Gauge percent={80} />
+        </div>
+      </Block>
+      <Block id="grabber" title="grabber">
+        <div className="bg-project-gray_bg" style={{ width: 200, borderRadius: 'var(--radius-m)' }}>
+          <Grabber />
+        </div>
+      </Block>
     </section>
   )
 }
@@ -370,6 +434,7 @@ function Molecules() {
         </div>
       </Block>
       <Block id="m-segment_button" title="segment_button">
+        <p className="type-caption_1 text-text-and-icon-secondary_white mb-s">собран из: segment</p>
         <SegmentButton items={['D', 'W', 'M']} activeIndex={0} />
       </Block>
       <Block id="m-chips_group" title="chips_group">
@@ -449,6 +514,25 @@ function Molecules() {
             <Reaction smile="heart" type="more3" count={4} />
             <span className="type-caption_2 text-text-and-icon-secondary_white">more3 · no</span>
           </div>
+        </div>
+      </Block>
+      <Block id="m-contribution_row" title="contribution_row">
+        <p className="type-caption_1 text-text-and-icon-secondary_white mb-s">
+          собран из: avatar, delta
+        </p>
+        <div className="flex flex-col gap-l bg-project-white p-l" style={{ width: 370 }}>
+          <ContributionRow person="maria-santos" name="Maria Santos" amount="₱4,100" offers="21 offers" delta="+24%" />
+          <ContributionRow person="jose-reyes" name="Jose Reyes" amount="₱3,300" offers="18 offers" delta="-11%" direction="down" />
+          <ContributionRow person="bea-ocampo" name="Bea Ocampo" amount="₱100" offers="1 offer" />
+        </div>
+      </Block>
+      <Block id="m-pull_handle" title="pull_handle">
+        <p className="type-caption_1 text-text-and-icon-secondary_white mb-s">
+          собран из: grabber
+        </p>
+        <div className="flex flex-col gap-l bg-project-gray_bg p-l" style={{ width: 402 }}>
+          <PullHandle />
+          <PullHandle labelOpacity={0} />
         </div>
       </Block>
     </section>
@@ -576,6 +660,65 @@ function Organisms() {
           <WallCard type="vote" />
           <WallCard type="recognitions" />
           <WallCard type="post" description />
+        </div>
+      </Block>
+      <Block id="o-chart_card" title="chart_card">
+        <p className="type-caption_1 text-text-and-icon-secondary_white mb-s">
+          собран из: gauge, delta
+        </p>
+        <div className="flex gap-m bg-project-gray_bg p-l" style={{ width: 402, borderRadius: 'var(--radius-l)' }}>
+          <ChartCard title="Split" centerLabel="Bank bonus" ratio="60/40" percent={60} legend={['₱6,000 employees', '₱4,000 team goal']} />
+          <ChartCard title="Distribution" centerLabel="Employees" ratio="80/20" percent={80} legend={['₱4,800 equal split', '₱1,200 by offers']} />
+        </div>
+      </Block>
+      <Block id="o-goal_progress_card" title="goal_progress_card">
+        <p className="type-caption_1 text-text-and-icon-secondary_white mb-s">
+          собран из: tag, progress_bar, icon_button
+        </p>
+        <div className="bg-project-gray_bg p-l" style={{ width: 402, borderRadius: 'var(--radius-l)' }}>
+          <GoalProgressCard title="Coffee machine" subtitle="Gemilai CRM3005G" tag="Team goal" progress={0.75} needValue="₱15,000" leftValue="₱3,750" />
+        </div>
+      </Block>
+      <Block id="o-contribution_card" title="contribution_card">
+        <p className="type-caption_1 text-text-and-icon-secondary_white mb-s">
+          собран из: contribution_row
+        </p>
+        <div className="bg-project-gray_bg p-l" style={{ width: 402, borderRadius: 'var(--radius-l)' }}>
+          <ContributionCard
+            rows={[
+              { person: 'maria-santos', name: 'Maria Santos', amount: '₱4,100', offers: '21 offers', delta: '+24%' },
+              { person: 'jose-reyes', name: 'Jose Reyes', amount: '₱3,300', offers: '18 offers', delta: '-11%', direction: 'down' },
+              { person: 'bea-ocampo', name: 'Bea Ocampo', amount: '₱100', offers: '1 offer' },
+            ]}
+          />
+        </div>
+      </Block>
+      <Block id="o-profile_hero" title="profile_hero">
+        <p className="type-caption_1 text-text-and-icon-secondary_white mb-s">
+          собран из: avatar, progress_bar
+        </p>
+        <div className="bg-project-gray_bg p-l" style={{ width: 402, borderRadius: 'var(--radius-l)' }}>
+          <ProfileHero person="louis-bautista" name="Louis Bautista" level="Silver Manager" progress={0.68} needValue="42 offers" nextValue="Gold Manager" />
+        </div>
+      </Block>
+      <Block id="o-league_card" title="league_card">
+        <p className="type-caption_1 text-text-and-icon-secondary_white mb-s">
+          собран из: tag
+        </p>
+        <div className="bg-project-gray_bg p-l" style={{ width: 402, borderRadius: 'var(--radius-l)' }}>
+          <LeagueCard title="Gold League" rank="3" text={['A great month lifts your store', 'to Platinum!']} tag="Hold for 3 more days" />
+        </div>
+      </Block>
+      <Block id="o-moment_cluster" title="moment_cluster">
+        <p className="type-caption_1 text-text-and-icon-secondary_white mb-s">
+          собран из: moment_tile, avatar_reaction
+        </p>
+        <div className="bg-project-black_bg p-l" style={{ width: 402, borderRadius: 'var(--radius-l)' }}>
+          <MomentCluster
+            person="lyn-dela-cruz"
+            selected
+            images={{ left: '/assets/moments/moment-2.jpg', center: '/assets/moments/moment-4.jpg', right: '/assets/moments/moment-3.jpg' }}
+          />
         </div>
       </Block>
     </section>

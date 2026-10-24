@@ -1,3 +1,5 @@
+import { Segment } from '@/shared/ui/atoms/Segment'
+
 type SegmentButtonProps = {
   items: string[]
   activeIndex?: number
@@ -5,7 +7,7 @@ type SegmentButtonProps = {
 }
 
 // Figma: d-molecules/segment_button. Pill on_black/gray_1 with segments;
-// active segment on_black/gray_2, white body_2 text.
+// собран из: segment (default / active).
 export function SegmentButton({ items, activeIndex = 0, className }: SegmentButtonProps) {
   return (
     <div
@@ -15,15 +17,7 @@ export function SegmentButton({ items, activeIndex = 0, className }: SegmentButt
       ].join(' ')}
     >
       {items.map((label, i) => (
-        <span
-          key={label}
-          className={[
-            'type-body_2 inline-flex cursor-pointer items-center justify-center rounded-max px-m py-xs_2 text-text-and-icon-white',
-            i === activeIndex ? 'bg-project-on_black-gray_2' : '',
-          ].join(' ')}
-        >
-          {label}
-        </span>
+        <Segment key={label} label={label} state={i === activeIndex ? 'active' : 'default'} />
       ))}
     </div>
   )

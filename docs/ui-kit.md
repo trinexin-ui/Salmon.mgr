@@ -31,6 +31,7 @@
 - [x] **delta** — `direction` (up / down), проп `label`. Треугольник + процент body_1: up — `green`, down — `red`. Выделен из stats_summary. _(flow_2: Period plan)_
 - [x] **gauge** — полукруглая диаграмма 155×78 из двух дуг (зелёная `green` / синяя `blue`) с зазором и круглыми концами; проп `percent` (доля зелёной, 0–100). _(flow_2: Period plan, Split/Distribution)_
 - [x] **grabber** — планка 36×5, `project/on_white/gray_2` (в макете `gray_22` #ebebeb, ближайшая роль), высота блока 16. Ручка bottom-sheet. _(flow_4)_
+- [x] **segment** — `state` (default / active), проп `label`; один сегмент segment_button: body_2 white, active — плашка `on_black/gray_2`. Выделен из segment_button.
 - [x] **grid_pattern** — фоновая перспективная сетка Moments (два SVG 532×532 из макета в `public/assets`), на всю высоту экрана. _(flow_4: Moments)_
 - [x] **img_goal-card** — один вариант (монеты на подставке), 110px, PNG в `src/shared/ui/illustrations`. Используется в goal_card
 
@@ -43,7 +44,7 @@
 - [x] **reaction** — `type` (default / more3), `active`; пропсы `smile`, `people`, `count`. Собран из: smile_reaction, avatar_reaction
 - [x] **person_tag** — проп `person`. Собран из: avatar_reaction
 - [x] **card_button** — пропсы `label`, `icon`, `notification`; фикс-ширина 118px. Собран из: icon _(перенесён в молекулы)_
-- [x] **segment_button** — пропсы `items`, `activeIndex` (сегменты D/W/M)
+- [x] **segment_button** — пропсы `items`, `activeIndex` (сегменты D/W/M). Собран из: segment
 - [x] **step_bar** — пропсы `steps`, `activeIndex`. Собран из: step_item
 - [x] **chips_group** — активный + разделитель + группа. Собран из: chips
 - [x] **tab** — `active`; пропсы `label`, `icon`, `iconActive`. Собран из: icon
