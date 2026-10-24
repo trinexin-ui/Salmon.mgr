@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { Header } from '@/shared/ui/organisms/Header'
 import { ProfileHero } from '@/shared/ui/organisms/ProfileHero'
 import { StatsCard } from '@/shared/ui/organisms/StatsCard'
@@ -8,13 +8,15 @@ import { Menu } from '@/shared/ui/organisms/Menu'
 // Figma d-profile (3094:15477): manager profile reached from the Home avatar.
 export function ManagerProfileScreen() {
   const navigate = useNavigate()
+  // Back returns to where the profile was opened from (Home avatar, or Shoutouts / Moments).
+  const from = (useLocation().state as { from?: string } | null)?.from ?? '/'
 
   return (
     <div className="flex min-h-full flex-col bg-project-gray_bg pb-2xxl">
       {/* Pinned nav: back + icons stay on top while the page scrolls, over a backdrop that
           matches the page background (as on the employee card). */}
       <div className="sticky top-0 z-10 bg-project-gray_bg px-l pb-s" style={{ paddingTop: 74 }}>
-        <Header rightIcons={['notification', 'setting']} onBack={() => navigate('/')} />
+        <Header rightIcons={['notification', 'setting']} onBack={() => navigate(from)} />
       </div>
       <div className="flex flex-col px-l">
         <ProfileHero

@@ -78,7 +78,8 @@ const SHEET_PAD = 4
 // cards.
 export function ShoutoutsScreen() {
   const navigate = useNavigate()
-  const open = useLocation().pathname.endsWith('/moments')
+  const { pathname } = useLocation()
+  const open = pathname.endsWith('/moments')
   const { pinnedSeen, setPinnedSeen } = useFlow()
   const [filter, setFilter] = useState('All')
 
@@ -176,7 +177,7 @@ export function ShoutoutsScreen() {
             <div className="sticky z-10 mt-m bg-project-gray_bg px-l pb-s" style={{ top: TOP }}>
               <Header
                 leftAvatar="louis-bautista"
-                onAvatar={() => navigate('/profile')}
+                onAvatar={() => navigate('/profile', { state: { from: pathname } })}
                 title="Shoutouts"
                 rightIcon="plus"
               />
