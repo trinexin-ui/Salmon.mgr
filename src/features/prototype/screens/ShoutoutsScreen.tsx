@@ -174,7 +174,12 @@ export function ShoutoutsScreen() {
             {/* Pinned nav: the header stays right under the status bar while the wall scrolls; the
                 handle above it scrolls away. */}
             <div className="sticky z-10 mt-m bg-project-gray_bg px-l pb-s" style={{ top: TOP }}>
-              <Header leftAvatar="louis-bautista" title="Shoutouts" rightIcon="plus" />
+              <Header
+                leftAvatar="louis-bautista"
+                onAvatar={() => navigate('/profile')}
+                title="Shoutouts"
+                rightIcon="plus"
+              />
             </div>
 
             <div

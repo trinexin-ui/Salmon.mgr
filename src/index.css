@@ -16,6 +16,8 @@
   /* project */
   --color-project-action: #221f22;
   --color-project-active_state: #c2a377;
+  /* Frame of the highlighted moment in Moments: a plain #ddc8a9 in Figma (no variable bound). */
+  --color-project-moment_frame: #ddc8a9;
   --color-project-black_bg: #221f22;
   --color-project-gray_bg: #f6f6f6;
   --color-project-white: #ffffff;

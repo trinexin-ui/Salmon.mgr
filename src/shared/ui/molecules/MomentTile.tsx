@@ -10,7 +10,7 @@ type MomentTileProps = {
 
 // Figma: молекула moment_tile (фото в коллаже Moments). side — фото 100×117 в скруглении m
 // с наклоном ±16°, контейнер 128×140; center — карточка 128×148 с фото 120×140 (selected — рамка
-// 2px active_state/60%, отступ 2px; без рамки отступ 4px). Статичная.
+// 2px moment_frame (#ddc8a9, непрозрачная), отступ 2px; без рамки отступ 4px). Статичная.
 export function MomentTile({
   variant = 'center',
   image,
@@ -44,7 +44,7 @@ export function MomentTile({
       style={{ width: 128, height: 148, borderRadius: 'var(--radius-l)' }}
       className={[
         'relative',
-        selected ? 'border-2 border-project-active_state/60' : '',
+        selected ? 'border-2 border-project-moment_frame' : '',
         className ?? '',
       ].join(' ')}
     >

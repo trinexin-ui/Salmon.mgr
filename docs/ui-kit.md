@@ -56,7 +56,7 @@
 - [x] **prize_tile** — `variant` (selected / side), проп `label`, `image`; плитка приза 175×196, radius m: картинка + белый градиент снизу + подпись h3 (selected — `d/linear-gold`, side — `d/linear-black_gold`); selected в рамке 2px `active_state`/50%, side повёрнут ±6° и полупрозрачный (52%). Статичная. _(flow_2: step2)_
 - [x] **contribution_row** — пропсы `person`, `name`, `amount`, `offers`, `delta?`, `direction?`; аватар 52px + имя/сумма слева, офферы + delta справа. Собран из: avatar, delta. _(flow_2: Period plan)_
 - [x] **pull_handle** — проп `labelOpacity` (плавно гасит подпись); проп `label`; планка `grabber` + подпись caption_1 `secondary_white` («Pull down») по центру. Собран из: grabber. _(flow_4: лента)_
-- [x] **moment_tile** — `variant` (center / side), `selected?`, `tilt`, проп `image`; фото в скруглении m: side 100×117 с наклоном ±16°, center 120×140 (selected — в рамке 2px `active_state`/60% на карточке 128×148). Статичная. _(flow_4: Moments)_
+- [x] **moment_tile** — `variant` (center / side), `selected?`, `tilt`, проп `image`; фото в скруглении m: side 100×117 с наклоном ±16°, center 120×140 (selected — в рамке 2px `moment_frame` (#ddc8a9, непрозрачная) на карточке 128×148). Статичная. _(flow_4: Moments)_
 
 ---
 
@@ -88,7 +88,7 @@
 
 > Примечание по flow_2 (расширены существующие, стили не менялись): **icon_button** — `color="dark"` (фон `on_black/gray_2`, для тёмного экрана и карточек `on_black/gray_1`); **header** — `theme="dark"` (белый заголовок, описание `secondary_black`, кнопки `dark`); **bank-goal** — `bare` (без карточки и кнопки, для заголовка на тёмном фоне); **bank-goal** и **stats_summary** переведены на атомы `progress_bar` и `delta` — вид не изменился.
 
-> Примечание по flow_4 (Shoutouts, расширены существующие): **wall_card** — данные через пропсы (`recognitions`: `illustration`, `person`, `text`, `reactions`, `time`; `post`: `author`, `subtitle`, `lines`, `reactions`, `time`), без пропсов выглядит как раньше; **header** — `leftAvatar` (аватар 44 слева вместо «‹»); **tab_bar** — `active` (home / team / shoutouts) и `links` (контролы пути); **chips_group** — `newItems` (чип с бейджем «new», пока не выбран).
+> Примечание по flow_4 (Shoutouts, расширены существующие): **wall_card** — данные через пропсы (`recognitions`: `illustration`, `person`, `text`, `reactions`, `time`; `post`: `author`, `subtitle`, `lines`, `reactions`, `time`), без пропсов выглядит как раньше; **header** — `leftAvatar` (аватар 44 слева вместо «‹») и `onAvatar` (аватар — контрол пути); **tab_bar** — `active` (home / team / shoutouts) и `links` (контролы пути); **chips_group** — `newItems` (чип с бейджем «new», пока не выбран).
 
 > Примечание по flow_3 (профиль и Possibilities, расширены существующие): **progress_bar** — `tone` (gold / silver; silver — `d/linear-silver`, токен добавлен владельцем); **header** — `rightIcons` (несколько кнопок справа); **stats_card** (manager) — `wallet` (кнопка кошелька, по умолчанию есть) и на атоме `delta`; **item_menu** / **menu** — `onClick`, `danger` (красный пункт), разделитель только под текстом; **chips_group** — пропсы `all`, `items`, `value`, `onChange` (по умолчанию как раньше); **possibilities_card** — `illustration` (analytics / spotlight / fund / target / shield / medal; картинки в `src/shared/ui/illustrations`), разделитель закрытой карточки 40%.
 

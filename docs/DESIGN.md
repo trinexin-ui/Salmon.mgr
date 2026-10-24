@@ -96,6 +96,7 @@
 | color/text-and-icon/white           | #ffffff  |
 | color/project/action                | #221f22  |
 | color/project/active_state          | #c2a377  |
+| color/project/moment_frame          | #ddc8a9  | рамка выбранного фото в Moments (в Figma задана цветом без переменной; токен заведён при сборке) |
 | color/project/black_bg              | #221f22  |
 | color/project/gray_bg               | #f6f6f6  |
 | color/project/white                 | #ffffff  |

@@ -13,6 +13,8 @@ type HeaderProps = {
   backHidden?: boolean
   // persona photo instead of the back button (Shoutouts)
   leftAvatar?: Person
+  // the persona photo is a path control (opens the profile)
+  onAvatar?: () => void
   onBack?: () => void
   onRight?: () => void
   className?: string
@@ -30,6 +32,7 @@ export function Header({
   theme = 'light',
   backHidden = false,
   leftAvatar,
+  onAvatar,
   onBack,
   onRight,
   className,
@@ -39,7 +42,13 @@ export function Header({
   return (
     <div className={['flex w-full items-center justify-between gap-m', className ?? ''].join(' ')}>
       {leftAvatar ? (
-        <Avatar person={leftAvatar} size={44} />
+        onAvatar ? (
+          <span data-ui-path style={{ display: 'contents' }} onClick={onAvatar}>
+            <Avatar person={leftAvatar} size={44} />
+          </span>
+        ) : (
+          <Avatar person={leftAvatar} size={44} />
+        )
       ) : backHidden ? (
         // no back button on this step — keep its 44px slot so the title stays centered
         <span style={{ width: 44, height: 44 }} aria-hidden />
