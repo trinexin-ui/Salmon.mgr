@@ -47,7 +47,7 @@
 - [x] **step_bar** — пропсы `steps`, `activeIndex`. Собран из: step_item
 - [x] **chips_group** — активный + разделитель + группа. Собран из: chips
 - [x] **tab** — `active`; пропсы `label`, `icon`, `iconActive`. Собран из: icon
-- [x] **item_menu** — `type` (up / middle / down); пропсы `label`, `icon`. Собран из: icon
+- [x] **item_menu** — `type` (up / middle / down); пропсы `label`, `icon`. иконка и шеврон — `secondary_white` (серые), подпись — primary; Собран из: icon
 - [x] **edit_card** — пропсы `title`, `left`, `right`. Собран из: button
 - [x] **week_calendar** — пропсы `days`, `activeIndex`; прозрачность по удалению от активного дня (100/40/20%). Собран из: date_item. _(добавлен для flow_1: Home)_
 - [x] **stats_summary** — пропсы `items` (label/value/delta); лейбл `secondary_black`, значение `text-and-icon/white`, дельта `green` (всё body_1); первые колонки flex-1, последняя по контенту (раскладка по ширине). Pending/Approved/Earned на Home. _(добавлен для flow_1: Home)_
@@ -55,7 +55,7 @@
 - [x] **goal_banner** — проп `title`, `subtitle`, `onClick`; тёмная строка `on_black/gray_1`: картинка 44px (3D-иконка, `public/assets/period-goal-thumb.png`) + тексты + `icon_button` (chevron-right, middle). Собран из: icon_button. _(flow_2: Period plan)_
 - [x] **prize_tile** — `variant` (selected / side), проп `label`, `image`; плитка приза 175×196, radius m: картинка + белый градиент снизу + подпись h3 (selected — `d/linear-gold`, side — `d/linear-black_gold`); selected в рамке 2px `active_state`/50%, side повёрнут ±6° и полупрозрачный (52%). Статичная. _(flow_2: step2)_
 - [x] **contribution_row** — пропсы `person`, `name`, `amount`, `offers`, `delta?`, `direction?`; аватар 52px + имя/сумма слева, офферы + delta справа. Собран из: avatar, delta. _(flow_2: Period plan)_
-- [x] **pull_handle** — проп `label`; планка `grabber` + подпись caption_1 `secondary_white` («Pull down») по центру. Собран из: grabber. _(flow_4: лента)_
+- [x] **pull_handle** — проп `labelOpacity` (плавно гасит подпись); проп `label`; планка `grabber` + подпись caption_1 `secondary_white` («Pull down») по центру. Собран из: grabber. _(flow_4: лента)_
 - [x] **moment_tile** — `variant` (center / side), `selected?`, `tilt`, проп `image`; фото в скруглении m: side 100×117 с наклоном ±16°, center 120×140 (selected — в рамке 2px `active_state`/60% на карточке 128×148). Статичная. _(flow_4: Moments)_
 
 ---

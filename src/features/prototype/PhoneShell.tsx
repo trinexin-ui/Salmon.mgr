@@ -11,6 +11,9 @@ const SB_SAMPLE_Y = 34
 // Clicks that do not land on a wired path control ([data-ui-path]) raise the inactive hint.
 export function PhoneShell() {
   const location = useLocation()
+  // Shoutouts and Moments are one screen (a sheet pulled between two states): the path changes
+  // under it without a remount.
+  const screenKey = location.pathname.startsWith('/shoutouts') ? '/shoutouts' : location.pathname
   const [hint, setHint] = useState<{ x: number; y: number } | null>(null)
   const timer = useRef<number | undefined>(undefined)
 
@@ -98,7 +101,7 @@ export function PhoneShell() {
               style={{ width: 402, height: 874, borderRadius: 50 }}
             >
               <div
-                key={location.pathname}
+                key={screenKey}
                 ref={scrollRef}
                 onClick={onContentClick}
                 onScroll={updateInk}

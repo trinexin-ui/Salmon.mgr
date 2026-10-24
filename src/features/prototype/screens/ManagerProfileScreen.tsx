@@ -11,8 +11,12 @@ export function ManagerProfileScreen() {
 
   return (
     <div className="flex min-h-full flex-col bg-project-gray_bg pb-2xxl">
-      <div className="flex flex-col gap-s px-l" style={{ paddingTop: 74 }}>
+      {/* Pinned nav: back + icons stay on top while the page scrolls, over a backdrop that
+          matches the page background (as on the employee card). */}
+      <div className="sticky top-0 z-10 bg-project-gray_bg px-l pb-s" style={{ paddingTop: 74 }}>
         <Header rightIcons={['notification', 'setting']} onBack={() => navigate('/')} />
+      </div>
+      <div className="flex flex-col px-l">
         <ProfileHero
           person="louis-bautista"
           name="Louis Bautista"

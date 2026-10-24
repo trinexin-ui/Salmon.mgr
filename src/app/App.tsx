@@ -15,7 +15,6 @@ import { GoalSuccessScreen } from '@/features/prototype/screens/GoalSuccessScree
 import { ManagerProfileScreen } from '@/features/prototype/screens/ManagerProfileScreen'
 import { PossibilitiesScreen } from '@/features/prototype/screens/PossibilitiesScreen'
 import { ShoutoutsScreen } from '@/features/prototype/screens/ShoutoutsScreen'
-import { MomentsScreen } from '@/features/prototype/screens/MomentsScreen'
 
 export function App() {
   return (
@@ -34,8 +33,7 @@ export function App() {
           <Route path="/goal/success" element={<GoalSuccessScreen />} />
           <Route path="/profile" element={<ManagerProfileScreen />} />
           <Route path="/profile/possibilities" element={<PossibilitiesScreen />} />
-          <Route path="/shoutouts" element={<ShoutoutsScreen />} />
-          <Route path="/shoutouts/moments" element={<MomentsScreen />} />
+          <Route path="/shoutouts/*" element={<ShoutoutsScreen />} />
         </Route>
         <Route path="/style-guide" element={<StyleGuide />} />
       </Routes>

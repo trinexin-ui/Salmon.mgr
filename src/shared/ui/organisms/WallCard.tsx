@@ -178,12 +178,14 @@ export function WallCard({
           </span>
         </div>
         <div className="flex items-center">
+          {/* Figma: the first avatar is on top (each next one tucks under the previous). */}
           {VOTE_PEOPLE.map((p, i) => (
             <AvatarReaction
               key={p}
               person={p}
               size={36}
-              className={['border-[1.5px] border-text-and-icon-white', i > 0 ? 'ml-minus_2' : ''].join(
+              style={{ zIndex: VOTE_PEOPLE.length - i }}
+              className={['relative border-[1.5px] border-text-and-icon-white', i > 0 ? 'ml-minus_2' : ''].join(
                 ' ',
               )}
             />

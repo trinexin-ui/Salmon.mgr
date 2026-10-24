@@ -75,12 +75,13 @@ export function PossibilitiesScreen() {
   )
 
   return (
-    <div className="flex min-h-full flex-col gap-2xxl bg-project-gray_bg pb-2xxl">
-      <div className="px-l" style={{ paddingTop: 74 }}>
+    <div className="flex min-h-full flex-col bg-project-gray_bg pb-2xxl">
+      {/* Pinned nav: stays on top while the list scrolls (as on the employee card). */}
+      <div className="sticky top-0 z-10 bg-project-gray_bg px-l pb-s" style={{ paddingTop: 74 }}>
         <Header title="Possibilities" rightIcon={null} onBack={() => navigate('/profile')} />
       </div>
 
-      <div className="flex flex-col gap-l">
+      <div className="mt-2xl flex flex-col gap-l">
         <ChipsGroup
           all="All"
           items={['By level', 'By league']}
